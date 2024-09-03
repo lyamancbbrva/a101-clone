@@ -3,6 +3,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    'node_modules/preline/dist/*.js'
   ],
   theme: {
     screens: {
@@ -20,6 +21,6 @@ export default {
       // => @media (min-width: 1280px) { ... }
     }
   },
-  plugins: [],
+  plugins: [ require('preline/plugin') ],
 }
 
