@@ -17,8 +17,8 @@ function Footer() {
                 >
                     <button
                         className='hs-accordion-toggle text-sm text-[#00BAD3] py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none'
-                        ariaExpanded='true'
-                        ariaControls='hs-basic-with-title-and-arrow-stretched-collapse-one'
+                        aria-expanded='true'
+                        aria-controls='hs-basic-with-title-and-arrow-stretched-collapse-one'
                     >
                         Site Haritası
                         <svg
@@ -56,7 +56,7 @@ function Footer() {
                         id='hs-basic-with-title-and-arrow-stretched-collapse-one'
                         className='hs-accordion-content w-full overflow-hidden transition-[height] duration-300'
                         role='region'
-                        ariaLabelledby='hs-basic-with-title-and-arrow-stretched-heading-one'
+                        aria-labelledby='hs-basic-with-title-and-arrow-stretched-heading-one'
                     >
                         <ul>
                             <li className="p-1 leading-[1.5em] text-[1em] text-[#333]"><a href="">Ana Sayfa</a></li>
@@ -77,8 +77,8 @@ function Footer() {
                 >
                     <button
                         className='hs-accordion-toggle text-sm text-[#00BAD3] py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none'
-                        ariaExpanded='true'
-                        ariaControls='hs-basic-with-title-and-arrow-stretched-collapse-one'
+                        aria-expanded='true'
+                        aria-controls='hs-basic-with-title-and-arrow-stretched-collapse-one'
                     >
                         Özel Sayfalar
                         <svg
@@ -116,7 +116,7 @@ function Footer() {
                         id='hs-basic-with-title-and-arrow-stretched-collapse-one'
                         className='hs-accordion-content w-full overflow-hidden transition-[height] duration-300'
                         role='region'
-                        ariaLabelledby='hs-basic-with-title-and-arrow-stretched-heading-one'
+                        aria-labelledby='hs-basic-with-title-and-arrow-stretched-heading-one'
                     >
                         <ul>
                             <li className="p-1 leading-[1.5em] text-[1em] text-[#333]"><a href="">Aldın Aldın</a></li>
@@ -135,8 +135,8 @@ function Footer() {
                 >
                     <button
                         className='hs-accordion-toggle text-sm text-[#00BAD3] py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none'
-                        ariaExpanded='true'
-                        ariaControls='hs-basic-with-title-and-arrow-stretched-collapse-one'
+                        aria-expanded='true'
+                        aria-controls='hs-basic-with-title-and-arrow-stretched-collapse-one'
                     >
                         Aldın Aldın
                         <svg
@@ -174,7 +174,7 @@ function Footer() {
                         id='hs-basic-with-title-and-arrow-stretched-collapse-one'
                         className='hs-accordion-content w-full overflow-hidden transition-[height] duration-300'
                         role='region'
-                        ariaLabelledby='hs-basic-with-title-and-arrow-stretched-heading-one'
+                        aria-labelledby='hs-basic-with-title-and-arrow-stretched-heading-one'
                     >
                         <ul>
                             <li className="p-1 leading-[1.5em] text-[1em] text-[#333]"><a href="">Elektronik</a></li>
@@ -195,8 +195,8 @@ function Footer() {
                 >
                     <button
                         className='hs-accordion-toggle text-sm text-[#00BAD3] py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none'
-                        ariaExpanded='true'
-                        ariaControls='hs-basic-with-title-and-arrow-stretched-collapse-one'
+                        aria-expanded='true'
+                        aria-controls='hs-basic-with-title-and-arrow-stretched-collapse-one'
                     >
                         En Çok Satılanlar
                         <svg
@@ -234,7 +234,7 @@ function Footer() {
                         id='hs-basic-with-title-and-arrow-stretched-collapse-one'
                         className='hs-accordion-content w-full overflow-hidden transition-[height] duration-300'
                         role='region'
-                        ariaLabelledby='hs-basic-with-title-and-arrow-stretched-heading-one'
+                        aria-labelledby='hs-basic-with-title-and-arrow-stretched-heading-one'
                     >
                         <ul>
                             <li className="p-1 leading-[1.5em] text-[1em] text-[#333]"><a href="">Televizyon</a></li>
