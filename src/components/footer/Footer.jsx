@@ -1,4 +1,11 @@
-import React from "react";
+import facebook from '../../assets/img/facebook.webp'
+import instagram from '../../assets/img/instagram.webp'
+import twitter from '../../assets/img/twitter.webp'
+import tiktok from '../../assets/img/tiktok.webp'
+import youtube from '../../assets/img/youtube.webp'
+import linkedin from '../../assets/img/linkedin.webp'
+import applemarket from '../../assets/img/apple-market-logo.png'
+import androidmarket from '../../assets/img/android-market-logo.png'
 
 function Footer() {
     return (
@@ -242,22 +249,21 @@ function Footer() {
                 </div>
             </div>
             <div className="icons border-b p-2">
-               <div className=" flex justify-center items-center gap-3">
-                 <img src="./src/assets/facebook.webp" alt="facebook logo" />
-                 <img src="./src/assets/instagram.webp" alt="instagram logo" />
-                 <img src="./src/assets/twitter.webp" alt="twitter logo" />
-                 <img src="./src/assets/tiktok.webp" alt="tiktok logo" />
-                 <img src="./src/assets/youtube.webp" alt="youtube logo" />
-                 <img src="./src/assets/linkedin.webp" alt="linkedin logo" />
-               </div>
-               <div className="flex my-3 justify-center items-center gap-3">
-                <img className="w-[100px]" src="./src/assets/apple-market-logo.png" alt="apple market logo" />
-                <img className="w-[100px]" src="./src/assets/android-market-logo.png" alt="android market logo" />
-               </div>
+                <div className=" flex justify-center items-center gap-3">
+                    <a href=""><img src={facebook} alt="facebook logo" /></a>
+                    <a href=""><img src={instagram} alt="instagram logo" /></a>
+                    <a href=""><img src={twitter} alt="twitter logo" /></a>
+                    <a href=""><img src={tiktok} alt="tiktok logo" /></a>
+                    <a href=""><img src={youtube} alt="youtube logo" /></a>
+                    <a href=""><img src={linkedin} alt="linkedin logo" /></a>
+                </div>
+                <div className="flex my-3 justify-center items-center gap-3">
+                    <img className="w-[100px] cursor-pointer" src={applemarket} alt="apple market logo" />
+                    <img className="w-[100px] cursor-pointer" src={androidmarket} alt="android market logo" />
+                </div>
             </div>
             <div className="border-b py-4 text-center">
-            © 2024 A101 Ekstra
-
+                © 2024 A101 Ekstra
             </div>
         </footer>
     );

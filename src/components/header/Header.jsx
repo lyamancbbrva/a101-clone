@@ -1,4 +1,7 @@
 import Category from "./Category";
+import a101logo from '../../assets/img/a101-logo.webp'
+import extralogo from '../../assets/img/extra-logo.webp'
+import kapidalogo from '../../assets/img/kapida-logo.webp'
 
 function Header() {
     return (
@@ -10,7 +13,7 @@ function Header() {
                             <a href=''>
                                 <img
                                     className='bg-[#DAFBFF] w-full'
-                                    src='src/assets/a101-logo.webp'
+                                    src={a101logo}
                                     alt='a101 logo'
                                 />
                             </a>
@@ -19,8 +22,8 @@ function Header() {
                             <a href=''>
                                 <img
                                     className='bg-[#DAFBFF] w-full '
-                                    src='src/assets/extra-logo.webp'
-                                    alt='a101 logo'
+                                    src={extralogo}
+                                    alt='extra logo'
                                 />
                                 <div className='absolute bottom-[-10px] left-[-1rem] lg:bottom-[-13px]'>
                                     <svg
@@ -55,8 +58,8 @@ function Header() {
                             <a href=''>
                                 <img
                                     className='bg-[#DAFBFF] w-full '
-                                    src='src/assets/kapida-logo.webp'
-                                    alt='a101 logo'
+                                    src={kapidalogo}
+                                    alt='kapida logo'
                                 />
                             </a>
                         </div>
@@ -103,8 +106,8 @@ function Header() {
                     </div>
                 </div>
             </div>
-            <fieldset className='wrapper border-b lg:border-b-0 flex py-1 justify-center px-[2vw] dark:text-gray-800'>
-                <div className='relative w-[90%] lg:w-full '>
+            <fieldset className='wrapper border-b lg:border-b-0 flex py-1 justify-center sm:px-[5px] px-[2vw] dark:text-gray-800'>
+                <div className='relative w-[100%] lg:w-full '>
                     <span className='absolute inset-y-0 left-0 flex items-center pl-2'>
                         <button
                             type='button'
@@ -139,7 +142,7 @@ function Header() {
                         type='search'
                         name='Search'
                         placeholder='Aramak istediğin ürünü yaz...'
-                        className=' search outline-none w-[90%] lg:w-full text-center my-[8px] rounded-full p-2 pl-10 border-[1px] border-[#e5e7e9] text-sm dark:text-gray-800 sm:p-[10px] '
+                        className='search outline-none w-[100%] lg:w-full text-center my-[8px] rounded-full p-2 pl-10 border-[1px] border-[#e5e7e9] text-sm dark:text-gray-800 sm:p-[10px] '
                     />
                 </div>
             </fieldset>
