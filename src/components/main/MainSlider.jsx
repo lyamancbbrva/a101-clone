@@ -25,7 +25,7 @@ export default function MainSlider() {
                 }}
                 navigation={true}
                 modules={[Pagination, Navigation, Autoplay]}
-                className="mySwiper"
+                className="mySwiper mainSlider"
             >
                 <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
                 <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
