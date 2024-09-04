@@ -24,7 +24,7 @@ export default function CategorySlider() {
                         spaceBetween: 10,
                     },
                     768: {
-                        slidesPerView: 6,
+                        slidesPerView: 7,
                         spaceBetween: 10,
                     },
                     992: {

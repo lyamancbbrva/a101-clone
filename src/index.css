@@ -2,14 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-.search{
+.search {
     caret-color: #00BAD3;
 }
+
 .mainSlider .swiper-pagination-bullet-active {
     background-color: #fff !important;
     width: 22px !important;
     border-radius: 5px !important;
 }
+
 .mainSlider .swiper-pagination {
     width: 250px !important;
     background: #88878737;
@@ -23,33 +25,55 @@
     justify-content: center;
     padding: 5px 0;
 }
-.mainSlider .swiper-button-prev, .mainSlider .swiper-button-next{
+
+.mainSlider .swiper-button-prev,
+.mainSlider .swiper-button-next {
     background-color: #00BAD3;
     border-radius: 50%;
     padding: 20px;
 }
-.mainSlider .swiper-button-next{margin-right: -23px;}
-.mainSlider .swiper-button-prev{margin-left: -23px;}
+
+.mainSlider .swiper-button-next {
+    margin-right: -23px;
+}
+
+.mainSlider .swiper-button-prev {
+    margin-left: -23px;
+}
+
+.catSlider .swiper-button-prev {
+    top: 40%;
+    transform: translateY(-50%);
+}
+.catSlider .swiper-button-next {
+    top: 40%;
+    transform: translateY(-50%);
+    margin-right: 10px;
+}
+
 .mainSlider {
     --swiper-theme-color: #fff !important;
     --swiper-navigation-size: 12px !important;
 }
+
 .catSlider {
     --swiper-theme-color: #000 !important;
     --swiper-navigation-size: 15px !important;
 }
+
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
 
-@media only screen and (min-width: 850px){
-    .wrapper{
+@media only screen and (min-width: 850px) {
+    .wrapper {
         width: 92%;
         margin: auto;
     }
 }
-@media only screen and (min-width: 1024px){
-    .wrapper{
+
+@media only screen and (min-width: 1024px) {
+    .wrapper {
         width: 77%;
         margin: auto;
     }
