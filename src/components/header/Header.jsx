@@ -5,7 +5,7 @@ import kapidalogo from '../../assets/img/kapida-logo.webp'
 
 function Header() {
     return (
-        <header className='overflow-x-hidden sticky top-0 z-[999] bg-white shadow-gray-100 shadow-sm'>
+        <header className='overflow-x-hidden sticky top-0 z-[9] bg-white shadow-gray-100 shadow-sm'>
             <div className='bg-[#40D3E7] p-2'>
                 <div className='wrapper flex items-center justify-between'>
                     <div className='logos flex items-center justify-start gap-[5px] '>
