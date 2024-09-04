@@ -27,14 +27,14 @@ export default function MainSlider() {
                 modules={[Pagination, Navigation, Autoplay]}
                 className="mySwiper mainSlider"
             >
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
             </Swiper>
         </section>
     );

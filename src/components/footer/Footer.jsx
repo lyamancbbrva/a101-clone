@@ -412,7 +412,7 @@ function Footer() {
                       </a>
                   </div>
                 <div className="flex gap-2">
-                      <div className='flex my-3 justify-center items-center gap-3 md:flex-col'>
+                      <div className='flex my-3 justify-center mx-auto items-center gap-3 md:flex-col'>
                           <img
                               className='w-[100px] cursor-pointer'
                               src={applemarket}
@@ -424,7 +424,7 @@ function Footer() {
                               alt='android market logo'
                           />
                       </div>
-                      <div className="flex gap-2">
+                      <div className="md:flex gap-2 hidden">
                         <img className="w-[100px] object-contain " src="./src/assets/img/a101_qr_icon.jpeg" alt="a101 qr" />
                         <img className="w-[100px] object-contain " src="./src/assets/img/tr_go.jpeg" alt="tr go" />
                         <img className="w-[75px] object-contain " src="./src/assets/img/etbis.jpeg" alt="etbis" />
