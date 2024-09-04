@@ -9,7 +9,7 @@ import androidmarket from '../../assets/img/android-market-logo.png'
 
 function Footer() {
     return (
-        <footer>
+        <footer className='bg-slate-50'>
             <div className='md:hidden hs-accordion-group px-4 border-b py-1'>
                 <div
                     className='hs-accordion'

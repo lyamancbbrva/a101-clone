@@ -5,6 +5,40 @@
 .search{
     caret-color: #00BAD3;
 }
+.swiper-pagination-bullet-active {
+    background-color: #fff !important;
+    width: 22px !important;
+    border-radius: 5px !important;
+}
+.swiper-pagination {
+    /* margin-bottom: -50px; */
+    width: 250px !important;
+    background: #88878737;
+    z-index: 99;
+    border-radius: 50px;
+    position: absolute;
+    left: 50% !important;
+    transform: translateX(-50%);
+    bottom: 15px !important;
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+}
+.swiper-button-prev,
+.swiper-button-next{
+    background-color: #00BAD3;
+    border-radius: 50%;
+    padding: 20px;
+}
+.swiper-button-next{margin-right: -23px;}
+.swiper-button-prev{margin-left: -23px;}
+:root {
+    --swiper-theme-color: #fff !important;
+    --swiper-navigation-size: 12px !important;
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
 
 @media only screen and (min-width: 850px){
     .wrapper{

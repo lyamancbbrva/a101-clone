@@ -5,7 +5,7 @@ import kapidalogo from '../../assets/img/kapida-logo.webp'
 
 function Header() {
     return (
-        <header className='overflow-x-hidden'>
+        <header className='overflow-x-hidden sticky top-0 z-[999] bg-white shadow-gray-100 shadow-sm'>
             <div className='bg-[#40D3E7] p-2'>
                 <div className='wrapper flex items-center justify-between'>
                     <div className='logos flex items-center justify-start gap-[5px] '>
@@ -148,10 +148,9 @@ function Header() {
             </fieldset>
             <nav>
                 <Category/>
-                <div className='icons flex lg:hidden justify-between px-2 fixed w-full bottom-0 bg-white'>
-                    <div className='icon'>
+                <div className='icons flex lg:hidden justify-between px-3 fixed w-full bottom-0 bg-white pt-2.5'>
+                    <div className='icon flex flex-col items-center'>
                         <svg 
-                            className="ml-1"
                             width='24'
                             height='24'
                             viewBox='0 0 24 24'
@@ -172,9 +171,8 @@ function Header() {
                             Ana sayfa
                         </h5>
                     </div>
-                    <div className='icon'>
+                    <div className='icon flex flex-col items-center'>
                         <svg
-                            className="ml-1"
                             width='25'
                             height='24'
                             viewBox='0 0 25 24'
@@ -214,9 +212,8 @@ function Header() {
                             Kategoriler
                         </h5>
                     </div>
-                    <div className='icon'>
+                    <div className='icon flex flex-col items-center'>
                         <svg
-                            className="ml-1"
                             width='25'
                             height='24'
                             viewBox='0 0 25 24'
@@ -246,9 +243,8 @@ function Header() {
                             Sepetim
                         </h5>
                     </div>
-                    <div className='icon'>
+                    <div className='icon flex flex-col items-center'>
                         <svg
-                            className="ml-1"
                             width='24'
                             height='24'
                             viewBox='0 0 24 24'
@@ -264,9 +260,8 @@ function Header() {
                             Kampanyalar
                         </h5>
                     </div>
-                    <div className='icon'>
+                    <div className='icon flex flex-col items-center'>
                         <svg
-                            className="ml-1"
                             width='24'
                             height='24'
                             viewBox='0 0 24 24'
