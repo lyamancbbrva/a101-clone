@@ -23,7 +23,7 @@ function Footer() {
                     >
                         Site Haritası
                         <svg
-                            className='hs-accordion-active:block hidden size-4'
+                            className='hs-accordion-active:hidden block size-4'
                             width='20'
                             height='20'
                             viewBox='0 0 20 20'
@@ -38,7 +38,7 @@ function Footer() {
                             ></path>
                         </svg>
                         <svg
-                            className='hs-accordion-active:hidden block size-4'
+                            className='hs-accordion-active:block hidden size-4'
                             width='20'
                             height='20'
                             viewBox='0 0 20 20'

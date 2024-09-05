@@ -1,7 +1,7 @@
 import { GoHeart } from "react-icons/go";
 export default function Cart() {
     return (
-        <div className="max-w-[200px] p-3 rounded-2xl border-gray-200 border relative bg-white">
+        <div className="p-3 rounded-2xl border-gray-200 border relative bg-white">
             <div className="text-center py-1">aldun aldun</div>
             <GoHeart className="text-2xl absolute right-3 top-8"/>
             <img src="src/assets/img/test.jpg" alt="" className="object-cover object-center w-full rounded-md dark:bg-gray-500" />

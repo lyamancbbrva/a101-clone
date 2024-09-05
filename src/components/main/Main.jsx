@@ -10,6 +10,7 @@ import haftanin_yildizlari_mob from '../../assets/img/haftanin-yildizlari-mobil.
 import haftanin_yildizlari from '../../assets/img/haftanin-yildizlari.png'
 import CategorySlider from "./CategorySlider"
 import Cart from "./Cart"
+import Highlights from "./Highlights"
 
 function Main() {
     return (
@@ -31,7 +32,7 @@ function Main() {
                     <a href="" className="hidden md:block "><img className="md:h-[50%]" src={haftanin_yildizlari} alt="haftanin yildizlari" /></a>
                     <a href="" className="hidden md:block "><img className="md:h-[50%]" src={tl10} alt="10tl ve uzeri"  /></a>
                 </div>
-                <Cart />
+                <Highlights/>
             </div>
         </main>
     )
