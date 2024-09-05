@@ -42,6 +42,7 @@
 .mainSlider .swiper-button-next {
     background-color: #00BAD3;
     border-radius: 50%;
+    top: 45% !important;
     padding: 20px;
 }
 
@@ -110,12 +111,21 @@
         max-width: 750px;
         margin: auto;
     }
+    .ucuz-fiyatlar{
+        background: url('./assets/img/mobil-web.jpg') center/cover no-repeat;
+        height: 100vh;
+    }
 }
 @media only screen and (min-width: 1024px) {
     .wrapper {
         max-width: 980px;
         margin: auto;
     }
+    .ucuz-fiyatlar{
+        background: url('./assets/img/desktop.jpg') center/cover no-repeat;
+        height: 50vh;
+    }
+    
 }
 @media only screen and (min-width: 1280px) {
     .wrapper {
