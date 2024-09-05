@@ -10,11 +10,11 @@ import haftanin_yildizlari_mob from '../../assets/img/haftanin-yildizlari-mobil.
 import haftanin_yildizlari from '../../assets/img/haftanin-yildizlari.png'
 import CategorySlider from "./CategorySlider"
 import Cart from "./Cart"
-import Highlights from "./Highlights"
 
 function Main() {
     return (
         <main className="bg-slate-50">
+            <Modal />
             <div className="wrapper">
                 <CategorySlider />
                 <MainSlider />
