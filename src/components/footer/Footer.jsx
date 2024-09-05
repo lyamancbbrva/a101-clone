@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
     return (
-        <footer>
+        <footer className="lg:w-[95%] mx-auto">
             <div className='md:hidden hs-accordion-group px-4 border-b py-1'>
                 <div
                     className='hs-accordion'

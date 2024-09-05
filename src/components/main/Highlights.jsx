@@ -6,8 +6,8 @@ import Cart from './Cart';
 function Highlights() {
   
     return (
-        <div className='p-3'>
-
+        <div className='sm:p-3 md:px-0'>
+            <h5 className='pb-3 font-medium text-base'>Öne Çıkanlar</h5>
             <Swiper
                   breakpoints={{
                     300: {
