@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { HiXMark } from "react-icons/hi2";
+import { Link } from 'react-router-dom';
 
 export default function Modal() {
     const [open, setOpen] = useState(true)
@@ -52,20 +53,20 @@ export default function Modal() {
                                             </div>
                                         </div>
                                         <div className='border inline rounded-full'>
-                                            <button className='bg-[#00BAD3] text-white px-3 py-1 rounded-full shadow-[#00BAD3] shadow-sm'> - </button>
+                                            <button className='bg-[#00BAD3] text-white w-7 h-7 rounded-full shadow-[#00BAD3] shadow-sm'> - </button>
                                             <span className='mx-5'>2</span>
-                                            <button className='bg-[#00BAD3] text-white px-2.5 py-1 rounded-full shadow-[#00BAD3] shadow-sm'>+</button>
+                                            <button className='bg-[#00BAD3] text-white w-7 h-7 rounded-full shadow-[#00BAD3] shadow-sm'>+</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="mt-5 sm:mt-4 flex sm:flex-row-reverse flex-col">
-                                    <button
-                                        type="button"
-                                        className="w-full rounded-full border border-transparent bg-[#00BAD3] p-4 text-white sm:ml-3 sm:text-sm"
-                                        onClick={() => setOpen(false)}
+                                    <Link
+                                        to='/basket'
+                                        className="w-full rounded-full border text-center border-transparent bg-[#00BAD3] p-4 text-white sm:ml-3 sm:text-sm"
+                                        onClick={() => { setOpen(false) }}
                                     >
                                         Sepete Git
-                                    </button>
+                                    </Link>
                                     <button
                                         type="button"
                                         className="mt-3 w-full rounded-full border border-gray-300 bg-white p-4 text-gray-400 sm:mt-0 sm:text-sm"
