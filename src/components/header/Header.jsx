@@ -66,7 +66,7 @@ function Header() {
                         </div>
                     </div>
                     <div className='hidden gap-2 lg:flex'>
-                        <button className='bg-[#F3F6FA] text-[#00BAD3] flex gap-1 font-medium text-sm  items-center px-6 py-4 w-auto rounded-full '>
+                        <Link to='/kampanyalar' className='bg-[#F3F6FA] text-[#00BAD3] flex gap-1 font-medium text-sm  items-center px-6 py-4 w-auto rounded-full '>
                             <svg
                                 width='17'
                                 height='18'
@@ -80,7 +80,7 @@ function Header() {
                                 ></path>
                             </svg>
                             Kampanyalar
-                        </button>
+                        </Link>
                         <button className='bg-[#F3F6FA] text-[#00BAD3] flex gap-1 font-medium text-sm  items-center px-6 py-4 w-auto rounded-full '>
                             <svg
                                 width='20'
