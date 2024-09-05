@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
     return (
-        <header className='overflow-x-hidden sticky  top-0 z-[9] bg-white shadow-gray-100 shadow-sm'>
+        <header className='overflow-hidden lg:overflow-visible sticky top-0 z-[9] bg-white shadow-gray-100 shadow-sm'>
             <div className='bg-[#40D3E7] p-2'>
                 <div className='wrapper lg:w-[95%] flex items-center justify-between'>
                     <div className='logos flex items-center justify-start gap-[5px] '>
