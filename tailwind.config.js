@@ -8,6 +8,7 @@ export default {
   theme: {
     screens: {
       'xs': '300px',
+      '369' : '369px',
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
 
@@ -20,7 +21,13 @@ export default {
 
       'xl': '1280px',
       // => @media (min-width: 1280px) { ... }
+    },
+    extend: {
+      fontFamily: {
+        custom: ['CustomFont', 'sans-serif']
+      }
     }
+
   },
   plugins: [ require('preline/plugin') ],
 }

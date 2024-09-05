@@ -9,13 +9,16 @@ import tl10 from '../../assets/img/10tl.png'
 import haftanin_yildizlari_mob from '../../assets/img/haftanin-yildizlari-mobil.png'
 import haftanin_yildizlari from '../../assets/img/haftanin-yildizlari.png'
 import CategorySlider from "./CategorySlider"
-import Cart from "./Cart"
+import Highlights from "./Highlights"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation, Mousewheel, Autoplay } from 'swiper/modules';
 
 function Main() {
     return (
-        <main className="bg-slate-50">
-            <Modal />
-            <div className="wrapper">
+        <main className="bg-[#F3F6FA]">
+            <div className="wrapper w-[95%] mx-auto">
                 <CategorySlider />
                 <MainSlider />
                 <div className="flex gap-2 justify-center pb-6">
@@ -33,6 +36,102 @@ function Main() {
                     <a href="" className="hidden md:block "><img className="md:h-[50%]" src={tl10} alt="10tl ve uzeri"  /></a>
                 </div>
                 <Highlights/>
+                <div className="py-3">
+                <h5 className='pb-3 font-medium text-base'>Kolleksiyonlar</h5>
+                <Swiper
+                  breakpoints={{
+                    300: {
+                        slidesPerView: 2.5,
+                        spaceBetween: 13,
+                    },
+                    768: {
+                        slidesPerView: 2.7,
+                        spaceBetween: 17,
+                    },
+                    860: {
+                        slidesPerView : 2.7,
+                        spaceBetween: 15
+                    },
+                    992: {
+                        slidesPerView: 2.8,
+                        spaceBetween: 10,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 7,
+                    },
+                    1280: {
+                        slidesPerView: 4,
+                        spaceBetween: 7,
+                    },
+                }}
+                loop={true}
+                autoplay={{
+                    delay: 4500,
+                    disableOnInteraction: false
+                }}
+                spaceBetween={30}
+                navigation={true}
+                freeMode={true}
+                mousewheel={true}
+                modules={[Navigation,  Mousewheel, Autoplay]}
+                className='mySwiper mainSlider'
+            >
+
+                {
+                    new Array(10).fill(null).map((_,item) => <SwiperSlide key={item}  >
+                        <div className="rounded-2xl overflow-hidden">
+                            <img className="w-full" src="./src/assets/img/koleksiyon.jpg" alt="" />
+                            <div className=" bg-[#00BAD3] xs:px-1 xs:py-0 369:p-3 p-3 text-white ">Ayın çok satanları</div>
+                        </div>
+                    </SwiperSlide>)
+                }
+                
+         
+                </Swiper>
+                </div>
+                <div className="py-3">
+                       <Swiper
+                  breakpoints={{
+                      300: {
+                          slidesPerView: 3,
+                          spaceBetween: 10,
+                        },
+                        768: {
+                            slidesPerView: 6,
+                            spaceBetween: 10,
+                        },
+                        1024: {
+                            slidesPerView: 7,
+                            spaceBetween: 10,
+                        }
+                    }}
+                    loop={true}
+                autoplay={{
+                    delay: 4500,
+                    disableOnInteraction: false
+                }}
+                spaceBetween={30}
+                navigation={true}
+                freeMode={true}
+                mousewheel={true}
+                modules={[Navigation,  Mousewheel, Autoplay]}
+                className='mySwiper marks'
+            >
+                {
+                    new Array(13).fill(null).map((_,item) =>
+
+                     <SwiperSlide key={item}  >  
+                     <div  className="bg-white rounded-xl">
+                        <img className="h-[34px] xs:ml-9 md:ml-3 object-contain  lg:ml-5 xl:ml-9 " src={`./src/assets/img/${item+1}.png`} alt="marks" />
+                    </div>                  
+                    </SwiperSlide>
+                    )
+                }
+                
+         
+                </Swiper>
+                </div>
             </div>
         </main>
     )

@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'CustomFont' !important;
+    src: url('/src/assets/font/TT-Fors-Trial-Regular.woff2') format('woff2'),
+    url('/src/assets/font/TT-Fors-Trial-Regular.woff') format('woff'),
+    url('/src/assets/font/TT-Fors-Trial-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  body {
+    font-family: 'CustomFont', sans-serif;
+  }
+
 .search {
     caret-color: #00BAD3;
 }
@@ -40,12 +52,40 @@
 .mainSlider .swiper-button-prev {
     margin-left: -23px;
 }
+.marks .swiper-button-next, .marks .swiper-button-prev{
+    color: #000 !important;
 
+}
+.marks .swiper-button-next:after, .marks .swiper-button-prev:after{
+    font-size: 1em !important;
+    font-weight: 600 !important;
+
+}
+.marks .swiper-button-next{
+    right: 0 !important;
+    box-shadow: -20px 0 13px 30px #f3f6faae;
+    background: #f3f6fac7;
+    z-index: 999;
+
+}
+
+.marks .swiper-button-prev{
+    left: 0 !important;
+    box-shadow: 20px 0 13px 30px #f3f6faae;
+    background: #f3f6fac7;
+    z-index: 999;
+}
 .catSlider .swiper-button-prev {
+    box-shadow: -10px 0 40px 30px #f3f6faf6;
+    background: #f3f6fae3;
     top: 40%;
+    left: 5px;
     transform: translateY(-50%);
 }
 .catSlider .swiper-button-next {
+    box-shadow: 10px 0 40px 30px #f3f6fa;
+    background: #f3f6fab0;
+    right: 0;
     top: 40%;
     transform: translateY(-50%);
     margin-right: 10px;
@@ -65,16 +105,21 @@
     display: none;
 }
 
-@media only screen and (min-width: 850px) {
+@media only screen and (min-width: 768px) {
     .wrapper {
-        width: 92%;
+        max-width: 750px;
         margin: auto;
     }
 }
-
 @media only screen and (min-width: 1024px) {
     .wrapper {
-        width: 77%;
+        max-width: 980px;
+        margin: auto;
+    }
+}
+@media only screen and (min-width: 1280px) {
+    .wrapper {
+        max-width: 1210px;
         margin: auto;
     }
 }
