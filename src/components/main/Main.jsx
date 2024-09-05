@@ -15,7 +15,7 @@ import Modal from "./Modal"
 function Main() {
     return (
         <main className="bg-slate-50">
-            <Modal />
+            {/* <Modal /> */}
             <div className="wrapper">
                 <CategorySlider />
                 <MainSlider />

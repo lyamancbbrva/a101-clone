@@ -2,6 +2,7 @@ import Category from "./Category";
 import a101logo from '../../assets/img/a101-logo.webp'
 import extralogo from '../../assets/img/extra-logo.webp'
 import kapidalogo from '../../assets/img/kapida-logo.webp'
+import { Link } from "react-router-dom";
 
 function Header() {
     return (
@@ -19,7 +20,7 @@ function Header() {
                             </a>
                         </div>
                         <div className='rounded-[5px] relative w-[7.8em] lg:w-[160px] px-4 py-2 bg-[#F3F6FA] lg:bg-[#fff]'>
-                            <a href=''>
+                            <Link to={'/'} >
                                 <img
                                     className='bg-[#DAFBFF] w-full '
                                     src={extralogo}
@@ -52,7 +53,7 @@ function Header() {
                                         ></path>
                                     </svg>
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                         <div className='rounded-[5px] w-[7.8em] lg:w-[160px] px-4 py-2 bg-[#DAFBFF] '>
                             <a href=''>

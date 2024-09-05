@@ -2,6 +2,8 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { HiXMark } from "react-icons/hi2";
 import { Link } from 'react-router-dom';
+import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
+import { BsTrash } from "react-icons/bs";
 
 export default function Modal() {
     const [open, setOpen] = useState(true)
@@ -52,10 +54,23 @@ export default function Modal() {
                                                 <p className='text-lg'>999,09 tl</p>
                                             </div>
                                         </div>
-                                        <div className='border inline rounded-full'>
-                                            <button className='bg-[#00BAD3] text-white w-7 h-7 rounded-full shadow-[#00BAD3] shadow-sm'> - </button>
-                                            <span className='mx-5'>2</span>
-                                            <button className='bg-[#00BAD3] text-white w-7 h-7 rounded-full shadow-[#00BAD3] shadow-sm'>+</button>
+                                        <div className='border flex items-center rounded-full'>
+                                            {item.count > 1 ? (
+                                                <AiFillMinusCircle
+                                                    onClick={() => handleDecrement()}
+                                                    className="text-[#00BAD3] cursor-pointer text-[30px] block"
+                                                />
+                                            ) : (
+                                                <BsTrash
+                                                    onClick={() => handleRemove()}
+                                                    className="text-white bg-[#00BAD3] rounded-full w-[26px] h-[26px] cursor-pointer px-[5px] text-[15px]"
+                                                />
+                                            )}
+                                            <span className='mx-5'>1</span>
+                                            <AiFillPlusCircle
+                                                onClick={() => handleIncrement()}
+                                                className="text-[#00BAD3] cursor-pointer text-[30px] block"
+                                            />
                                         </div>
                                     </div>
                                 </div>
