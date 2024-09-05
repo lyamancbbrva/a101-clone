@@ -1,6 +1,9 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { HiXMark } from "react-icons/hi2";
+import { Link } from 'react-router-dom';
+import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
+import { BsTrash } from "react-icons/bs";
 
 export default function Modal() {
     const [open, setOpen] = useState(true)
@@ -51,21 +54,34 @@ export default function Modal() {
                                                 <p className='text-lg'>999,09 tl</p>
                                             </div>
                                         </div>
-                                        <div className='border inline rounded-full'>
-                                            <button className='bg-[#00BAD3] text-white px-3 py-1 rounded-full shadow-[#00BAD3] shadow-sm'> - </button>
-                                            <span className='mx-5'>2</span>
-                                            <button className='bg-[#00BAD3] text-white px-2.5 py-1 rounded-full shadow-[#00BAD3] shadow-sm'>+</button>
+                                        <div className='border flex items-center rounded-full'>
+                                            {item.count > 1 ? (
+                                                <AiFillMinusCircle
+                                                    onClick={() => handleDecrement()}
+                                                    className="text-[#00BAD3] cursor-pointer text-[30px] block"
+                                                />
+                                            ) : (
+                                                <BsTrash
+                                                    onClick={() => handleRemove()}
+                                                    className="text-white bg-[#00BAD3] rounded-full w-[26px] h-[26px] cursor-pointer px-[5px] text-[15px]"
+                                                />
+                                            )}
+                                            <span className='mx-5'>1</span>
+                                            <AiFillPlusCircle
+                                                onClick={() => handleIncrement()}
+                                                className="text-[#00BAD3] cursor-pointer text-[30px] block"
+                                            />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="mt-5 sm:mt-4 flex sm:flex-row-reverse flex-col">
-                                    <button
-                                        type="button"
-                                        className="w-full rounded-full border border-transparent bg-[#00BAD3] p-4 text-white sm:ml-3 sm:text-sm"
-                                        onClick={() => setOpen(false)}
+                                    <Link
+                                        to='/basket'
+                                        className="w-full rounded-full border text-center border-transparent bg-[#00BAD3] p-4 text-white sm:ml-3 sm:text-sm"
+                                        onClick={() => { setOpen(false) }}
                                     >
                                         Sepete Git
-                                    </button>
+                                    </Link>
                                     <button
                                         type="button"
                                         className="mt-3 w-full rounded-full border border-gray-300 bg-white p-4 text-gray-400 sm:mt-0 sm:text-sm"

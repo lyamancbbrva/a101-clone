@@ -10,6 +10,7 @@ import haftanin_yildizlari_mob from '../../assets/img/haftanin-yildizlari-mobil.
 import haftanin_yildizlari from '../../assets/img/haftanin-yildizlari.png'
 import CategorySlider from "./CategorySlider"
 import Highlights from "./Highlights"
+<<<<<<< HEAD
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -19,6 +20,15 @@ function Main() {
     return (
         <main className="bg-[#F3F6FA]">
             <div className="wrapper w-[95%] mx-auto">
+=======
+import Modal from "./Modal"
+
+function Main() {
+    return (
+        <main className="bg-slate-50">
+            {/* <Modal /> */}
+            <div className="wrapper">
+>>>>>>> 810048dcff2378deafcf6411b13eab86a4680c02
                 <CategorySlider />
                 <MainSlider />
                 <div className="flex gap-2 justify-center pb-6">
@@ -35,6 +45,7 @@ function Main() {
                     <a href="" className="hidden md:block "><img className="md:h-[50%]" src={haftanin_yildizlari} alt="haftanin yildizlari" /></a>
                     <a href="" className="hidden md:block "><img className="md:h-[50%]" src={tl10} alt="10tl ve uzeri"  /></a>
                 </div>
+<<<<<<< HEAD
                 <Highlights/>
                 <div className="py-3">
                 <h5 className='pb-3 font-medium text-base'>Kolleksiyonlar</h5>
@@ -132,6 +143,9 @@ function Main() {
          
                 </Swiper>
                 </div>
+=======
+                <Highlights />
+>>>>>>> 810048dcff2378deafcf6411b13eab86a4680c02
             </div>
         </main>
     )
