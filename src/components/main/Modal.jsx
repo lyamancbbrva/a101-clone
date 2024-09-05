@@ -55,7 +55,7 @@ export default function Modal() {
                                             </div>
                                         </div>
                                         <div className='border flex items-center rounded-full'>
-                                            {item.count > 1 ? (
+                                            {3 > 1 ? (
                                                 <AiFillMinusCircle
                                                     onClick={() => handleDecrement()}
                                                     className="text-[#00BAD3] cursor-pointer text-[30px] block"
@@ -98,3 +98,4 @@ export default function Modal() {
         </Transition.Root>
     )
 }
+

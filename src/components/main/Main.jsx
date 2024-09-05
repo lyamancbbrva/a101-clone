@@ -15,11 +15,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Mousewheel, Autoplay } from 'swiper/modules';
 import Cart from "./Cart"
+import Modal from "./Modal"
 
 function Main() {
     return (
         <main className="bg-[#F3F6FA]">
             <div className="wrapper w-[95%] mx-auto">
+                <Modal />
                 <CategorySlider />
                 <MainSlider />
                 <div className="flex gap-2 justify-center pb-6">

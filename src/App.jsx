@@ -6,6 +6,7 @@ import Error404 from "./components/Error404"
 import Kampanyalar from "./components/main/Kampanyalar"
 import { useEffect } from "react"
 import CardInfo from "./components/main/CardInfo"
+import Categories from "./components/main/Categories"
 
 function App() {
     const { pathname } = useLocation()
@@ -21,6 +22,7 @@ function App() {
                     <Route path='/basket' element={<Basket />} />
                     <Route path='/kampanyalar' element={<Kampanyalar />} />
                     <Route path='/cardInfo' element={<CardInfo />} />
+                    <Route path='/categories' element={<Categories />} />
                     <Route path='*' element={<Error404 />} />
                 </Route>
             </Routes>
