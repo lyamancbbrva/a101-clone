@@ -188,7 +188,6 @@ function Header({items}) {
             </div>
             <nav>
                 <div className='height-full border-b border-t'>
-<<<<<<< HEAD
                 <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
                 <li className='border-r px-4  xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
                     Elektronik
@@ -371,7 +370,6 @@ function Header({items}) {
                                 Hesabım
                             </h5>
                         </div>
-=======
                     <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
                         <li className='border-r px-4  lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
                             Elektronik
@@ -555,7 +553,6 @@ function Header({items}) {
                             Hesabım
                         </h5>
                     </div>
->>>>>>> 75a7ebfb397f8de9b26d1c59a06cc56ece18fb0f
                 </div>
             </nav>
         </header>
