@@ -6,7 +6,7 @@ import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 
 export default function Modal() {
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(false)
 
     return (
         <Transition.Root show={open} as={Fragment}>

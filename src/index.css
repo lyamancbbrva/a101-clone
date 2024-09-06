@@ -37,6 +37,28 @@
 .hover-menu:hover header{
     height: 60vh;
 }
+.mobileCatSlider .swiper-pagination-bullet-active{
+    background-color: #00BAD3 !important;
+    width: 15px !important;
+    border-radius: 7px !important;
+    height: 3px;
+    opacity: 1 !important;
+}
+.mobileCatSlider .swiper-pagination-bullet{
+    background-color: #00BAD3 !important;
+    opacity: .5;
+    height: 3px;
+    border-radius: 10px;
+    width: 3px;
+    margin: 0 1px !important;
+}
+.mobileCatSlider .swiper-pagination{
+    text-align: start;
+}
+.mobileCatSlider .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
+    left: 5%;
+    bottom: 7%;
+}
 .mega-menu{
     border-bottom-left-radius: 20px;
     border-bottom-right-radius:20px;

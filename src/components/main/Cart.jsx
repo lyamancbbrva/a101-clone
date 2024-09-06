@@ -2,7 +2,7 @@ import { GoHeart } from "react-icons/go";
 import { Link } from "react-router-dom";
 export default function Cart() {
     return (
-        <Link to='/cardInfo' className="px-3 inline-block rounded-2xl border-gray-200 border relative bg-white">
+        <Link to='/cardInfo' className="px-3 w-[100%] inline-block rounded-2xl border-gray-200 border relative bg-white">
             <div className="text-center py-1">aldun aldun</div>
             <GoHeart className="text-2xl absolute right-3 top-8"/>
             <img src="src/assets/img/test.jpg" alt="" className="object-cover object-center w-full rounded-md dark:bg-gray-500" />
