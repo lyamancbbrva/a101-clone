@@ -4,7 +4,7 @@ import kapidalogo from '../../assets/img/kapida-logo.webp'
 import { Link } from "react-router-dom";
 import { IoChevronForward } from "react-icons/io5";
 
-function Header() {
+function Header({items}) {
 
     return (
         <header className='overflow-hidden lg:overflow-visible sticky top-0 z-[9] bg-white shadow-gray-100 shadow-sm'>
@@ -108,48 +108,87 @@ function Header() {
                     </div>
                 </div>
             </div>
-            <fieldset className='wrapper border-b lg:border-b-0 flex py-1 justify-center sm:px-[5px] px-[2vw] dark:text-gray-800'>
-                <div className='relative w-[100%] lg:w-full '>
-                    <span className='absolute inset-y-0 left-0 flex items-center pl-2'>
-                        <button
-                            type='button'
-                            title='search'
-                            className='p-1 focus:outline-none focus:ring'
-                        >
+            <div className='wrapper flex items-center'>
+                <fieldset className='w-full border-b lg:border-b-0 flex py-1 justify-center sm:px-[5px] px-[2vw] dark:text-gray-800'>
+                    <div className='relative w-[100%] lg:w-full '>
+                        <span className='absolute inset-y-0 left-0 flex items-center pl-2'>
+                            <button
+                                type='button'
+                                title='search'
+                                className='p-1 focus:outline-none focus:ring'
+                            >
+                                <svg
+                                    width='24'
+                                    height='24'
+                                    viewBox='0 0 24 24'
+                                    fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                >
+                                    <path
+                                        d='M10.875 18.75C15.2242 18.75 18.75 15.2242 18.75 10.875C18.75 6.52576 15.2242 3 10.875 3C6.52576 3 3 6.52576 3 10.875C3 15.2242 6.52576 18.75 10.875 18.75Z'
+                                        stroke='#333333'
+                                        strokeWidth='1.25'
+                                        strokeLinecap='round'
+                                        strokeLinejoin='round'
+                                    ></path>
+                                    <path
+                                        d='M16.4434 16.4434L20.9997 20.9997'
+                                        stroke='#333333'
+                                        strokeWidth='1.25'
+                                        strokeLinecap='round'
+                                        strokeLinejoin='round'
+                                    ></path>
+                                </svg>
+                            </button>
+                        </span>
+                        <input
+                            type='search'
+                            name='Search'
+                            placeholder='Aramak istediğin ürünü yaz...'
+                            className='search outline-none w-[100%] lg:w-full text-center my-[8px] rounded-full p-2 pl-10 border-[1px] border-[#e5e7e9] text-sm dark:text-gray-800 sm:p-[10px] '
+                        />
+                    </div>
+                </fieldset>
+                {items.length > 1 ?
+                    <Link to={'basket'} className='bg-[#00BAD3] lg:flex hidden p-1 rounded-full w-[165px] gap-4 h-11 items-center'>
+                        <div className='bg-white p-1.5 rounded-full relative'>
                             <svg
-                                width='24'
+                                width='25'
                                 height='24'
-                                viewBox='0 0 24 24'
+                                viewBox='0 0 25 24'
                                 fill='none'
                                 xmlns='http://www.w3.org/2000/svg'
                             >
                                 <path
-                                    d='M10.875 18.75C15.2242 18.75 18.75 15.2242 18.75 10.875C18.75 6.52576 15.2242 3 10.875 3C6.52576 3 3 6.52576 3 10.875C3 15.2242 6.52576 18.75 10.875 18.75Z'
-                                    stroke='#333333'
-                                    strokeWidth='1.25'
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
+                                    d='M16.2194 17.5283C14.9849 17.5283 13.9839 18.529 13.9839 19.7636C13.9839 20.9984 14.9845 21.9993 16.2191 21.9993C17.454 21.9993 18.4547 20.9984 18.4547 19.7639C18.4536 18.5296 17.4534 17.5296 16.2194 17.5283ZM16.2194 20.9983C15.5374 20.9983 14.9849 20.4456 14.9849 19.7639C14.9849 19.082 15.5374 18.5293 16.2191 18.5293C16.9011 18.529 17.4537 19.082 17.4537 19.7636C17.4529 20.4451 16.9008 20.9972 16.2194 20.9983Z'
+                                    fill='#000'
+                                    stroke='#000'
+                                    strokeWidth='0.4'
                                 ></path>
                                 <path
-                                    d='M16.4434 16.4434L20.9997 20.9997'
-                                    stroke='#333333'
-                                    strokeWidth='1.25'
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
+                                    d='M22.1961 5.15308H4.43665L4.12428 3.88234C3.85451 2.7738 2.85933 1.99532 1.7187 2.00002H1.50041C1.22406 2.00002 1 2.22408 1 2.50058C1 2.77694 1.22406 3.00099 1.50041 3.00099H1.7187C2.39744 2.99551 2.99101 3.45771 3.15228 4.1172L5.58229 14.0409C5.85347 15.1473 6.84943 15.9223 7.98834 15.9135H18.3829C19.5378 15.9228 20.5428 15.126 20.7974 13.9998L22.6841 5.75323C22.7182 5.60668 22.6827 5.45261 22.5877 5.33565C22.492 5.21806 22.3478 5.15074 22.1961 5.15308ZM19.8218 13.7798C19.6693 14.4494 19.0698 14.9215 18.3829 14.9126H7.98834C7.31054 14.9199 6.71666 14.4598 6.55476 13.8015L4.68152 6.15405H21.5681L19.8218 13.7798Z'
+                                    fill='#000'
+                                    stroke='#000'
+                                    strokeWidth='0.4'
+                                ></path>
+                                <path
+                                    d='M9.44941 17.5283C8.21484 17.5283 7.21387 18.529 7.21387 19.7636C7.21387 20.9984 8.21468 21.9993 9.44926 21.9993C10.684 21.9993 11.6848 20.9984 11.6848 19.7639C11.6837 18.5296 10.6835 17.5296 9.44941 17.5283ZM9.44941 20.9983C8.76754 20.9983 8.21484 20.4456 8.21484 19.7639C8.21484 19.082 8.76754 18.5293 9.44926 18.5293C10.1311 18.529 10.6838 19.082 10.6838 19.7636C10.6831 20.4451 10.1308 20.9972 9.44941 20.9983Z'
+                                    fill='#000'
+                                    stroke='#000'
+                                    strokeWidth='0.4'
                                 ></path>
                             </svg>
-                        </button>
-                    </span>
-                    <input
-                        type='search'
-                        name='Search'
-                        placeholder='Aramak istediğin ürünü yaz...'
-                        className='search outline-none w-[100%] lg:w-full text-center my-[8px] rounded-full p-2 pl-10 border-[1px] border-[#e5e7e9] text-sm dark:text-gray-800 sm:p-[10px] '
-                    />
-                </div>
-            </fieldset>
+                            <span className='top-1 right-[5px] absolute w-[15px] h-[16px] rounded-full text-[.72em] text-center text-white bg-[#00BAD3]'>
+                                {items.length}
+                            </span>
+                        </div>
+                        <p className='text-white font-medium'>₺2.899,00</p>
+                    </Link>
+                    : null}
+            </div>
             <nav>
                 <div className='height-full border-b border-t'>
+<<<<<<< HEAD
                 <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
                 <li className='border-r px-4  xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
                     Elektronik
@@ -332,6 +371,191 @@ function Header() {
                                 Hesabım
                             </h5>
                         </div>
+=======
+                    <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
+                        <li className='border-r px-4  lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
+                            Elektronik
+                            <div className='mega-menu bg-white hidden absolute gap-1 top-[100%] w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
+                                <div className=' scroll overflow-y-scroll  min-w-[380px]'>
+                                    <ul className='p-4'>
+                                        <Link to={''}><li className=' flex justify-between p-1 font-[600] capitalize'>Eysu <IoChevronForward /></li></Link>
+                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link>
+                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link>
+                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>Salam men Zay Aysu <IoChevronForward /></li></Link>
+                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>Salam aysu <IoChevronForward /></li></Link>
+                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>aaaa ozune nie zay deyirsen nc nc nc <IoChevronForward /></li></Link>
+                                    </ul>
+                                </div>
+                                <div className='scroll overflow-y-scroll min-w-[350px]'>
+                                    <ul className=' p-3'>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>Ay maama</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>lasdkfjgh</li></Link>
+                                    </ul>
+                                </div>
+                                <div className='p-3 overflow-y-hidden'>
+                                    <div>
+                                        <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                                        <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                                    </div>
+                                    <div>
+                                        <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                                        <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik
+                        </li>
+                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                        <li className='hover:border-r         px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                    </ul>
+                </div>
+                <div className='icons flex lg:hidden justify-between px-3 fixed w-full bottom-0 bg-white pt-2.5'>
+                    <div className='icon flex flex-col items-center'>
+                        <svg
+                            width='24'
+                            height='24'
+                            viewBox='0 0 24 24'
+                            fill='none'
+                            xmlns='http://www.w3.org/2000/svg'
+                        >
+                            <path
+                                d='M5.35508 21.3C4.47061 21.3 3.7 20.5395 3.7 19.5434V10.2754C3.7 9.88426 3.87608 9.51394 4.17943 9.26707L11.1794 3.57032C11.6573 3.18138 12.3426 3.18138 12.8206 3.57032L19.8206 9.2671C20.1239 9.51397 20.3 9.88429 20.3 10.2754V19.5434C20.3 20.5395 19.5294 21.3 18.6449 21.3H5.35508Z'
+                                stroke='#00BAD3'
+                                strokeWidth='1.4'
+                            ></path>
+                            <path
+                                d='M15.0187 14.0654C14.9404 14.0262 14.8557 14.0041 14.7695 14.0005C14.6833 13.9969 14.5972 14.0118 14.5163 14.0444C14.4355 14.077 14.3613 14.1266 14.298 14.1903C14.2348 14.2541 14.1838 14.3308 14.1479 14.416C13.9767 14.8207 13.7021 15.1636 13.3569 15.404C13.0116 15.6444 12.6102 15.7722 12.2001 15.7722C11.79 15.7722 11.3885 15.6444 11.0433 15.404C10.698 15.1636 10.4235 14.8207 10.2523 14.416C10.216 14.331 10.1646 14.2547 10.1012 14.1912C10.0377 14.1278 9.96335 14.0786 9.88238 14.0464C9.8014 14.0142 9.71538 13.9997 9.62923 14.0036C9.54307 14.0075 9.45847 14.0298 9.38025 14.0692C9.30203 14.1086 9.23172 14.1644 9.17335 14.2333C9.11497 14.3023 9.06967 14.383 9.04002 14.471C9.01038 14.5589 8.99697 14.6524 9.00057 14.746C9.00417 14.8396 9.0247 14.9314 9.061 15.0164C9.33726 15.6682 9.77974 16.2203 10.336 16.6073C10.8923 16.9943 11.539 17.2 12.1996 17.2C12.8602 17.2 13.5069 16.9943 14.0632 16.6073C14.6195 16.2203 15.062 15.6682 15.3382 15.0164C15.3749 14.9313 15.3957 14.8392 15.3994 14.7454C15.4031 14.6515 15.3897 14.5578 15.36 14.4696C15.3303 14.3814 15.2848 14.3005 15.2261 14.2315C15.1675 14.1624 15.0968 14.1067 15.0183 14.0674L15.0187 14.0654Z'
+                                fill='#00BAD3'
+                            ></path>
+                        </svg>
+                        <h5 className='text-[#00BAD3] focus:bg-black py-1 text-[.5em]'>
+                            Ana sayfa
+                        </h5>
+                    </div>
+                    <Link to={'/categories'} className='icon flex flex-col items-center'>
+                        <svg
+                            width='25'
+                            height='24'
+                            viewBox='0 0 25 24'
+                            fill='none'
+                            xmlns='http://www.w3.org/2000/svg'
+                        >
+                            <circle
+                                cx='16'
+                                cy='9'
+                                r='4.8'
+                                stroke='#8D939C'
+                                strokeWidth='1.4'
+                            ></circle>
+                            <path
+                                d='M19.8203 13.1787L23.4997 16.8581'
+                                stroke='#8D939C'
+                                strokeWidth='1.4'
+                                strokeLinecap='round'
+                            ></path>
+                            <path
+                                d='M7.97511 12.877L7.97519 12.8768C8.00852 12.8175 8.00851 12.7426 7.9752 12.6834L7.97511 12.6832C7.9425 12.6252 7.88702 12.5963 7.83445 12.5963L1.1659 12.5963C1.12617 12.5963 1.08537 12.6123 1.05313 12.6455L7.97511 12.877ZM7.97511 12.877C7.9425 12.935 7.88701 12.9639 7.83445 12.9639L1.1659 12.9639C1.12616 12.9639 1.08537 12.9478 1.05313 12.9147C1.02067 12.8814 1 12.8332 1 12.7801M7.97511 12.877L1 12.7801M1 12.7801C1 12.727 1.02066 12.6788 1.05313 12.6455L1 12.7801Z'
+                                fill='#8D939C'
+                                stroke='#8D939C'
+                            ></path>
+                            <path
+                                d='M6.97511 6.11329L6.97519 6.11315C7.00852 6.05388 7.00851 5.97893 6.9752 5.91968L6.97511 5.91953C6.9425 5.86149 6.88702 5.83263 6.83445 5.83263L1.1659 5.83263C1.12617 5.83263 1.08537 5.84868 1.05313 5.88178L6.97511 6.11329ZM6.97511 6.11329C6.9425 6.17133 6.88701 6.2002 6.83445 6.2002L1.1659 6.2002C1.12616 6.2002 1.08537 6.18414 1.05313 6.15104C1.02067 6.11771 1 6.06953 1 6.01641M6.97511 6.11329L1 6.01641M1 6.01641C1 5.96329 1.02066 5.91512 1.05313 5.88179L1 6.01641Z'
+                                fill='#8D939C'
+                                stroke='#8D939C'
+                            ></path>
+                            <path
+                                d='M15.9752 19.6133L15.9753 19.6131C16.0086 19.5539 16.0086 19.4789 15.9753 19.4197L15.9752 19.4195C15.9426 19.3615 15.8871 19.3326 15.8345 19.3326L1.1659 19.3326C1.12617 19.3326 1.08537 19.3487 1.05313 19.3818L15.9752 19.6133ZM15.9752 19.6133C15.9426 19.6713 15.8871 19.7002 15.8345 19.7002L1.1659 19.7002C1.12616 19.7002 1.08537 19.6841 1.05313 19.651C1.02067 19.6177 1 19.5695 1 19.5164M15.9752 19.6133L1 19.5164M1 19.5164C1 19.4633 1.02066 19.4151 1.05313 19.3818L1 19.5164Z'
+                                fill='#8D939C'
+                                stroke='#8D939C'
+                            ></path>
+                        </svg>
+                        <h5 className='focus:text-[#00BAD3] py-1 text-[.5em]'>
+                            Kategoriler
+                        </h5>
+                    </Link>
+                    <Link to={'basket'} className='icon flex flex-col items-center'>
+                        <svg
+                            width='25'
+                            height='24'
+                            viewBox='0 0 25 24'
+                            fill='none'
+                            xmlns='http://www.w3.org/2000/svg'
+                        >
+                            <path
+                                d='M16.2194 17.5283C14.9849 17.5283 13.9839 18.529 13.9839 19.7636C13.9839 20.9984 14.9845 21.9993 16.2191 21.9993C17.454 21.9993 18.4547 20.9984 18.4547 19.7639C18.4536 18.5296 17.4534 17.5296 16.2194 17.5283ZM16.2194 20.9983C15.5374 20.9983 14.9849 20.4456 14.9849 19.7639C14.9849 19.082 15.5374 18.5293 16.2191 18.5293C16.9011 18.529 17.4537 19.082 17.4537 19.7636C17.4529 20.4451 16.9008 20.9972 16.2194 20.9983Z'
+                                fill='#8D939C'
+                                stroke='#8D939C'
+                                strokeWidth='0.4'
+                            ></path>
+                            <path
+                                d='M22.1961 5.15308H4.43665L4.12428 3.88234C3.85451 2.7738 2.85933 1.99532 1.7187 2.00002H1.50041C1.22406 2.00002 1 2.22408 1 2.50058C1 2.77694 1.22406 3.00099 1.50041 3.00099H1.7187C2.39744 2.99551 2.99101 3.45771 3.15228 4.1172L5.58229 14.0409C5.85347 15.1473 6.84943 15.9223 7.98834 15.9135H18.3829C19.5378 15.9228 20.5428 15.126 20.7974 13.9998L22.6841 5.75323C22.7182 5.60668 22.6827 5.45261 22.5877 5.33565C22.492 5.21806 22.3478 5.15074 22.1961 5.15308ZM19.8218 13.7798C19.6693 14.4494 19.0698 14.9215 18.3829 14.9126H7.98834C7.31054 14.9199 6.71666 14.4598 6.55476 13.8015L4.68152 6.15405H21.5681L19.8218 13.7798Z'
+                                fill='#8D939C'
+                                stroke='#8D939C'
+                                strokeWidth='0.4'
+                            ></path>
+                            <path
+                                d='M9.44941 17.5283C8.21484 17.5283 7.21387 18.529 7.21387 19.7636C7.21387 20.9984 8.21468 21.9993 9.44926 21.9993C10.684 21.9993 11.6848 20.9984 11.6848 19.7639C11.6837 18.5296 10.6835 17.5296 9.44941 17.5283ZM9.44941 20.9983C8.76754 20.9983 8.21484 20.4456 8.21484 19.7639C8.21484 19.082 8.76754 18.5293 9.44926 18.5293C10.1311 18.529 10.6838 19.082 10.6838 19.7636C10.6831 20.4451 10.1308 20.9972 9.44941 20.9983Z'
+                                fill='#8D939C'
+                                stroke='#8D939C'
+                                strokeWidth='0.4'
+                            ></path>
+                        </svg>
+                        <h5 className='focus:text-[#00BAD3] py-1 text-[.5em]'>
+                            Sepetim
+                        </h5>
+                    </Link>
+                    <Link to={'/kampanyalar'} className='icon flex flex-col items-center'>
+                        <svg
+                            width='24'
+                            height='24'
+                            viewBox='0 0 24 24'
+                            fill='none'
+                            xmlns='http://www.w3.org/2000/svg'
+                        >
+                            <path
+                                d='M2.69922 9.84097V19.5819C2.69922 21.0256 3.87381 22.2002 5.31714 22.2002H19.0625C20.5061 22.2002 21.6807 21.0256 21.6807 19.5819V9.84097C21.6807 8.3973 20.5061 7.22271 19.0625 7.22271L16.4111 7.22288C16.7228 7.03291 16.9769 6.83442 17.1335 6.63162C18.0626 5.43088 17.8428 3.70431 16.642 2.77518C16.1414 2.38774 15.5489 2.2002 14.9614 2.2002C14.1398 2.2002 13.3273 2.56679 12.7854 3.26668C12.5089 3.62405 12.3199 4.2674 12.1898 4.99374C12.0598 4.26722 11.8707 3.62371 11.5941 3.26668C11.0526 2.5668 10.2401 2.2002 9.41843 2.2002C8.83094 2.2002 8.23855 2.38777 7.738 2.77553C6.53725 3.70466 6.31741 5.43123 7.24654 6.63197C7.40336 6.83457 7.65755 7.03291 7.96899 7.22323L5.31705 7.22306C3.87372 7.22288 2.69922 8.39734 2.69922 9.84097ZM4.00829 19.5819V13.1139H11.5354V20.8913H5.31718C4.5956 20.8913 4.00829 20.304 4.00829 19.5819ZM20.3718 19.5819C20.3718 20.3037 19.7845 20.891 19.0628 20.891H12.8446V13.114H20.3717L20.3718 19.5819ZM19.063 8.53208C19.7847 8.53208 20.372 9.1194 20.372 9.84115V11.8048L12.8449 11.8046V8.53208L19.063 8.53208ZM13.8208 4.06794C14.0955 3.71279 14.5115 3.50918 14.9616 3.50918C15.2823 3.50918 15.5861 3.61321 15.8408 3.81035C16.1451 4.04575 16.3392 4.38568 16.388 4.76698C16.4367 5.14861 16.3339 5.52612 16.0985 5.83005C15.8444 6.14847 14.658 6.68077 13.2642 7.13877C13.358 5.67599 13.576 4.3944 13.8208 4.06794ZM7.99225 4.76712C8.04094 4.38549 8.23517 4.0459 8.53942 3.81049C8.79413 3.61336 9.09819 3.50932 9.41883 3.50932C9.86878 3.50932 10.2846 3.71312 10.5591 4.06778C10.8035 4.39354 11.0212 5.6758 11.1153 7.13959C9.72254 6.68211 8.53649 6.14963 8.28215 5.83052C8.04624 5.52628 7.9434 5.14873 7.99225 4.76712ZM11.5354 8.53199V11.8049L4.00829 11.8047V9.84089C4.00829 9.11914 4.5956 8.53182 5.31735 8.53182L11.5354 8.53199Z'
+                                fill='#8D939C'
+                            ></path>
+                        </svg>
+                        <h5 className='focus:text-[#00BAD3] py-1 text-[.5em]'>
+                            Kampanyalar
+                        </h5>
+                    </Link>
+                    <div className='icon flex flex-col items-center'>
+                        <svg
+                            width='24'
+                            height='24'
+                            viewBox='0 0 24 24'
+                            fill='none'
+                            xmlns='http://www.w3.org/2000/svg'
+                        >
+                            <circle
+                                cx='12'
+                                cy='7.5'
+                                r='4.825'
+                                stroke='#8D939C'
+                                strokeWidth='1.35'
+                            ></circle>
+                            <path
+                                d='M2.175 19.5335C2.175 16.9608 4.26061 14.8752 6.83333 14.8752H17.1667C19.7394 14.8752 21.825 16.9608 21.825 19.5335C21.825 20.6335 20.9333 21.5252 19.8333 21.5252H4.16667C3.0667 21.5252 2.175 20.6335 2.175 19.5335Z'
+                                stroke='#8D939C'
+                                strokeWidth='1.35'
+                            ></path>
+                        </svg>
+                        <h5 className='focus:text-[#00BAD3] py-1 text-[.5em]'>
+                            Hesabım
+                        </h5>
+                    </div>
+>>>>>>> 75a7ebfb397f8de9b26d1c59a06cc56ece18fb0f
                 </div>
             </nav>
         </header>
