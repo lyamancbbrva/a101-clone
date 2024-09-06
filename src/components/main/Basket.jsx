@@ -4,7 +4,7 @@ import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Basket({items}) {
+function Basket({items, setItems}) {
     const handleIncrement = (id) => {
         setItems(items.map(item => item.id == id ? { ...item, count: item.count + 1 } : item));
     };

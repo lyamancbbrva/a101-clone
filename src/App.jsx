@@ -23,7 +23,7 @@ function App() {
     return (
         <>
             <Routes>
-                <Route path='/' element={<Layout items={items}/>}>
+                <Route path='/' element={<Layout items={items} setItems={setItems}/>}>
                     <Route path='/' element={<Main />} />
                     <Route path='/basket' element={<Basket items={items}/>} />
                     <Route path='/kampanyalar' element={<Kampanyalar />} />
