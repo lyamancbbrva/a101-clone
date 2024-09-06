@@ -4,7 +4,7 @@ import kapidalogo from '../../assets/img/kapida-logo.webp'
 import { Link } from "react-router-dom";
 import { IoChevronForward } from "react-icons/io5";
 
-function Header() {
+function Header({items}) {
 
     return (
         <header className='overflow-hidden lg:overflow-visible sticky top-0 z-[9] bg-white shadow-gray-100 shadow-sm'>
@@ -108,97 +108,135 @@ function Header() {
                     </div>
                 </div>
             </div>
-            <fieldset className='wrapper border-b lg:border-b-0 flex py-1 justify-center sm:px-[5px] px-[2vw] dark:text-gray-800'>
-                <div className='relative w-[100%] lg:w-full '>
-                    <span className='absolute inset-y-0 left-0 flex items-center pl-2'>
-                        <button
-                            type='button'
-                            title='search'
-                            className='p-1 focus:outline-none focus:ring'
-                        >
+            <div className='wrapper flex items-center'>
+                <fieldset className='w-full border-b lg:border-b-0 flex py-1 justify-center sm:px-[5px] px-[2vw] dark:text-gray-800'>
+                    <div className='relative w-[100%] lg:w-full '>
+                        <span className='absolute inset-y-0 left-0 flex items-center pl-2'>
+                            <button
+                                type='button'
+                                title='search'
+                                className='p-1 focus:outline-none focus:ring'
+                            >
+                                <svg
+                                    width='24'
+                                    height='24'
+                                    viewBox='0 0 24 24'
+                                    fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                >
+                                    <path
+                                        d='M10.875 18.75C15.2242 18.75 18.75 15.2242 18.75 10.875C18.75 6.52576 15.2242 3 10.875 3C6.52576 3 3 6.52576 3 10.875C3 15.2242 6.52576 18.75 10.875 18.75Z'
+                                        stroke='#333333'
+                                        strokeWidth='1.25'
+                                        strokeLinecap='round'
+                                        strokeLinejoin='round'
+                                    ></path>
+                                    <path
+                                        d='M16.4434 16.4434L20.9997 20.9997'
+                                        stroke='#333333'
+                                        strokeWidth='1.25'
+                                        strokeLinecap='round'
+                                        strokeLinejoin='round'
+                                    ></path>
+                                </svg>
+                            </button>
+                        </span>
+                        <input
+                            type='search'
+                            name='Search'
+                            placeholder='Aramak istediğin ürünü yaz...'
+                            className='search outline-none w-[100%] lg:w-full text-center my-[8px] rounded-full p-2 pl-10 border-[1px] border-[#e5e7e9] text-sm dark:text-gray-800 sm:p-[10px] '
+                        />
+                    </div>
+                </fieldset>
+                {items.length > 1 ?
+                    <Link to={'basket'} className='bg-[#00BAD3] lg:flex hidden p-1 rounded-full w-[165px] gap-4 h-11 items-center'>
+                        <div className='bg-white p-1.5 rounded-full relative'>
                             <svg
-                                width='24'
+                                width='25'
                                 height='24'
-                                viewBox='0 0 24 24'
+                                viewBox='0 0 25 24'
                                 fill='none'
                                 xmlns='http://www.w3.org/2000/svg'
                             >
                                 <path
-                                    d='M10.875 18.75C15.2242 18.75 18.75 15.2242 18.75 10.875C18.75 6.52576 15.2242 3 10.875 3C6.52576 3 3 6.52576 3 10.875C3 15.2242 6.52576 18.75 10.875 18.75Z'
-                                    stroke='#333333'
-                                    strokeWidth='1.25'
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
+                                    d='M16.2194 17.5283C14.9849 17.5283 13.9839 18.529 13.9839 19.7636C13.9839 20.9984 14.9845 21.9993 16.2191 21.9993C17.454 21.9993 18.4547 20.9984 18.4547 19.7639C18.4536 18.5296 17.4534 17.5296 16.2194 17.5283ZM16.2194 20.9983C15.5374 20.9983 14.9849 20.4456 14.9849 19.7639C14.9849 19.082 15.5374 18.5293 16.2191 18.5293C16.9011 18.529 17.4537 19.082 17.4537 19.7636C17.4529 20.4451 16.9008 20.9972 16.2194 20.9983Z'
+                                    fill='#000'
+                                    stroke='#000'
+                                    strokeWidth='0.4'
                                 ></path>
                                 <path
-                                    d='M16.4434 16.4434L20.9997 20.9997'
-                                    stroke='#333333'
-                                    strokeWidth='1.25'
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
+                                    d='M22.1961 5.15308H4.43665L4.12428 3.88234C3.85451 2.7738 2.85933 1.99532 1.7187 2.00002H1.50041C1.22406 2.00002 1 2.22408 1 2.50058C1 2.77694 1.22406 3.00099 1.50041 3.00099H1.7187C2.39744 2.99551 2.99101 3.45771 3.15228 4.1172L5.58229 14.0409C5.85347 15.1473 6.84943 15.9223 7.98834 15.9135H18.3829C19.5378 15.9228 20.5428 15.126 20.7974 13.9998L22.6841 5.75323C22.7182 5.60668 22.6827 5.45261 22.5877 5.33565C22.492 5.21806 22.3478 5.15074 22.1961 5.15308ZM19.8218 13.7798C19.6693 14.4494 19.0698 14.9215 18.3829 14.9126H7.98834C7.31054 14.9199 6.71666 14.4598 6.55476 13.8015L4.68152 6.15405H21.5681L19.8218 13.7798Z'
+                                    fill='#000'
+                                    stroke='#000'
+                                    strokeWidth='0.4'
+                                ></path>
+                                <path
+                                    d='M9.44941 17.5283C8.21484 17.5283 7.21387 18.529 7.21387 19.7636C7.21387 20.9984 8.21468 21.9993 9.44926 21.9993C10.684 21.9993 11.6848 20.9984 11.6848 19.7639C11.6837 18.5296 10.6835 17.5296 9.44941 17.5283ZM9.44941 20.9983C8.76754 20.9983 8.21484 20.4456 8.21484 19.7639C8.21484 19.082 8.76754 18.5293 9.44926 18.5293C10.1311 18.529 10.6838 19.082 10.6838 19.7636C10.6831 20.4451 10.1308 20.9972 9.44941 20.9983Z'
+                                    fill='#000'
+                                    stroke='#000'
+                                    strokeWidth='0.4'
                                 ></path>
                             </svg>
-                        </button>
-                    </span>
-                    <input
-                        type='search'
-                        name='Search'
-                        placeholder='Aramak istediğin ürünü yaz...'
-                        className='search outline-none w-[100%] lg:w-full text-center my-[8px] rounded-full p-2 pl-10 border-[1px] border-[#e5e7e9] text-sm dark:text-gray-800 sm:p-[10px] '
-                    />
-                </div>
-            </fieldset>
+                            <span className='top-1 right-[5px] absolute w-[15px] h-[16px] rounded-full text-[.72em] text-center text-white bg-[#00BAD3]'>
+                                {items.length}
+                            </span>
+                        </div>
+                        <p className='text-white font-medium'>₺2.899,00</p>
+                    </Link>
+                    : null}
+            </div>
             <nav>
-            <div className='height-full border-b border-t'>
-            <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
-            <li className='border-r px-4  lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
-                Elektronik
-                <div className='mega-menu bg-white hidden absolute gap-1 top-[100%] w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
-                    <div className=' scroll overflow-y-scroll  min-w-[380px]'>                        
-                        <ul className='p-4'>
-                           <Link to={''}><li className=' flex justify-between p-1 font-[600] capitalize'>Eysu <IoChevronForward /></li></Link> 
-                           <Link to={''}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link> 
-                           <Link to={''}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link> 
-                           <Link to={''}><li className=' flex justify-between p-1 font-normal'>Salam men Zay Aysu <IoChevronForward /></li></Link> 
-                           <Link to={''}><li className=' flex justify-between p-1 font-normal'>Salam aysu <IoChevronForward /></li></Link> 
-                           <Link to={''}><li className=' flex justify-between p-1 font-normal'>aaaa ozune nie zay deyirsen nc nc nc <IoChevronForward /></li></Link> 
-                        </ul>
-                    </div>
-                    <div className='scroll overflow-y-scroll min-w-[350px]'>
-                        <ul className=' p-3'>
-                            <Link to={''} ><li className='p-1 font-[500] capitalize'>Ay maama</li></Link>
-                            <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                            <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                            <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                            <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                            <Link to={''} ><li className='p-1 font-[500] capitalize'>lasdkfjgh</li></Link>
-                        </ul>
-                    </div>
-                    <div className='p-3 overflow-y-hidden'>
-                        <div>
-                            <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
-                            <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
-                        </div>
-                        <div>
-                            <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
-                            <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
-                        </div>
-                    </div>
+                <div className='height-full border-b border-t'>
+                    <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
+                        <li className='border-r px-4  lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
+                            Elektronik
+                            <div className='mega-menu bg-white hidden absolute gap-1 top-[100%] w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
+                                <div className=' scroll overflow-y-scroll  min-w-[380px]'>
+                                    <ul className='p-4'>
+                                        <Link to={''}><li className=' flex justify-between p-1 font-[600] capitalize'>Eysu <IoChevronForward /></li></Link>
+                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link>
+                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link>
+                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>Salam men Zay Aysu <IoChevronForward /></li></Link>
+                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>Salam aysu <IoChevronForward /></li></Link>
+                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>aaaa ozune nie zay deyirsen nc nc nc <IoChevronForward /></li></Link>
+                                    </ul>
+                                </div>
+                                <div className='scroll overflow-y-scroll min-w-[350px]'>
+                                    <ul className=' p-3'>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>Ay maama</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>lasdkfjgh</li></Link>
+                                    </ul>
+                                </div>
+                                <div className='p-3 overflow-y-hidden'>
+                                    <div>
+                                        <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                                        <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                                    </div>
+                                    <div>
+                                        <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                                        <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik
+                        </li>
+                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                        <li className='hover:border-r         px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                    </ul>
                 </div>
-            </li>
-            <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik 
-                   </li>
-            <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-            <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-            <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-            <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-            <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-            <li className='hover:border-r         px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-            </ul>
-        </div>
                 <div className='icons flex lg:hidden justify-between px-3 fixed w-full bottom-0 bg-white pt-2.5'>
                     <div className='icon flex flex-col items-center'>
-                        <svg 
+                        <svg
                             width='24'
                             height='24'
                             viewBox='0 0 24 24'

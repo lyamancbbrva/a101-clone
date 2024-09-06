@@ -4,13 +4,7 @@ import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Basket() {
-    const [items, setItems] = useState([
-        { id: 1, name: "Lemanin yixildigi skuter1", price: 300.00, count: 1, image: "src/assets/img/test.jpg" },
-        { id: 2, name: "Lemanin yixildigi skuter2", price: 200.00, count: 1, image: "src/assets/img/test.jpg" },
-        { id: 3, name: "Lemanin yixildigi skuter3", price: 100.00, count: 1, image: "src/assets/img/test.jpg" }
-    ]);
-
+function Basket({items}) {
     const handleIncrement = (id) => {
         setItems(items.map(item => item.id == id ? { ...item, count: item.count + 1 } : item));
     };
