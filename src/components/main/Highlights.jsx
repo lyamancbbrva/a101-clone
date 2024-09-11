@@ -6,7 +6,7 @@ import Cart from './Cart';
 function Highlights() {
   
     return (
-        <div className='sm:p-3 md:px-0'>
+        <div className='sm:p-3 md:px-0 py-3'>
             <h5 className='pb-3 font-medium text-base'>Öne Çıkanlar</h5>
             <Swiper
                   breakpoints={{

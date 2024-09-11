@@ -11,13 +11,13 @@ import Cart from "./Cart";
 
 function Categories() {
   return (
-    <main className="bg-[#F3F6FA]">
+    <div className="bg-[#F3F6FA]">
       <div
         className={` lg:hidden  mobileCat fixed bg-[white] w-full flex gap-4`}
       >
         <div className="scroll min-w-[100px]  md:min-w-[150px] max-h-[100vh] overflow-y-scroll">
           {new Array(10).fill(null).map((_, index) => (
-            <div className="p-2">
+            <div className="p-2" key={index}>
               <img
                 className="rounded-xl w-[95%]"
                 src="./src/assets/img/Elektronik.jpeg"
@@ -49,7 +49,7 @@ function Categories() {
             </Swiper>
           </div>
           <ul className="inline-block w-full">
-            {new Array(10).fill(null).map((_, index) => (
+            {new Array(15).fill(null).map((_, index) => (
               <Link key={index}>
                 <li className="flex justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
                   xezer emi bize data{" "}
@@ -273,12 +273,12 @@ function Categories() {
 			</div>
 			<div className="flex flex-wrap  justify-start gap-4">
 				{
-					new Array(25).fill(null).map((_,index) => <div className="w-[calc(50%-1rem)] md:w-[calc(33%-1rem)] xl:w-[calc(25%-1rem)]"><Cart/></div> )
+					new Array(25).fill(null).map((_,index) => <div key={index} className="w-[calc(50%-1rem)] md:w-[calc(33%-1rem)] xl:w-[calc(25%-1rem)]"><Cart/></div> )
 				}
 			</div>
 	   </div>
       </div>
-    </main>
+    </div>
   );
 }
 

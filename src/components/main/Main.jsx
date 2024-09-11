@@ -15,13 +15,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Mousewheel, Autoplay } from 'swiper/modules';
 import Cart from "./Cart"
-import Modal from "./Modal"
+import Login from "./Login"
 
 function Main() {
     return (
-        <main className="bg-[#F3F6FA]">
+        <div className="bg-[#F3F6FA] min-h-[30vh]">
             <div className="wrapper w-[95%] mx-auto">
-                <Modal />
+                <Login/>
                 <CategorySlider />
                 <MainSlider />
                 <div className="flex gap-2 justify-center pb-6">
@@ -134,7 +134,7 @@ function Main() {
                 </Swiper>
                 </div>
                 <div className="my-5 ucuz-fiyatlar rounded-[30px] md:relative overflow-hidden">
-                <div className="p-5 md:absolute w-full bottom-0 lg:right-0  lg:w-[60%] lg:bottom-3">
+                <div className="py-5 md:absolute w-full bottom-0 lg:right-0  lg:w-[60%] lg:bottom-3">
                 <Swiper
                   breakpoints={{
                     300: {
@@ -170,7 +170,7 @@ function Main() {
                 </div>
                 <Highlights />
             </div>
-        </main>
+        </div>
     )
 }
 

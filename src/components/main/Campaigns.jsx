@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom"
+import { GoChevronRight } from "react-icons/go";
 
-function Kampanyalar() {
+function Campaigns() {
+
     return (
         <section className="bg-slate-50">
             <div className="wrapper">
-                <div className="py-5 px-2">
-                    <Link className="text-sm" to={'/'}>Ana Sayfa ﹥</Link>
+                <div className="py-5 px-2 flex items-center">
+                    <Link className="text-sm" to={'/'}>Ana Sayfa </Link>
+                    <GoChevronRight />
                     <span className="text-sm"> Kampanyalar</span>
                 </div>
                 <div className="flex items-center bg-white rounded-3xl mx-2">
@@ -23,4 +26,4 @@ function Kampanyalar() {
     )
 }
 
-export default Kampanyalar
+export default Campaigns

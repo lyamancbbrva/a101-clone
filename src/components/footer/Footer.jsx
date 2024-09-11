@@ -9,17 +9,20 @@ import androidmarket from "../../assets/img/android-market-logo.png";
 import { Link } from "react-router-dom";
 
 function Footer() {
+
     return (
+
         <footer className="lg:w-[95%] mx-auto">
+            
             <div className='md:hidden hs-accordion-group px-4 border-b py-1'>
                 <div
                     className='hs-accordion'
-                    id='hs-basic-with-title-and-arrow-stretched-heading-one'
+                    id='hs-basic-with-title-and-arrow-stretched-heading-1'
                 >
                     <button
                         className='hs-accordion-toggle text-sm text-[#00BAD3] py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none'
                         aria-expanded='false'
-                        aria-controls='hs-basic-with-title-and-arrow-stretched-collapse-one'
+                        aria-controls='hs-basic-with-title-and-arrow-stretched-collapse-1'
                     >
                         Site Haritası
                         <svg
@@ -89,12 +92,12 @@ function Footer() {
             <div className='md:hidden hs-accordion-group px-4 border-b py-1'>
                 <div
                     className='hs-accordion'
-                    id='hs-basic-with-title-and-arrow-stretched-heading-one'
+                    id='hs-basic-with-title-and-arrow-stretched-heading-2'
                 >
                     <button
                         className='hs-accordion-toggle text-sm text-[#00BAD3] py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none'
                         aria-expanded='false'
-                        aria-controls='hs-basic-with-title-and-arrow-stretched-collapse-one'
+                        aria-controls='hs-basic-with-title-and-arrow-stretched-collapse-2'
                     >
                         Özel Sayfalar
                         <svg
@@ -159,12 +162,12 @@ function Footer() {
             <div className='md:hidden hs-accordion-group px-4 border-b py-1'>
                 <div
                     className='hs-accordion'
-                    id='hs-basic-with-title-and-arrow-stretched-heading-one'
+                    id='hs-basic-with-title-and-arrow-stretched-heading-3'
                 >
                     <button
                         className='hs-accordion-toggle text-sm text-[#00BAD3] py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none'
                         aria-expanded='false'
-                        aria-controls='hs-basic-with-title-and-arrow-stretched-collapse-one'
+                        aria-controls='hs-basic-with-title-and-arrow-stretched-collapse-3'
                     >
                         Aldın Aldın
                         <svg
@@ -235,12 +238,12 @@ function Footer() {
             <div className='md:hidden hs-accordion-group px-4 border-b py-1'>
                 <div
                     className='hs-accordion'
-                    id='hs-basic-with-title-and-arrow-stretched-heading-one'
+                    id='hs-basic-with-title-and-arrow-stretched-heading-4'
                 >
                     <button
                         className='hs-accordion-toggle text-sm text-[#00BAD3] py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none'
                         aria-expanded='false'
-                        aria-controls='hs-basic-with-title-and-arrow-stretched-collapse-one'
+                        aria-controls='hs-basic-with-title-and-arrow-stretched-collapse-4'
                     >
                         En Çok Satılanlar
                         <svg
