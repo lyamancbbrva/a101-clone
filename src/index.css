@@ -11,13 +11,64 @@
     font-style: normal;
   }
 
-  .bg-sidebar { background: #04BCD4; }
-  .cta-btn { color: #035e6b; }
-  .upgrade-btn { background: #035e6b; }
-  .upgrade-btn:hover { background: #07d7f7; }
-  /* .active-nav-link { background: #035e6b; } */
-  .nav-item:hover { background: #028296; }
-  .account-link:hover { background: #11d6f4; }
+   #nav-icon4 {
+    width: 20px;
+    height: 25px;
+    position: relative;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+  }
+  
+  #nav-icon4 span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 30px;
+    background: #000;
+    border-radius: 2px;
+    opacity: 1;
+    left: 0;
+    transition: .25s ease-in-out;
+  }
+
+  
+  #nav-icon4 span:nth-child(1) {
+    top: 0px;
+    transform-origin: left center;
+  }
+  
+  #nav-icon4 span:nth-child(2) {
+    top: 10px;
+    transform-origin: left center;
+  }
+  
+  #nav-icon4 span:nth-child(3) {
+    top: 20px;
+    transform-origin: left center;
+  }
+  
+  #nav-icon4.open span:nth-child(1) {
+    transform: rotate(45deg);
+    top: -3px;
+    left: 8px;
+  }
+  
+  #nav-icon4.open span:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+  }
+  
+  #nav-icon4.open span:nth-child(3) {
+    transform: rotate(-45deg);
+    left: 8px;
+  }
+  .admin-sidebar, .admin-logo{
+    transition: .5s;
+  }
+  .admin-sidebar:hover .admin-logo{
+    max-width: 120px;
+    margin-left: -20px;
+  }
   .scroll::-webkit-scrollbar {
     width: 5px; /* Scroll genişliyi */
   }
@@ -131,7 +182,6 @@
     z-index: 999;
 
 }
-
 .marks .swiper-button-prev{
     left: 0 !important;
     box-shadow: 20px 0 13px 30px #f3f6faae;

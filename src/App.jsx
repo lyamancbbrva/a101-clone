@@ -9,7 +9,10 @@ import Categories from "./components/main/Categories";
 import Campaigns from "./components/main/Campaigns";
 import Login from "./components/main/Login";
 import AdminLayout from "./layout/AdminLayout";
-import Home from './admin/Home';
+import Home from "./admin/Home";
+import Category from "./admin/Category";
+import { Toaster } from "react-hot-toast";
+import Subcategory from "./admin/Subcategory";
 
 function App() {
   const { pathname } = useLocation();
@@ -43,15 +46,18 @@ function App() {
 
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <Routes>
-        <Route  path="/admin" element={<AdminLayout/>}>
-            <Route  path="/admin" element={<Home/> } />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/admin" element={<Home />} />
+          <Route path="kateqori" element={<Category />} />
+          <Route path="altkateqori" element={<Subcategory />} />
         </Route>
         <Route path="/" element={<Layout items={items} setItems={setItems} />}>
           <Route path="/" element={<Main />} />
           <Route path="/sepet" element={<Basket items={items} />} />
           <Route path="/kampanyalar" element={<Campaigns />} />
-          <Route path="/giris" element={<Login />} />
+          {/* <Route path="/giris" element={<Login />} /> */}
           <Route path="/cardInfo" element={<CardInfo />} />
           <Route path="/kateqoriler" element={<Categories />} />
           <Route path="*" element={<Error404 />} />

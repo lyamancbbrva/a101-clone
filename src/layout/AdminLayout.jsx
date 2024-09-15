@@ -4,10 +4,12 @@ import { Outlet } from "react-router-dom";
 
 function AdminLayout() {
   return (
-    <main>
+    <div className="sm:flex gap-5">
       <Nav />
-      <Outlet />
-    </main>
+      <main className="w-full">
+        <Outlet/>
+      </main>
+    </div>
   );
 }
 
