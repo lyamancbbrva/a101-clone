@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 import { BiCategory } from "react-icons/bi";
 import { IoFolderOpenOutline } from "react-icons/io5";
-import { FaRegImage } from "react-icons/fa";
-import { MdProductionQuantityLimits } from "react-icons/md";
 import { RiUserAddLine } from "react-icons/ri";
 import { TbLogout } from "react-icons/tb";
+import { SlBasket } from "react-icons/sl";
+import { CiSliderHorizontal } from "react-icons/ci";
 
 function Nav() {
+  
   const [sidebar, setSidebar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,8 +18,8 @@ function Nav() {
     { name: "Ana sayfa", link: "/admin", icon: IoHomeOutline },
     { name: "Kateqori", link: "kateqori", icon: BiCategory },
     { name: "Altkateqori", link: "altkateqori", icon: IoFolderOpenOutline },
-    { name: "Ürün", link: "admin", icon: MdProductionQuantityLimits },
-    { name: "Slayt", link: "admin", icon: FaRegImage },
+    { name: "Ürün", link: "urun", icon: SlBasket },
+    { name: "Slayt", link: "slayt", icon: CiSliderHorizontal },
   ];
 
   return (
@@ -82,11 +83,11 @@ function Nav() {
                 ))}
             </div>
             <div>
-              <Link className="cursor-pointer pt-2 pl-6 flex gap-3 text-white">
+              <Link to={'/register'} className="cursor-pointer pt-2 pl-6 flex gap-3 text-white">
                 <RiUserAddLine className="flex-shrink-0 text-[1.4em] w-6 mr-3 " />
                 Admin ekle
               </Link>
-              <Link className="cursor-pointer pt-2 pl-6 flex gap-3 text-white">
+              <Link to={'/giris'} className="cursor-pointer pt-2 pl-6 flex gap-3 text-white">
                 <TbLogout className="flex-shrink-0 text-[1.4em] w-6 mr-3 " />
                 Çıkış yap
               </Link>

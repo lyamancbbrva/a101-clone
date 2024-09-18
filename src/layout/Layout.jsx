@@ -6,7 +6,7 @@ import Footer from "../components/footer/Footer";
 function Layout({ items, setItems }) {
   return (
     <>
-      <Header items={items} setItems={setItems} />
+      <Header  items={items} setItems={setItems} />
       <main className="min-h-[45vh]">
         <Outlet />
       </main>

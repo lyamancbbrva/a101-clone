@@ -3,9 +3,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Mousewheel } from 'swiper/modules';
 import Cart from './Cart';
+
+
 function Highlights() {
   
     return (
+        
         <div className='sm:p-3 md:px-0 py-3'>
             <h5 className='pb-3 font-medium text-base'>Öne Çıkanlar</h5>
             <Swiper
@@ -30,7 +33,13 @@ function Highlights() {
                 spaceBetween={30}
                 navigation={true}
                 freeMode={true}
-                mousewheel={true}
+                mousewheel={
+                    {
+                        forceToAxis: true,
+                        releaseOnEdges: true
+                    }
+                }
+                direction="horizontal"
                 modules={[Navigation,  Mousewheel]}
                 className='mySwiper mainSlider'
             >

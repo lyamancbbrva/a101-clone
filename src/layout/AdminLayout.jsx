@@ -3,6 +3,7 @@ import Nav from "../admin/Nav";
 import { Outlet } from "react-router-dom";
 
 function AdminLayout() {
+    
   return (
     <div className="sm:flex gap-5">
       <Nav />

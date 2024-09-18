@@ -19,7 +19,7 @@ export default function Home() {
         </p>
         <div className="flex flex-wrap justify-center">
           <Link
-            to="products"
+            to="urun"
             className="px-12 py-3 m-2 text-md font-semibold rounded text-white bg-[#04BCD4]"
           >
             Ürün ekle

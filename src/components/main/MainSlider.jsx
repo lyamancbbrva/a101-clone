@@ -5,7 +5,9 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 export default function MainSlider() {
+
     return (
+        
         <section className='py-8 px-2'>  
             <div className='flex overflow-x-auto no-scrollbar'>
                 <button className='px-4 py-1.5 text-nowrap cursor-pointer text-[.9em] bg-[#00BAD3] text-white rounded-t-md'>Aldın Aldın</button>
@@ -15,8 +17,14 @@ export default function MainSlider() {
             </div>
             <Swiper
                 slidesPerView={1}
-                spaceBetween={30}
-                mousewheel={true}
+                spaceBetween={30} 
+                mousewheel={
+                    {
+                        forceToAxis: true,
+                        releaseOnEdges: true
+                    }
+                }
+                direction="horizontal"
                 loop={true}
                 pagination={{clickable: true,}}
                 autoplay={{ 

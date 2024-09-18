@@ -18,6 +18,7 @@ import Cart from "./Cart"
 import Login from "./Login"
 
 function Main() {
+    
     return (
         <div className="bg-[#F3F6FA] min-h-[30vh]">
             <div className="wrapper w-[95%] mx-auto">
@@ -76,7 +77,13 @@ function Main() {
                 spaceBetween={30}
                 navigation={true}
                 freeMode={true}
-                mousewheel={true}
+                mousewheel={
+                    {
+                        forceToAxis: true,
+                        releaseOnEdges: true
+                    }
+                }
+                direction="horizontal"
                 modules={[Navigation,  Mousewheel, Autoplay]}
                 className='mySwiper mainSlider'
             >
@@ -116,7 +123,13 @@ function Main() {
                 spaceBetween={30}
                 navigation={true}
                 freeMode={true}
-                mousewheel={true}
+                mousewheel={
+                    {
+                        forceToAxis: true,
+                        releaseOnEdges: true
+                    }
+                }
+                direction="horizontal"
                 modules={[Navigation,  Mousewheel, Autoplay]}
                 className='mySwiper marks'
             >
@@ -157,7 +170,13 @@ function Main() {
                 spaceBetween={30}
                 navigation={true}
                 freeMode={true}
-                mousewheel={true}
+                mousewheel={
+                    {
+                        forceToAxis: true,
+                        releaseOnEdges: true
+                    }
+                }
+                direction="horizontal"
                 modules={[Navigation,  Mousewheel]}
                 className='mySwiper mainSlider'
             >

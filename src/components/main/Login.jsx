@@ -1,17 +1,12 @@
 import { Fragment, useState } from 'react'
-import { Button, Dialog, Transition } from '@headlessui/react'
+import { Dialog, Transition } from '@headlessui/react'
 import { HiXMark } from "react-icons/hi2";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
-import { BsTrash } from "react-icons/bs";
 
-export default function Modal() {
+
+export default function Login() {
     
     const [open, setOpen] = useState(true)
     
-    
-
-
     return (
         
         <Transition.Root show={open} as={Fragment}>

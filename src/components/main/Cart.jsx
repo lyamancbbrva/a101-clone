@@ -12,13 +12,13 @@ export default function Cart() {
 
     return (
         <>
-            <Link to='/cardInfo' className="px-3 w-[100%] inline-block rounded-2xl border-gray-200 border relative bg-white">
+            <Link to='/cardInfo' className="px-3 w-[100%] block rounded-2xl border-gray-200 border relative bg-white">
                     <GoHeart
                     onClick={(e) => {
                         e.preventDefault()
                         setModal(true)
                     }}
-                     className="text-2xl absolute right-3 top-8"/>
+                     className="text-2xl absolute right-3 top-5"/>
                         <img src="src/assets/img/test.jpg" alt="" className="object-cover object-center w-full rounded-md dark:bg-gray-500" />
                             <div className="mt-6 mb-2">
                                 <h2 className="text-[.8em] tracking-wide">Lemanin yixildigi skuter</h2>
@@ -77,14 +77,14 @@ export default function Cart() {
                                     <div className="mt-5 sm:mt-4 justify-center flex sm:flex-row-reverse flex-col">
                                         <button
                                             className="w-full rounded-full border text-center border-transparent bg-[#00BAD3] p-4 text-white sm:ml-3 sm:text-sm"
-                                            onClick={() => { setOpen(false) }}
+                                            onClick={() => { setModal(false) }}
                                         >
                                             Vazgeç
                                         </button>
                                         <Link to={'/login'}
                                             type="button"
                                             className="mt-3 w-full rounded-full border text-center border-gray-300 bg-white p-4 text-gray-400 sm:mt-0 sm:text-sm"
-                                            onClick={() => setOpen(false)}
+                                            onClick={() => setModal(false)}
                                         >
                                             Giriş yap
                                         </Link>

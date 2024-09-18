@@ -86,7 +86,7 @@ function Header({items}) {
                             </svg>
                             Kampanyalar
                         </Link>
-                        <button className='bg-[#F3F6FA] text-[#00BAD3] flex gap-1 font-medium text-sm  items-center px-6 py-4 w-auto rounded-full '>
+                        <button  className='bg-[#F3F6FA] text-[#00BAD3] flex gap-1 font-medium text-sm  items-center px-6 py-4 w-auto rounded-full '>
                             <svg
                                 width='20'
                                 height='20'

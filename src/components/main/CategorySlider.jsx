@@ -5,17 +5,25 @@ import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 
 export default function CategorySlider() {
+
     return (
+
         <div className='pt-8 px-2'>
             <Swiper
                 slidesPerView={10}
                 spaceBetween={30}
-                mousewheel={true}
                 loop={true}
                 autoplay={{
                     delay: 4500,
                     disableOnInteraction: false
                 }}
+                mousewheel={
+                    {
+                        forceToAxis: true,
+                        releaseOnEdges: true
+                    }
+                }
+                direction="horizontal"
                 navigation={true}
                 modules={[Navigation, Autoplay]}
                 breakpoints={{
