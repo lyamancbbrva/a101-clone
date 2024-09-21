@@ -194,7 +194,7 @@ function Header({items}) {
                 <div className='height-full border-b border-t'>
                 <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
                 <li className='border-r px-4  xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
-                    Elektronik
+                    <Link to={'/kateqoriler'}>Elektronik</Link>
                     <div className='mega-menu bg-white hidden absolute gap-1 top-[100%] w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
                         <div className=' scroll overflow-y-scroll  min-w-[380px]'>                        
                             <ul className='p-4'>
