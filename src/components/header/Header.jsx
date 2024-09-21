@@ -86,7 +86,7 @@ function Header({items}) {
                             </svg>
                             Kampanyalar
                         </Link>
-                        <button  className='bg-[#F3F6FA] text-[#00BAD3] flex gap-1 font-medium text-sm  items-center px-6 py-4 w-auto rounded-full '>
+                        <Link to={'/giris'}  className='bg-[#F3F6FA] text-[#00BAD3] flex gap-1 font-medium text-sm  items-center px-6 py-4 w-auto rounded-full '>
                             <svg
                                 width='20'
                                 height='20'
@@ -108,7 +108,7 @@ function Header({items}) {
                                 ></path>
                             </svg>
                             Giriş yap
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -198,12 +198,12 @@ function Header({items}) {
                     <div className='mega-menu bg-white hidden absolute gap-1 top-[100%] w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
                         <div className=' scroll overflow-y-scroll  min-w-[380px]'>                        
                             <ul className='p-4'>
-                            <Link to={'/categories'}><li className=' flex justify-between p-1 font-[600] capitalize'>Eysu <IoChevronForward /></li></Link> 
-                            <Link to={'/categories'}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link> 
-                            <Link to={'/categories'}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link> 
-                            <Link to={'/categories'}><li className=' flex justify-between p-1 font-normal'>Salam men Zay Aysu <IoChevronForward /></li></Link> 
-                            <Link to={'/categories'}><li className=' flex justify-between p-1 font-normal'>Salam aysu <IoChevronForward /></li></Link> 
-                            <Link to={'/categories'}><li className=' flex justify-between p-1 font-normal'>aaaa ozune nie zay deyirsen nc nc nc <IoChevronForward /></li></Link> 
+                            <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-[600] capitalize'>Eysu <IoChevronForward /></li></Link> 
+                            <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link> 
+                            <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link> 
+                            <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-normal'>Salam men Zay Aysu <IoChevronForward /></li></Link> 
+                            <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-normal'>Salam aysu <IoChevronForward /></li></Link> 
+                            <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-normal'>aaaa ozune nie zay deyirsen nc nc nc <IoChevronForward /></li></Link> 
                             </ul>
                         </div>
                         <div className='scroll overflow-y-scroll min-w-[350px]'>

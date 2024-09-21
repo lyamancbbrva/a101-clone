@@ -15,14 +15,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Mousewheel, Autoplay } from 'swiper/modules';
 import Cart from "./Cart"
-import Login from "./Login"
 
 function Main() {
     
     return (
         <div className="bg-[#F3F6FA] min-h-[30vh]">
             <div className="wrapper w-[95%] mx-auto">
-                <Login/>
                 <CategorySlider />
                 <MainSlider />
                 <div className="flex gap-2 justify-center pb-6">

@@ -68,10 +68,10 @@ function App() {
 					<Route path="/kampanyalar" element={<Campaigns />} />
 					<Route path="/cardInfo" element={<CardInfo />} />
 					<Route path="/kateqoriler" element={<Categories />} />
-					<Route path="/giris" element={<Login/>} />
 					<Route path="*" element={<Error404 />} />
 				</Route>
 				<Route>
+					<Route path="/giris" element={<Login/>} />
 					<Route path="/register" element={<Register/>}/>
 				</Route>
 			</Routes>
