@@ -51,7 +51,7 @@ export default function Login() {
           <p className="text-xs text-[#333]">
             Doğrulama süreçleri kapsamındaki kişisel veri işleme faaliyetine
             ilişkin aydınlatma metni için
-            <a href="" className="text-[#00BAD3]">
+            <a href="" className="text-[#00BAD3] ml-1">
               tıklayın
             </a>
             .
