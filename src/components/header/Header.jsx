@@ -15,7 +15,7 @@ function Header({items}) {
             <div className='bg-[#40D3E7] p-2'>
                 <div className='wrapper lg:w-[95%] flex items-center justify-between'>
                     <div className='logos flex items-center justify-start gap-[5px] '>
-                        <div className='rounded-[5px] w-[7.8em] lg:w-[160px] px-4 py-2 bg-[#DAFBFF] '>
+                        {/* <div className='rounded-[5px] w-[7.8em] lg:w-[160px] px-4 py-2 bg-[#DAFBFF] '>
                             <a href=''>
                                 <img
                                     className='bg-[#DAFBFF] w-full'
@@ -23,7 +23,7 @@ function Header({items}) {
                                     alt='a101 logo'
                                 />
                             </a>
-                        </div>
+                        </div> */}
                         <div className='rounded-[5px] relative w-[7.8em] lg:w-[160px] px-4 py-2 bg-[#F3F6FA] lg:bg-[#fff]'>
                             <Link to={'/'} >
                                 <img
@@ -60,7 +60,7 @@ function Header({items}) {
                                 </div>
                             </Link>
                         </div>
-                        <div className='rounded-[5px] w-[7.8em] lg:w-[160px] px-4 py-2 bg-[#DAFBFF] '>
+                        {/* <div className='rounded-[5px] w-[7.8em] lg:w-[160px] px-4 py-2 bg-[#DAFBFF] '>
                             <a href=''>
                                 <img
                                     className='bg-[#DAFBFF] w-full '
@@ -68,7 +68,7 @@ function Header({items}) {
                                     alt='kapida logo'
                                 />
                             </a>
-                        </div>
+                        </div> */}
                     </div>
                     <div className='hidden gap-2 lg:flex'>
                         <Link to='/kampanyalar' className='bg-[#F3F6FA] text-[#00BAD3] flex gap-1 font-medium text-sm  items-center px-6 py-4 w-auto rounded-full '>

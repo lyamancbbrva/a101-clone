@@ -15,7 +15,7 @@ export default function Home() {
            İşiniz bittiğinde yönetici panelinden çıkış yapın. <br /> Aksi
           takdirde siteye uygunsuz içerik yüklenerek güvenlik riski
           oluşturulabilir. <br /> Bu kurallara uymanız güvenliğiniz ve sitenin
-          bütünlüğü açısından önemlidir. <br /> Anlayışınız için teşekkür ederiz..
+          bütünlüğü açısından önemlidir. <br /> Anlayışınız için teşekkür ederiz...
         </p>
         <div className="flex flex-wrap justify-center">
           <Link

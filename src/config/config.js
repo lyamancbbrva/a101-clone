@@ -1,6 +1,8 @@
 const VITE_EDITOR_API_KEY = import.meta.VITE_EDITOR_API_KEY
-
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const configObj = {
-    editorKey : VITE_EDITOR_API_KEY
+    editorKey : VITE_EDITOR_API_KEY,
+    base: BASE_URL
+
 }
 export default configObj

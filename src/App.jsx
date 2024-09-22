@@ -16,9 +16,14 @@ import Product from "./admin/Product";
 import Slider from "./admin/Slider";
 import Register from "./admin/Register";
 import Login from "./components/main/Login";
+import { verifyToken } from "./api/api";
+import { Cookies } from "react-cookie";
+
+const cook = new Cookies()
 
 function App() {
 
+	const [auth, setAuth] = useState(true)
 	const { pathname } = useLocation();
 
 	useEffect(() => {
@@ -28,40 +33,29 @@ function App() {
 
 
 	const [items, setItems] = useState([
-		{
-			id: 1,
-			name: "Lemanin yixildigi skuter1",
-			price: 300.0,
-			count: 1,
-			image: "src/assets/img/test.jpg",
-		},
-		{
-			id: 2,
-			name: "Lemanin yixildigi skuter2",
-			price: 200.0,
-			count: 1,
-			image: "src/assets/img/test.jpg",
-		},
-		{
-			id: 3,
-			name: "Lemanin yixildigi skuter3",
-			price: 100.0,
-			count: 1,
-			image: "src/assets/img/test.jpg",
-		},
+	
 	]);
+
+	if (pathname.split('/')[1] === 'admin') {
+		
+		verifyToken().then(resp =>  console.log(resp))	
+	}else setAuth(false)
+	
+	
 
 	return (
 		<>
 			<Toaster position="top-center" reverseOrder={false} />
 			<Routes>
-				<Route path="/admin" element={<AdminLayout />}>
+				{
+					auth ? <Route path="/admin" element={<AdminLayout />}>
 					<Route path="/admin" element={<Home />} />
 					<Route path="kateqori" element={<Category />} />
 					<Route path="altkateqori" element={<Subcategory />} />
 					<Route path="urun" element={<Product/>} />
 					<Route path="slayt" element={<Slider/>} />
-				</Route>
+				</Route> : <Route path="/giris" element={<Login/>} />
+				}
 				<Route path="/" element={<Layout  items={items} setItems={setItems} />}>
 					<Route path="/" element={<Main />} />
 					<Route path="/sepet" element={<Basket items={items} />} />

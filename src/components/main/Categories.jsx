@@ -8,8 +8,13 @@ import { Pagination } from "swiper/modules";
 import { GoChevronRight } from "react-icons/go";
 import { FaCheck } from "react-icons/fa6";
 import Cart from "./Cart";
+import { FaChevronDown } from "react-icons/fa6";
+
+
 
 function Categories() {
+	const [onerilen, setOnerilen] = useState(false)
+
   return (
     <div className="bg-[#F3F6FA]">
       <div
@@ -67,216 +72,276 @@ function Categories() {
           <Link>Acam</Link>
         </div>
 
-       <div className="flex py-6 w-full justify-between gap-[20px] items-start">
-			<div className="min-w-[15vw]">
-			<div className="kategoriler border-b">
-				<h3 className="text-lg font-medium pb-4">Katergoriler</h3>
-				<div className="hs-accordion-group px-4 py-1">
-				<div
-					className="hs-accordion"
-					id="hs-basic-with-title-and-arrow-stretched-heading-one"
-				>
-					<button
-					className="hs-accordion-toggle text-sm text-[#333] py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none"
-					aria-expanded="true"
-					aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one"
-					>
-					Xezer
-					<svg
-						className="hs-accordion-active:hidden hidden size-4"
-						width="20"
-						height="20"
-						viewBox="0 0 20 20"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-						d="M14 8L10 11.5L6 8"
-						stroke="#333333"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						></path>
-					</svg>
-					<svg
-						className="hs-accordion-active:block block size-4"
-						width="20"
-						height="20"
-						viewBox="0 0 20 20"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-						d="M6 11.5L10 8L14 11.5"
-						stroke="#333333"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						></path>
-					</svg>
-					</button>
-					<div
-					id="hs-basic-with-title-and-arrow-stretched-collapse-one"
-					className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
-					role="region"
-					aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one"
-					style={{ height: "auto" }}
-					>
-					<ul>
-						<li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
-						<a href="">zay</a>
-						</li>
-						<li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
-						<a href="">emi</a>
-						</li>
-						<li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
-						<a href="">emimiz</a>
-						</li>
-						<li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
-						<a href="">ama patisin dayisi</a>
-						</li>
-					</ul>
-					</div>
+        <div className="flex py-6 text-[#333] w-full justify-between gap-[20px] items-start">
+          <div className="min-w-[15vw]">
+            <div className="kategoriler border-b">
+              <h3 className="text-lg font-medium pb-4">Katergoriler</h3>
+              <div className="hs-accordion-group px-4 py-1">
+                <div
+                  className="hs-accordion"
+                  id="hs-basic-with-title-and-arrow-stretched-heading-one"
+                >
+                  <button
+                    className="hs-accordion-toggle text-sm text-[#333] py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none"
+                    aria-expanded="true"
+                    aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one"
+                  >
+                    Xezer
+                    <svg
+                      className="hs-accordion-active:hidden hidden size-4"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14 8L10 11.5L6 8"
+                        stroke="#333333"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></path>
+                    </svg>
+                    <svg
+                      className="hs-accordion-active:block block size-4"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6 11.5L10 8L14 11.5"
+                        stroke="#333333"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="hs-basic-with-title-and-arrow-stretched-collapse-one"
+                    className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
+                    role="region"
+                    aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one"
+                    style={{ height: "auto" }}
+                  >
+                    <ul>
+                      <li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
+                        <a href="">zay</a>
+                      </li>
+                      <li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
+                        <a href="">emi</a>
+                      </li>
+                      <li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
+                        <a href="">emimiz</a>
+                      </li>
+                      <li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
+                        <a href="">ama patisin dayisi</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className=" hs-accordion-group px-4 py-1">
+                <div
+                  className="hs-accordion"
+                  id="hs-basic-with-title-and-arrow-stretched-heading-one"
+                >
+                  <button
+                    className="hs-accordion-toggle text-sm text-[#333] py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none"
+                    aria-expanded="false"
+                    aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one"
+                  >
+                    Xezer
+                    <svg
+                      className="hs-accordion-active:hidden block size-4"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14 8L10 11.5L6 8"
+                        stroke="#333333"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></path>
+                    </svg>
+                    <svg
+                      className="hs-accordion-active:block hidden size-4"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6 11.5L10 8L14 11.5"
+                        stroke="#333333"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="hs-basic-with-title-and-arrow-stretched-collapse-one"
+                    className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
+                    role="region"
+                    aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one"
+                    style={{ height: 0 }}
+                  >
+                    <ul>
+                      <li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
+                        <a href="">zay</a>
+                      </li>
+                      <li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
+                        <a href="">emi</a>
+                      </li>
+                      <li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
+                        <a href="">emimiz</a>
+                      </li>
+                      <li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
+                        <a href="">ama patisin dayisi</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="filtrler">
+              <h3 className="text-lg font-medium py-4">Filtreler</h3>
+              <div className="hs-accordion-group px-4 py-1">
+                <div
+                  className="hs-accordion"
+                  id="hs-basic-with-title-and-arrow-stretched-heading-one"
+                >
+                  <button
+                    className="hs-accordion-toggle text-sm text-[#333] py-3 inline-flex items-center justify-between gap-x-3 w-full font-[600] text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none"
+                    aria-expanded="true"
+                    aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one"
+                  >
+                    Xezerin rengi
+                    <svg
+                      className="hs-accordion-active:hidden hidden size-4"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14 8L10 11.5L6 8"
+                        stroke="#333333"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></path>
+                    </svg>
+                    <svg
+                      className="hs-accordion-active:block block size-4"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6 11.5L10 8L14 11.5"
+                        stroke="#333333"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="hs-basic-with-title-and-arrow-stretched-collapse-one"
+                    className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
+                    role="region"
+                    aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one"
+                    style={{ height: "auto" }}
+                  >
+                    <ul>
+                      <li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
+                        <label className="inline-flex items-center">
+                          <input type="checkbox" className="hidden peer" />
+                          <div className="w-5 h-5 bg-white border border-gray-200 rounded-[5px] peer-checked:bg-[#00BAD3] peer-checked:border-[#00BAD3] transition-colors">
+                            <FaCheck className="text-white text-[.9em] m-[2px]" />
+                          </div>
+                          <span className="ml-2 text-sm text-[#333]">
+                            yasil
+                          </span>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 className="font-normal my-5 text-base break-all text-md">"Telefon & Aksesuar" için <span className="font-semibold">223 ürün</span> bulundu.</h2>
+            <div>
+              <div className="flex justify-between py-5 items center">
+                <div>
+				<div onClick={() => setOnerilen(!onerilen)} className={`false outline-2 ${onerilen ? 'border-[#00BAD3]' : ''}  flex justify-between cursor-pointer accent-brand-blue-primary min-w-[20vw] bg-white items-center p-4 rounded-full border-brand-gray-border border px-4 py-2`}>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.0026 6.71838C10.7727 6.93277 10.4023 6.93277 10.1724 6.71838C9.94255 6.504 9.94255 6.15859 10.1724 5.9442L13.9183 2.38345C14.1482 2.16906 14.5185 2.16906 14.7484 2.38345L18.4943 5.9442C18.7242 6.15859 18.7242 6.504 18.4943 6.71838C18.3793 6.82558 18.2261 6.87322 18.0856 6.87322C17.9451 6.87322 17.7918 6.82558 17.6769 6.71838L14.9145 4.08665V17.2303C14.9145 17.5281 14.659 17.7782 14.327 17.7782C13.9949 17.7782 13.7395 17.54 13.7395 17.2303V4.08665L11.0026 6.71838Z"
+                      fill="#333333"
+                    ></path>
+                    <path
+                      d="M1.49488 13.2863C1.72515 13.0718 2.09614 13.0718 2.32641 13.2863L5.07902 15.919V2.77088C5.07902 2.47293 5.33487 2.22266 5.66748 2.22266C6.0001 2.22266 6.25595 2.46101 6.25595 2.77088V15.919L8.99577 13.2863C9.22604 13.0718 9.59703 13.0718 9.8273 13.2863C10.0576 13.5008 10.0576 13.8464 9.8273 14.0609L6.07685 17.6233C5.96172 17.7305 5.8082 17.7782 5.66748 17.7782C5.52676 17.7782 5.37325 17.7305 5.25811 17.6233L1.50767 14.0609C1.2774 13.8464 1.2774 13.5008 1.49488 13.2863Z"
+                      fill="#333333"
+                    ></path>
+                  </svg>
+				  <span className="text-[#333] inline-block mr-[50px] text-[15px]">Önerilenler</span>
+				  <FaChevronDown className="text-[#333]" />
+                </div>
+				</div>
+				<div className="flex">
+				<label className="inline-flex text-nowrap border-r  px-5 items-center">
+					<input type="checkbox" className="hidden peer" />
+						<div className="w-5 h-5 bg-white border border-gray-200 rounded-[5px] peer-checked:bg-[#00BAD3] peer-checked:border-[#00BAD3] transition-colors">
+							<FaCheck className="text-white text-[.9em] m-[2px]" />
+						</div>
+						<span className="ml-2 text-sm text-[#333]">
+							Stoksuz Ürünleri Gösterme
+						</span>
+				</label>
+				<div className="flex px-2 items-center gap-2">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6.45457 14.6363C7.9608 14.6363 9.18184 13.4153 9.18184 11.909C9.18184 10.4028 7.9608 9.18176 6.45457 9.18176C4.94834 9.18176 3.72729 10.4028 3.72729 11.909C3.72729 13.4153 4.94834 14.6363 6.45457 14.6363Z" stroke="#333333" stroke-width="1.36364" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16 20.7728C17.5062 20.7728 18.7273 19.5517 18.7273 18.0455C18.7273 16.5393 17.5062 15.3182 16 15.3182C14.4937 15.3182 13.2727 16.5393 13.2727 18.0455C13.2727 19.5517 14.4937 20.7728 16 20.7728Z" stroke="#333333" stroke-width="1.36364" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16 8.49996C17.5062 8.49996 18.7273 7.27891 18.7273 5.77268C18.7273 4.26645 17.5062 3.04541 16 3.04541C14.4937 3.04541 13.2727 4.26645 13.2727 5.77268C13.2727 7.27891 14.4937 8.49996 16 8.49996Z" stroke="#333333" stroke-width="1.36364" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.7063 7.24817L8.74854 10.4353" stroke="#333333" stroke-width="1.36364" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.74854 13.3846L13.7063 16.5718" stroke="#333333" stroke-width="1.36364" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+					<span>Paylaş</span>
 				</div>
 				</div>
-				<div className=" hs-accordion-group px-4 py-1">
-				<div
-					className="hs-accordion"
-					id="hs-basic-with-title-and-arrow-stretched-heading-one"
-				>
-					<button
-					className="hs-accordion-toggle text-sm text-[#333] py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none"
-					aria-expanded="false"
-					aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one"
-					>
-					Xezer
-					<svg
-						className="hs-accordion-active:hidden block size-4"
-						width="20"
-						height="20"
-						viewBox="0 0 20 20"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-						d="M14 8L10 11.5L6 8"
-						stroke="#333333"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						></path>
-					</svg>
-					<svg
-						className="hs-accordion-active:block hidden size-4"
-						width="20"
-						height="20"
-						viewBox="0 0 20 20"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-						d="M6 11.5L10 8L14 11.5"
-						stroke="#333333"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						></path>
-					</svg>
-					</button>
-					<div
-					id="hs-basic-with-title-and-arrow-stretched-collapse-one"
-					className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
-					role="region"
-					aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one"
-					style={{ height: 0 }}
-					>
-					<ul>
-						<li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
-						<a href="">zay</a>
-						</li>
-						<li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
-						<a href="">emi</a>
-						</li>
-						<li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
-						<a href="">emimiz</a>
-						</li>
-						<li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
-						<a href="">ama patisin dayisi</a>
-						</li>
-					</ul>
-					</div>
-				</div>
-				</div>
-			</div>
-			<div className="filtrler">
-				<h3 className="text-lg font-medium py-4">Filtreler</h3>
-				<div className="hs-accordion-group px-4 py-1">
-				<div
-					className="hs-accordion"
-					id="hs-basic-with-title-and-arrow-stretched-heading-one"
-				>
-					<button
-					className="hs-accordion-toggle text-sm text-[#333] py-3 inline-flex items-center justify-between gap-x-3 w-full font-[600] text-start rounded-lg disabled:opacity-50 disabled:pointer-events-none"
-					aria-expanded="true"
-					aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one"
-					>
-					Xezerin rengi
-					<svg
-						className="hs-accordion-active:hidden hidden size-4"
-						width="20"
-						height="20"
-						viewBox="0 0 20 20"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-						d="M14 8L10 11.5L6 8"
-						stroke="#333333"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						></path>
-					</svg>
-					<svg
-						className="hs-accordion-active:block block size-4"
-						width="20"
-						height="20"
-						viewBox="0 0 20 20"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-						d="M6 11.5L10 8L14 11.5"
-						stroke="#333333"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						></path>
-					</svg>
-					</button>
-					<div
-					id="hs-basic-with-title-and-arrow-stretched-collapse-one"
-					className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
-					role="region"
-					aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one"
-					style={{ height: "auto" }}
-					>
-					<ul>
-						<li className="p-1 leading-[1.5em] text-[1em] text-[#333]">
-						<label className="inline-flex items-center">
-							<input type="checkbox" className="hidden peer" />
-							<div className="w-5 h-5 bg-white border border-gray-200 rounded-[5px] peer-checked:bg-[#00BAD3] peer-checked:border-[#00BAD3] transition-colors"><FaCheck className="text-white text-[.9em] m-[2px]"/></div>
-							<span className="ml-2 text-sm text-[#333]">
-							yasil
-							</span>
-						</label>
-						</li>
-					</ul>
-					</div>
-				</div>
-				</div>
-			</div>
-			</div>
-			<div className="flex flex-wrap  justify-start gap-4">
-				{
-					new Array(25).fill(null).map((_,index) => <div key={index} className="w-[calc(50%-1rem)] md:w-[calc(33%-1rem)] xl:w-[calc(25%-1rem)]"><Cart/></div> )
-				}
-			</div>
-	   </div>
+              </div>
+			  <div className={`${onerilen ? 'block' : 'hidden'} absolute max-h-[40vh] min-w-[20vw] overflow-auto bg-white py-3 mb-3 px-4 rounded-xl text-md shadow z-50`}>
+				 <ul>
+					<Link className="text-[#00BAD3]"><li className="flex items-center justify-between">Önerilen <FaCheck /></li></Link>
+					<Link><li className="text-[.95em] py-2 ">Fiyatl Yüksekten Düşüğe</li></Link>
+					<Link><li className="text-[.95em] py-2 ">Fiyatı Düşükten Yükseğe</li></Link>
+					<Link><li className="text-[.95em] py-2 ">Yeni Gelene Göre</li></Link>
+					<Link><li className="text-[.95em] py-2 ">En İndirimli Ürünler</li></Link>
+				 </ul>
+			  </div>
+            </div>
+            <div className="flex flex-wrap  justify-start gap-4">
+              {new Array(25).fill(null).map((_, index) => (
+                <div
+                  key={index}
+                  className="w-[calc(50%-1rem)] md:w-[calc(33%-1rem)] xl:w-[calc(25%-1rem)]"
+                >
+                  <Cart />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
