@@ -28,25 +28,19 @@ function Subcategory() {
   }, []);
 
   function addSubcat() {
-    
-
-    const obj = { name: subcatName, categoryId: 12 };
-
-    createSubcategory(obj).then(resp => console.log(resp));
-    console.log(catId);
-    
+    const obj = { name: subcatName, categoryId: catId };
+    createSubcategory(obj)
+    setSubcat([...subcat, obj])
+    toast.success("Hadi yine iyisin!")
 
     if (subcatName.trim().length >= 3) {
-
       setAddOpen(false);
       console.log(obj);
       console.log(category);
-      
-      
-      
-    } else toast.error("subcat ve ya select sec");
-    
+    } else 
+    toast.error("subcat ve ya select sec");
   }
+
   function handleSubcat(e) {
     setSubcat(category.find((item) => item.id == e.target.value).subcategory);
   }
