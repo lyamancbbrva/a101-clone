@@ -6,7 +6,7 @@ import { ExclamationTriangleIcon, XMarkIcon } from "@heroicons/react/24/outline"
 import { useDropzone } from "react-dropzone";
 import { Editor } from "@tinymce/tinymce-react";
 import configObj from "../config/config";
-import { createImage, createProduct, getCategories } from "../api/api";
+import { createImage, createProduct, deleteProduct, editProduct, getCategories } from "../api/api";
 import toast from "react-hot-toast";
 
 function Product() {
@@ -55,6 +55,21 @@ function Product() {
 		createProduct(obj).then(res => setProduct([...product, res]))
 		setAddOpen(!addOpen)
 		toast.success('Ürün eklendi!')
+	}
+
+	function editProd() {
+		console.log('zatna nehlet bunu cixaranin');
+		setAddOpen(!addOpen)
+		// editProduct(obj)
+	}
+
+	async function handleDelete(id) {
+		await deleteProduct(id)
+		setProduct(() => {
+            const data = product.filter(item => item.id !== id)
+            return data;
+        })
+        toast.success('Ürünü sildün!');
 	}
 
 	return (
@@ -109,18 +124,17 @@ function Product() {
 						</thead>
 						<tbody className="text-black text-[1.2em]">
 							{product.length > 0 ?
-								product.map(item => {
-									const { name, discount, price, img, category } = item;
+								product.map((item, i) => {
+									const { name, discount, price, img } = item;
 									return (
-										<tr className="hover:bg-gray-200">
+										<tr key={i} className="hover:bg-gray-200">
 											<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
 												<div className="flex items-center">
 													<div className="h-10 w-10 flex-shrink-0">
-														<img className="h-10 w-10 rounded-full" alt={name} />
+														<img className="h-10 w-10 rounded-full" src={img} alt={name} />
 													</div>
 													<div className="ml-4">
 														<div className="font-medium text-gray-900">{name}</div>
-														<div className="text-gray-500">{category.name}</div>
 													</div>
 												</div>
 											</td>
@@ -192,7 +206,7 @@ function Product() {
 							<div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
 								<button
 									type="button"
-									onClick={() => setDeleteOpen(false)}
+									onClick={() => {setDeleteOpen(false); handleDelete(id)}}
 									className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
 								>
 									Evet
@@ -210,7 +224,6 @@ function Product() {
 					</div>
 				</div>
 			</Dialog>
-
 
 			{/*Add category modal */}
 			<Transition.Root show={addOpen} as={Fragment}>
@@ -241,7 +254,7 @@ function Product() {
 								<Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-xl sm:p-11">
 									<div className="flex justify-between pb-4 border-b border-gray-500">
 										<p className='font-bold text-xl'>
-											{true ? "Ürünü düzenle" : 'Yeni ürün ekle'}
+											{product ? "Yeni ürün ekle" : 'Ürünü düzenle'}
 										</p>
 										<XMarkIcon onClick={() => setAddOpen(false)} className='text-gray-400 w-6 cursor-pointer hover:text-red-600' />
 									</div>
@@ -315,7 +328,7 @@ function Product() {
 											</div>
 										</div>
 										<div className="flex my-2 gap-1">
-											{img?.map(item => <img onClick={() => { setImgSrc(item); }} className="w-[100px] object-cover" src={item} />)}
+											{img?.map((item, i) => <img key={i} onClick={() => { setImgSrc(item); }} className="w-[100px] object-cover" src={item} />)}
 										</div>
 									</div>
 									<div className='my-3'>
@@ -345,10 +358,9 @@ function Product() {
 											name="" id="" className='text-sm block w-full rounded-md h-24 border-gray-400 p-2 border outline-indigo-600 shadow-sm' placeholder='Meta bilgileri ekleyiniz...'></textarea>
 									</div>
 									<button
-										onClick={() => { addProduct() }}
-										// onClick={() => { product ? updateProduct() : addProduct() }}
+										onClick={() => { product ? editProd() : addProduct() }}
 										className='bg-[#278D9B] w-full sm:w-32 text-white rounded-md p-2 px-3 font-semibold'>
-										{true ? 'Düzenle' : 'Ekle'}
+										{product ? 'Ekle' : 'Düzenle'}
 									</button>
 								</Dialog.Panel>
 							</Transition.Child>

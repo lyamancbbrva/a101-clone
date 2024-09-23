@@ -60,8 +60,8 @@ function Subcategory() {
           >
             <option defaultValue>Kateqori seç</option>
             {category ? (
-              category.map((item) => (
-                <option value={item.id} key={item.id}>
+              category.map((item, i) => (
+                <option value={item.id} key={i}>
                   {item.name}
                 </option>
               ))
@@ -98,8 +98,8 @@ function Subcategory() {
             </thead>
             <tbody className="text-black text-[1.2em]">
               {subcat.length > 0 ? (
-                subcat.map((item) => (
-                  <tr key={item} className=" border">
+                subcat.map((item, i) => (
+                  <tr key={i} className=" border">
                     <td scope="row" className="px-6 py-4 font-medium">
                       {item.name}
                     </td>
