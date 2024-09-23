@@ -15,11 +15,11 @@ import { FaXmark } from "react-icons/fa6";
 import { createSubcategory, getCategories } from "../api/api";
 
 function Subcategory() {
-  const [subcatName, setSubcatName] = useState("");
+  const [subcatName, setSubcatName] = useState();
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
-  const [catId, setCatId] = useState("");
+  const [catId, setCatId] = useState();
   const [category, setCategory] = useState([]);
   const [subcat, setSubcat] = useState([]);
 
@@ -28,13 +28,21 @@ function Subcategory() {
   }, []);
 
   function addSubcat() {
+    
 
-    const obj = { name: subcatName, categoryId: catId };
+    const obj = { name: subcatName, categoryId: 12 };
+
+    createSubcategory(obj).then(resp => console.log(resp));
+    console.log(catId);
+    
 
     if (subcatName.trim().length >= 3) {
 
       setAddOpen(false);
-      createSubcategory(obj).then(resp => console.log(resp));
+      console.log(obj);
+      console.log(category);
+      
+      
       
     } else toast.error("subcat ve ya select sec");
     
