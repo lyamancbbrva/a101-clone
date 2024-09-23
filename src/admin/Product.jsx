@@ -131,7 +131,7 @@ function Product() {
 											<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
 												<div className="flex items-center">
 													<div className="h-10 w-10 flex-shrink-0">
-														<img className="h-10 w-10 rounded-full" src={img} alt={name} />
+														<img className="h-10 w-10 rounded-full" src={img[0]} alt={name} />
 													</div>
 													<div className="ml-4">
 														<div className="font-medium text-gray-900">{name}</div>

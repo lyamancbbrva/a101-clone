@@ -15,6 +15,7 @@ import {
   createCategory,
   createImage,
   deleteCategory,
+  editCategory,
   getCategories,
 } from "../api/api";
 import {
@@ -33,10 +34,16 @@ function Category() {
   const [catImg, setCatImg] = useState([]);
   const [category, setCategory] = useState([]);
 
+  const onDrop = async (acceptedFiles) => {
+    formdata.append("img", acceptedFiles[0]);
+    const newImg = await createImage(formdata);
+    setCatImg([...catImg, newImg.img_url]);
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop, maxFiles: 5 });
+
   useEffect(() => {
-
     getCategories().then((resp) => setCategory(resp));
-
   }, []);
 
   async function addCategory() {
@@ -44,31 +51,35 @@ function Category() {
     const obj = { name: catName, img: catImg };
     if (catImg.length !== 0 && catName.trim().length >= 3) {
       setAddOpen(false);
-      const newCategory = await createCategory(obj);
+      await createCategory(obj);
     } else toast.error("sekil ve ya category adi elave etmemisen");
 
   }
 
-  async function handleDelete() {
+  function editCat() {
 
-    setDeleteOpen(false);
-    const delCat = await deleteCategory(catId);
-    setCategory(category.filter((item) => item.id !== catId));
+// I S L E M I R   B U 
+
+    const obj = { name: catName, img: catImg }
+    editCategory(catId, obj).then((res) => {
+      const updatedData = category.map(item =>
+        item.id == catId ? { ...item, name: res.catName, img: res.catImg } : item
+      )
+      setCategory(updatedData);
+      setAddOpen(false);
+      toast.success('Düzəldi qaqa?');
+    });
+    console.log(catName, catImg, catId, category);
 
   }
+  
 
-  const onDrop = async (acceptedFiles) => {
-
-    formdata.append("img", acceptedFiles[0]);
-    const newImg = await createImage(formdata);
-    setCatImg([...catImg, newImg.img_url]);
-
-  };
-
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    maxFiles: 5,
-  });
+  async function handleDelete() {
+    await deleteCategory(catId);
+    setCategory(category.filter((item) => item.id !== catId));
+    setDeleteOpen(false);
+    toast.success('Silindi abicim')
+  }
 
   return (
     <>
@@ -116,7 +127,7 @@ function Category() {
                     >
                       <img
                         className="w-[80px] h-[80px] object-cover "
-                        src={item.img[0]}
+                        src={item.img}
                         alt={item.name}
                       />
                       {item.name}
@@ -442,7 +453,7 @@ function Category() {
                 <button
                   type="button"
                   data-autofocus
-                  onClick={addCategory}
+                  onClick={() => {category ? editCat() : addCategory()}}
                   className="mt-3 inline-flex w-full bg-[#278D9B] justify-center rounded-[5px]  px-7 py-2 text-[.9em] font-semibold text-white shadow-sm  sm:w-auto"
                 >
                   Ekle
