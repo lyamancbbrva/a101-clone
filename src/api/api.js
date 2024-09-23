@@ -146,9 +146,13 @@ async function deleteSubcategory(id) {
     return error;
   }
 }
-async function createImage() {
+async function createImage(formData) {
   try {
-    const res = await axiosInstance.post(`/img`);
+    const res = await axiosInstance.post(`/img`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return res.data;
   } catch (error) {
     return error;
@@ -213,7 +217,7 @@ async function refreshToken() {
 async function verifyToken() {
   try {
     const res = await axiosInstance.get(`/auth/verify-token`);
-    return res;
+    return res.data;
   } catch (error) {
     return error;
   }

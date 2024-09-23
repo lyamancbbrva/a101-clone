@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <section className="mx-auto">
+    <section className="mx-auto my-10">
       <div className="py-10 text-center md:py-20">
         <h1 className="text-4xl font-bold leading-none sm:text-5xl">
           A101 harca harca bitmez! (zırt)

@@ -4,7 +4,7 @@ import {
   DialogPanel,
   DialogTitle,
 } from "@headlessui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaQuestion } from "react-icons/fa";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { GrFormEdit } from "react-icons/gr";
@@ -12,22 +12,36 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { FaXmark } from "react-icons/fa6";
+import { createSubcategory, getCategories } from "../api/api";
 
 function Subcategory() {
-
   const [subcatName, setSubcatName] = useState("");
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
-  const [subcats, setSubcats] = useState([]);
-  const [catId, setCatId] = useState('');
+  const [catId, setCatId] = useState("");
+  const [category, setCategory] = useState([]);
+  const [subcat, setSubcat] = useState([]);
+
+  useEffect(() => {
+    getCategories().then((resp) => setCategory(resp));
+  }, []);
 
   function addSubcat() {
-    subcatName.trim().length && catId  >= 3 ? setAddOpen(false) : toast.error('subcat ve ya select sehvdi') 
+
+    const obj = { name: subcatName, categoryId: catId };
+
+    if (subcatName.trim().length >= 3) {
+
+      setAddOpen(false);
+      createSubcategory(obj).then(resp => console.log(resp));
+      
+    } else toast.error("subcat ve ya select sec");
     
   }
-  console.log(catId);
-  
+  function handleSubcat(e) {
+    setSubcat(category.find((item) => item.id == e.target.value).subcategory);
+  }
 
   return (
     <>
@@ -38,11 +52,20 @@ function Subcategory() {
       </div>
       <div className="my-5 w-[85%] lg:w-[70%] mx-auto py-5">
         <div className="flex items-center">
-          <select  className="w-[85%] lg:w-[90%] outline-none text-[1em] border rounded-tl-[5px] rounded-bl-[5px] inline-block py-3 px-4 my-5 ">
-            <option  defaultValue>Kateqori seç</option>
-            <option value={1} className="p-1">Zaysu</option>
-            <option value={12} className="p-1">Cəzər</option>
-            <option value={11} className="p-1">eli zayi</option>
+          <select
+            onChange={handleSubcat}
+            className="w-[85%] lg:w-[90%] outline-none text-[1em] border rounded-tl-[5px] rounded-bl-[5px] inline-block py-3 px-4 my-5 "
+          >
+            <option defaultValue>Kateqori seç</option>
+            {category ? (
+              category.map((item) => (
+                <option value={item.id} key={item.id}>
+                  {item.name}
+                </option>
+              ))
+            ) : (
+              <option>yoxdu qaqa ged kateqori yarat qadan alim</option>
+            )}
           </select>
           <button
             onClick={() => setAddOpen(true)}
@@ -72,11 +95,11 @@ function Subcategory() {
               </tr>
             </thead>
             <tbody className="text-black text-[1.2em]">
-              {subcats.length > 0 ? (
-                subcats.map((item) => (
+              {subcat.length > 0 ? (
+                subcat.map((item) => (
                   <tr key={item} className=" border">
                     <td scope="row" className="px-6 py-4 font-medium">
-                      {item}
+                      {item.name}
                     </td>
 
                     <td
@@ -103,16 +126,7 @@ function Subcategory() {
                   <td
                     scope="row"
                     className="px-6 flex gap-2 justify-center items-center py-4 font-medium"
-                  >
-                    {/* <GrFormEdit
-                          onClick={() => setEditOpen(true)}
-                          className="text-[1.45em] cursor-pointer"
-                        />
-                        <FaRegTrashAlt
-                          className="cursor-pointer"
-                          onClick={() => setDeleteOpen(true)}
-                        /> */}
-                  </td>
+                  ></td>
                 </tr>
               )}
             </tbody>
@@ -209,24 +223,33 @@ function Subcategory() {
                     >
                       Alt Kateqori ekle
                     </DialogTitle>
-                    
-					<FaXmark className="text-[1.3em] cursor-pointer" onClick={() => setAddOpen(false)}/>
+
+                    <FaXmark
+                      className="text-[1.3em] cursor-pointer"
+                      onClick={() => setAddOpen(false)}
+                    />
                   </div>
                 </div>
               </div>
               <div className="w-[90%] mx-auto">
-              <select onChange={(e) => setCatId(e.target.value)} className="w-full outline-none text-[1em] border rounded-[5px] inline-block py-3 px-4 mt-7 mb-2 ">
-                <option defaultValue>Kateqori seç</option>
-                <option value={1} className="p-1">Zaysu</option>
-                <option value={13} className="p-1">Cəzər</option>
-                <option value={11} className="p-1">eli zayi</option>
-              </select>
-              <input
-                type="text"
-                onInput={(e) => setSubcatName(e.target.value)}
-                className="w-full outline-none text-[1em] border rounded-[5px] inline-block py-3 px-4 mt-1 mb-7 "
-                placeholder="Yeni altkateqorinin adı..."
-              />
+                <select
+                  onChange={(e) => setCatId(e.target.value)}
+                  className="w-full outline-none text-[1em] border rounded-[5px] inline-block py-3 px-4 mt-7 mb-2 "
+                >
+                  <option defaultValue>Kateqori seç</option>
+                  {category &&
+                    category.map((item) => (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option>
+                    ))}
+                </select>
+                <input
+                  type="text"
+                  onInput={(e) => setSubcatName(e.target.value)}
+                  className="w-full outline-none text-[1em] border rounded-[5px] inline-block py-3 px-4 mt-1 mb-7 "
+                  placeholder="Yeni altkateqorinin adı..."
+                />
               </div>
               <div className=" gap-3 px-4 py-5 sm:flex sm:flex-row-reverse sm:px-6">
                 <button
