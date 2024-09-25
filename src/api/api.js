@@ -106,9 +106,9 @@ async function getCategoryById(id) {
     return error;
   }
 }
-async function editCategory(id) {
+async function editCategory(id, obj) {
   try {
-    const res = await axiosInstance.put(`/categories/${id}`);
+    const res = await axiosInstance.put(`/categories/${id}`, obj);
     return res.data;
   } catch (error) {
     return error;
