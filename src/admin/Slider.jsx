@@ -10,16 +10,20 @@ import {
 } from "@headlessui/react";
 import { ExclamationTriangleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useDropzone } from "react-dropzone";
+import { createSlider } from "../api/api";
 
 function Slider() {
+    const formdata = new FormData()
+
     const [addOpen, setAddOpen] = useState(false)
     const [deleteOpen, setDeleteOpen] = useState(false)
+    const [edit, setEdit] = useState(false)
 
     
     const onDrop = async (acceptedFiles) => {
-        // formdata.append('img', acceptedFiles[0])
-        // const newImg = await createImg(formdata)
-        // setImg([...img, newImg.img_url])
+        formdata.append('img', acceptedFiles[0])
+        const newSlide = await createSlider(formdata)
+        console.log(newSlide)
     };
     
 
@@ -42,7 +46,12 @@ function Slider() {
         <div className="my-5 w-[85%] lg:w-[70%] mx-auto py-5">
           <div className="flex items-center">
             <button
-              onClick={() => setAddOpen(true)}
+              onClick={() => 
+              {
+                setAddOpen(true)
+                setEdit(false)
+              }
+            }
               className="bg-[#278D9B] text-nowrap text-[1em] inline-block py-[.8rem] my-5 px-5 text-white rounded-[5px]"
             >
                Yeni slide resmi ekle
@@ -78,7 +87,12 @@ function Slider() {
                     className="px-6 flex gap-2 justify-center items-center py-4 font-medium"
                   >
                     <GrFormEdit
-                      onClick={() => setAddOpen(true)}
+                      onClick={() => 
+                      {
+                        setAddOpen(true)
+                        setEdit(true)
+                      }
+                    }
                       className="text-[1.45em] cursor-pointer"
                     />
                     <FaRegTrashAlt
@@ -181,7 +195,7 @@ function Slider() {
                                   <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-xl sm:p-11">
                                       <div className="flex justify-between pb-4 border-b border-gray-500">
                                           <p className='font-bold text-xl'>
-                                              {true ? "Ürünü düzenle" : 'Yeni ürün ekle'}
+                                              {edit ? "Slide resmini düzenle" : 'Yeni slide resmi ekle'}
                                           </p>
                                           
                                           <XMarkIcon onClick={() => setAddOpen(false)} className='text-gray-400 w-6 cursor-pointer hover:text-red-600' />
@@ -217,14 +231,14 @@ function Slider() {
                                       <button
                                           // onClick={() => { product ? updateProduct() : addSlider() }}
                                           className='bg-[#278D9B] w-full sm:w-32 text-white rounded-md p-2 px-3 font-semibold'>
-                                          {true ? 'Düzenle' : 'Ekle'}
+                                          {edit ? 'Düzenle' : 'Ekle'}
                                       </button>
                                   </Dialog.Panel>
                               </Transition.Child>
                           </div>
                       </div>
                   </Dialog>
-              </Transition.Root >
+        </Transition.Root >
   
       </>
     );

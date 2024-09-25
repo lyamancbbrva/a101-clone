@@ -7,6 +7,13 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon, Square2StackIcon } from "@heroicons/react/16/solid";
 
 function AdminLayout() {
+	function logOut() {
+		cook.remove('token')
+		cook.remove('refresh')
+		cook.remove('userName')
+		window.location.href = '/giris'
+	  }
+	
 
   return (
 	<div className="sm:flex gap-5 relative">
@@ -30,7 +37,7 @@ function AdminLayout() {
 		  >
 			<Link to={'/giris'}>
 			<MenuItem>
-			  <button className="group flex w-full hover:bg-[#f1f1f1] items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+			  <button onClick={logOut} className="group flex w-full hover:bg-[#f1f1f1] items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
 				<TbLogout className="flex-shrink-0 text-[1.1em] w-6 mr-3 " />
 				Çıkış yap
 				<kbd className="ml-auto hidden font-sans text-xs text-white/50 group-data-[focus]:inline">

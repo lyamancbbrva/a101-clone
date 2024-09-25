@@ -28,8 +28,6 @@ function Nav() {
 	cook.remove('refresh')
 	cook.remove('userName')
 	window.location.href = '/giris'
-
-	
   }
 
   return (
