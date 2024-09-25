@@ -30,6 +30,7 @@ function Subcategory() {
   
   
 
+<<<<<<< HEAD
    async function addSubcat() {
 	
 
@@ -50,13 +51,29 @@ function Subcategory() {
 	  
 	} else toast.error("subcat ve ya select sec");
 	
+=======
+  function addSubcat() {
+    const obj = { name: subcatName, categoryId: catId };
+    createSubcategory(obj)
+    setSubcat([...subcat, obj])
+    toast.success("Hadi yine iyisin!")
+
+    if (subcatName.trim().length >= 3) {
+      setAddOpen(false);
+      console.log(obj);
+      console.log(category);
+    } else 
+    toast.error("subcat ve ya select sec");
+>>>>>>> 9d16664145e82e68c77d05dfb1c76071666aff8d
   }
+
   function handleSubcat(e) {
 	setSubcat(category.find((item) => item.id == e.target.value).subcategory);
 	
   }
 
   return (
+<<<<<<< HEAD
 	<>
 	  <div className="mx-auto pt-[30px] mt-[30px] text-center">
 		<h1 className="text-4xl py-5 mt-[30px] font-bold leading-none sm:text-5xl">
@@ -114,6 +131,65 @@ function Subcategory() {
 					<td scope="row" className="px-6 py-4 font-medium">
 					  {item.name}
 					</td>
+=======
+    <>
+      <div className="mx-auto pt-[30px] mt-[30px] text-center">
+        <h1 className="text-4xl py-5 mt-[30px] font-bold leading-none sm:text-5xl">
+          Altkateqori ekle
+        </h1>
+      </div>
+      <div className="my-5 w-[85%] lg:w-[70%] mx-auto py-5">
+        <div className="flex items-center">
+          <select
+            onChange={handleSubcat}
+            className="w-[85%] lg:w-[90%] outline-none text-[1em] border rounded-tl-[5px] rounded-bl-[5px] inline-block py-3 px-4 my-5 "
+          >
+            <option defaultValue>Kateqori seç</option>
+            {category ? (
+              category.map((item, i) => (
+                <option value={item.id} key={i}>
+                  {item.name}
+                </option>
+              ))
+            ) : (
+              <option>yoxdu qaqa ged kateqori yarat qadan alim</option>
+            )}
+          </select>
+          <button
+            onClick={() => setAddOpen(true)}
+            className="bg-[#278D9B] text-nowrap text-[1em] inline-block my-5 py-[.7rem] px-5 text-white rounded-br-[5px] rounded-tr-[5px]"
+          >
+            Altkateqori ekle
+          </button>
+        </div>
+        <div className="relative mx-auto rounded-[5px] overflow-x-auto">
+          <table className="text-sm text-left  w-full ">
+            <thead className="text-xs bg-[#278d9b]">
+              <tr>
+                <th
+                  scope="col"
+                  colSpan={1}
+                  className="text-[1.6em] p-5 text-white "
+                >
+                  Altkateqori adı
+                </th>
+                <th
+                  scope="col"
+                  colSpan={1}
+                  className="text-[1.6em] text-center p-5 text-white "
+                >
+                  Sil ve ya düzenle
+                </th>
+              </tr>
+            </thead>
+            <tbody className="text-black text-[1.2em]">
+              {subcat.length > 0 ? (
+                subcat.map((item, i) => (
+                  <tr key={i} className=" border">
+                    <td scope="row" className="px-6 py-4 font-medium">
+                      {item.name}
+                    </td>
+>>>>>>> 9d16664145e82e68c77d05dfb1c76071666aff8d
 
 					<td
 					  scope="row"
