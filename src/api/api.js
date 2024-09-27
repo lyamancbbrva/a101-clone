@@ -130,9 +130,9 @@ async function createSubcategory(obj) {
     return error;
   }
 }
-async function editSubcategory(id) {
+async function editSubcategory(id, obj) {
   try {
-    const res = await axiosInstance.put(`/categories/subcategory/${id}`);
+    const res = await axiosInstance.put(`/categories/subcategory/${id}`, obj);
     return res.data;
   } catch (error) {
     return error;

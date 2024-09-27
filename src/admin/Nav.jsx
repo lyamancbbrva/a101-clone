@@ -58,7 +58,7 @@ function Nav() {
 		<div
 		  className={`bg-[#04BCD4] ${
 			sidebar ? "translate-x-[0] w-[80vw]" : "translate-x-[-100%]"
-		  } transform admin-sidebar fixed hover:relative z-10 sm:translate-x-0 shadow-xl  h-screen  hover:sm:w-[40vw] hover:lg:w-[30vw] sm:w-[70px] overflow-hidden hover:xl:w-[20vw]`}
+		  } transform admin-sidebar fixed hover:fixed z-10 sm:translate-x-0 shadow-xl  h-screen  hover:sm:w-[40vw] hover:lg:w-[30vw] sm:w-[70px] overflow-hidden hover:xl:w-[20vw]`}
 		>
 		  <div className="p-6 hidden sm:block border-b bg-white ">
 			<Link

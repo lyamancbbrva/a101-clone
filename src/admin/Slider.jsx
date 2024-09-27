@@ -1,5 +1,4 @@
 import React, { Fragment, useRef, useState } from "react";
-import { GrFormEdit } from "react-icons/gr";
 import { FaRegTrashAlt } from "react-icons/fa";
 import {
   Dialog,
@@ -17,7 +16,6 @@ function Slider() {
 
     const [addOpen, setAddOpen] = useState(false)
     const [deleteOpen, setDeleteOpen] = useState(false)
-    const [edit, setEdit] = useState(false)
 
     
     const onDrop = async (acceptedFiles) => {
@@ -49,7 +47,6 @@ function Slider() {
               onClick={() => 
               {
                 setAddOpen(true)
-                setEdit(false)
               }
             }
               className="bg-[#278D9B] text-nowrap text-[1em] inline-block py-[.8rem] my-5 px-5 text-white rounded-[5px]"
@@ -86,16 +83,7 @@ function Slider() {
                     scope="row"
                     className="px-6 flex gap-2 justify-center items-center py-4 font-medium"
                   >
-                    <GrFormEdit
-                      onClick={() => 
-                      {
-                        setAddOpen(true)
-                        setEdit(true)
-                      }
-                    }
-                      className="text-[1.45em] cursor-pointer"
-                    />
-                    <FaRegTrashAlt
+                   <FaRegTrashAlt
                       className="cursor-pointer"
                       onClick={() => setDeleteOpen(true)}
                     />
@@ -195,7 +183,7 @@ function Slider() {
                                   <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-xl sm:p-11">
                                       <div className="flex justify-between pb-4 border-b border-gray-500">
                                           <p className='font-bold text-xl'>
-                                              {edit ? "Slide resmini düzenle" : 'Yeni slide resmi ekle'}
+                                              Yeni slide resmi ekle
                                           </p>
                                           
                                           <XMarkIcon onClick={() => setAddOpen(false)} className='text-gray-400 w-6 cursor-pointer hover:text-red-600' />
@@ -231,7 +219,7 @@ function Slider() {
                                       <button
                                           // onClick={() => { product ? updateProduct() : addSlider() }}
                                           className='bg-[#278D9B] w-full sm:w-32 text-white rounded-md p-2 px-3 font-semibold'>
-                                          {edit ? 'Düzenle' : 'Ekle'}
+                                          Ekle
                                       </button>
                                   </Dialog.Panel>
                               </Transition.Child>

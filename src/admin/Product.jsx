@@ -6,7 +6,7 @@ import { ExclamationTriangleIcon, XMarkIcon } from "@heroicons/react/24/outline"
 import { useDropzone } from "react-dropzone";
 import { Editor } from "@tinymce/tinymce-react";
 import configObj from "../config/config";
-import { createImage, createProduct, deleteProduct, editProduct, getCategories } from "../api/api";
+import { createImage, createProduct, deleteProduct, editProduct, getCategories, getProducts } from "../api/api";
 import toast from "react-hot-toast";
 
 function Product() {
@@ -27,8 +27,49 @@ function Product() {
 
 	useEffect(() => {
 		getCategories().then(resp => setCategory(resp))
+		getProducts().then(resp => console.log(resp)
+		)
 	}, [])
 
+	
+	
+	function addProduct() {
+		const obj = {
+			name: 'name',
+			isTopSelling: true,
+			isStok: true,
+			isCheaps: true,
+			price: 20,
+			discount: 20,
+			imageUrl: ['https://pbs.twimg.com/profile_images/551416883191087104/gxoNeGX8_400x400.jpeg'],
+			sizes: ['salam', 'necesen'],
+			categoryId: Number(id),
+			subcategoryId: Number(id),
+			description: 'zaysu',
+			metadata: metaData
+			
+		}
+		createProduct(obj).then(res => console.log(res))
+		setAddOpen(!addOpen)
+		console.log(obj);
+		
+	}
+	
+	// function editProd() {
+	// 	console.log('zatna nehlet bunu cixaranin');
+	// 	setAddOpen(!addOpen)
+	// 	// editProduct(obj)
+	// }
+	
+	async function handleDelete(id) {
+		await deleteProduct(id)
+		setProduct(() => {
+			const data = product.filter(item => item.id !== id)
+            return data;
+        })
+        toast.success('Ürünü sildün!');
+	}
+	
 	const onDrop = async (acceptedFiles) => {
 		formdata.append('img', acceptedFiles)
 		const newImg = await createImage(formdata)
@@ -36,42 +77,6 @@ function Product() {
 	};
 
 	const { getRootProps, getInputProps } = useDropzone({ onDrop, maxFiles: 5 });
-
-	function addProduct() {
-		const obj = {
-			name: name,
-			isTopSelling: true,
-			isStok: true,
-			isCheaps: true,
-			price: Number(price),
-			discount: Number(discount),
-			imageUrl: img,
-			// sizes: size,
-			categoryId: Number(id),
-			subcategoryId: Number(id),
-			description: editorRef.current.getContent(),
-			metadata: metaData
-		}
-		createProduct(obj).then(res => setProduct([...product, res]))
-		setAddOpen(!addOpen)
-		toast.success('Ürün eklendi!')
-	}
-
-	function editProd() {
-		console.log('zatna nehlet bunu cixaranin');
-		setAddOpen(!addOpen)
-		// editProduct(obj)
-	}
-
-	async function handleDelete(id) {
-		await deleteProduct(id)
-		setProduct(() => {
-            const data = product.filter(item => item.id !== id)
-            return data;
-        })
-        toast.success('Ürünü sildün!');
-	}
-
 	return (
 		<>
 			<div className="mx-auto pt-[30px] mt-[30px] text-center">
@@ -305,7 +310,7 @@ function Product() {
 											className="block w-full rounded-md border-gray-300 bg-gray-50 p-2 border outline-indigo-600 shadow-sm"
 										/>
 									</div>
-									<div className="my-3">
+									{/* <div className="my-3">
 										<label htmlFor="" className="block text-[12px] py-2 font-bold text-gray-700 uppercase">Resim ekle!</label>
 										<div className="space-y-2 text-center">
 											<div
@@ -350,7 +355,7 @@ function Product() {
 											}}
 											textareaName="description"
 										/>
-									</div>
+									</div> */}
 									<div className='mb-3 border-b border-gray-400 py-3'>
 										<label htmlFor="" className="block text-[12px] py-2 font-bold text-gray-700 uppercase">Meta bilgi</label>
 										<textarea
@@ -358,7 +363,7 @@ function Product() {
 											name="" id="" className='text-sm block w-full rounded-md h-24 border-gray-400 p-2 border outline-indigo-600 shadow-sm' placeholder='Meta bilgileri ekleyiniz...'></textarea>
 									</div>
 									<button
-										onClick={() => { product ? editProd() : addProduct() }}
+										onClick={() => { addProduct() }}
 										className='bg-[#278D9B] w-full sm:w-32 text-white rounded-md p-2 px-3 font-semibold'>
 										{product ? 'Ekle' : 'Düzenle'}
 									</button>

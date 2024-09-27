@@ -12,7 +12,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { FaXmark } from "react-icons/fa6";
-import { createSubcategory, getCategories } from "../api/api";
+import { createSubcategory, deleteSubcategory, editSubcategory, getCategories } from "../api/api";
 
 function Subcategory() {
 
@@ -21,6 +21,7 @@ function Subcategory() {
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
   const [catId, setCatId] = useState();
+  const [subcatId, setSubcatId] = useState();
   const [category, setCategory] = useState([]);
   const [subcat, setSubcat] = useState([]);
 
@@ -31,7 +32,8 @@ function Subcategory() {
   
 
    async function addSubcat() {
-	const obj = { name: subcatName, categoryId: catId };
+
+   const obj = { name: subcatName, categoryId: catId };
 	
     if (subcatName.trim().length >= 3) {
 		const newSubcat = await createSubcategory(obj)
@@ -46,10 +48,34 @@ function Subcategory() {
 	
   }
 
-  function handleSubcat(e) {
-	setSubcat(category.find((item) => item.id == e.target.value).subcategory);
+  function editSubCategory() {
+
+	setEditOpen(false)
+
+	const obj = {name: subcatName}
+	
+	console.log(subcatId);
+	
+	editSubcategory(subcatId,obj).then(resp => console.log(resp))
+
+	console.log(obj);
+	
 	
   }
+  
+  
+
+  function delSubcat() {
+
+	setDeleteOpen(false);
+	deleteSubcategory(subcatId)
+	setSubcat(subcat.filter((item) => item.id !== subcatId))
+	
+  }
+
+  function handleSubcat(e) {
+	setSubcat(category.find((item) => item.id == e.target.value).subcategory);
+	}
 
   return (
 	<>
@@ -115,12 +141,12 @@ function Subcategory() {
 					  className="px-6 flex gap-2 justify-center items-center py-4 font-medium"
 					>
 					  <GrFormEdit
-						onClick={() => setEditOpen(true)}
+						onClick={() =>{ {setSubcatId(item.id); setEditOpen(true)}}}
 						className="text-[1.45em] cursor-pointer"
 					  />
 					  <FaRegTrashAlt
 						className="cursor-pointer"
-						onClick={() => setDeleteOpen(true)}
+						onClick={() =>{setDeleteOpen(true); setSubcatId(item.id)}}
 					  />
 					</td>
 				  </tr>
@@ -182,9 +208,7 @@ function Subcategory() {
 				<button
 				  type="button"
 				  data-autofocus
-				  onClick={() => {
-					setDeleteOpen(false);
-				  }}
+				  onClick={delSubcat}
 				  className="mt-3 inline-flex w-full bg-[#278e9b] justify-center rounded-md text-white px-3 py-2 text-sm font-semibold  shadow-sm sm:mt-0 sm:w-auto"
 				>
 				  Evet
@@ -300,13 +324,15 @@ function Subcategory() {
 					  as="h3"
 					  className="text-base font-semibold leading-6 text-gray-900"
 					>
-					  Kateqori ismini değişmek istediğine emin misin ?
+					  Altkateqori ismini değişmek istediğine emin misin ?
 					</DialogTitle>
 				  </div>
 				</div>
 				<input
+				  value={subcatName || subcat.find(item => item.id == subcatId)?.name}
+				  onInput={(e) => setSubcatName(e.target.value)}
 				  type="text"
-				  placeholder="kateqori ismi"
+				  placeholder="altkateqori ismi"
 				  className="border ml-14 outline-none border-[#278e9baa] rounded-[5px] py-1 px-4  inline-block my-3"
 				/>
 			  </div>
@@ -314,7 +340,7 @@ function Subcategory() {
 				<button
 				  type="button"
 				  data-autofocus
-				  onClick={() => setEditOpen(false)}
+				  onClick={editSubCategory}
 				  className="mt-3 inline-flex w-full bg-[#278e9b] justify-center rounded-md text-white px-3 py-2 text-sm font-semibold  shadow-sm sm:mt-0 sm:w-auto"
 				>
 				  Evet
