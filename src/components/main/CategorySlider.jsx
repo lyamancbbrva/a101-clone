@@ -3,8 +3,18 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
+import { useEffect, useState } from 'react';
+import { getCategories } from '../../api/api';
 
 export default function CategorySlider() {
+
+    const [category, setCategory] = useState([])
+
+    useEffect(() => {
+        getCategories().then(res => setCategory(res))
+    }, [])
+    console.log(category);
+    
 
     return (
 
@@ -46,114 +56,16 @@ export default function CategorySlider() {
                 }}
                 className="mySwiper catSlider"
             >
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/Elektronik.jpeg" className='rounded-xl' alt="" />
-                        <p className='text-[.8em] font-medium py-2'>Elektronik</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/KüçükEvAletleri.jpeg" className='rounded-xl' alt=""  />
-                        <p className='text-[.8em] font-medium py-2'>Küçük Ev Aletleri</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/Elektronik.jpeg" className='rounded-xl' alt="" />
-                        <p className='text-[.8em] font-medium py-2'>Elektronik</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/KüçükEvAletleri.jpeg" className='rounded-xl' alt=""  />
-                        <p className='text-[.8em] font-medium py-2'>Küçük Ev Aletleri</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/Elektronik.jpeg" className='rounded-xl' alt="" />
-                        <p className='text-[.8em] font-medium py-2'>Elektronik</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/KüçükEvAletleri.jpeg" className='rounded-xl' alt=""  />
-                        <p className='text-[.8em] font-medium py-2'>Küçük Ev Aletleri</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/Elektronik.jpeg" className='rounded-xl' alt="" />
-                        <p className='text-[.8em] font-medium py-2'>Elektronik</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/KüçükEvAletleri.jpeg" className='rounded-xl' alt=""  />
-                        <p className='text-[.8em] font-medium py-2'>Küçük Ev Aletleri</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/Elektronik.jpeg" className='rounded-xl' alt="" />
-                        <p className='text-[.8em] font-medium py-2'>Elektronik</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/KüçükEvAletleri.jpeg" className='rounded-xl' alt=""  />
-                        <p className='text-[.8em] font-medium py-2'>Küçük Ev Aletleri</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/Elektronik.jpeg" className='rounded-xl' alt="" />
-                        <p className='text-[.8em] font-medium py-2'>Elektronik</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/KüçükEvAletleri.jpeg" className='rounded-xl' alt=""  />
-                        <p className='text-[.8em] font-medium py-2'>Küçük Ev Aletleri</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/Elektronik.jpeg" className='rounded-xl' alt="" />
-                        <p className='text-[.8em] font-medium py-2'>Elektronik</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/KüçükEvAletleri.jpeg" className='rounded-xl' alt=""  />
-                        <p className='text-[.8em] font-medium py-2'>Küçük Ev Aletleri</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/Elektronik.jpeg" className='rounded-xl' alt="" />
-                        <p className='text-[.8em] font-medium py-2'>Elektronik</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/KüçükEvAletleri.jpeg" className='rounded-xl' alt=""  />
-                        <p className='text-[.8em] font-medium py-2'>Küçük Ev Aletleri</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/Elektronik.jpeg" className='rounded-xl' alt="" />
-                        <p className='text-[.8em] font-medium py-2'>Elektronik</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className='text-center sm:w-24'>
-                        <img src="src/assets/img/KüçükEvAletleri.jpeg" className='rounded-xl' alt=""  />
-                        <p className='text-[.8em] font-medium py-2'>Küçük Ev Aletleri</p>
-                    </div>
-                </SwiperSlide>
+                {
+                    category && category.map(item => <SwiperSlide>
+                        <div className='text-center sm:w-20'>
+                            <img src={item.img[0]} className='rounded-xl h-[100px] object-cover ' alt="" />
+                            <p className='text-[.8em] font-medium py-2'>{item.name}</p>
+                        </div>
+                    </SwiperSlide> )
+                }
+                
+               
                 
             </Swiper>
         </div>

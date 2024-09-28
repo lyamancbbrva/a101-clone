@@ -3,11 +3,17 @@ import extralogo from '../../assets/img/extra-logo.webp'
 import kapidalogo from '../../assets/img/kapida-logo.webp'
 import { Link } from "react-router-dom";
 import { IoChevronForward } from "react-icons/io5";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getCategories } from '../../api/api';
 
 function Header({items}) {
 
     const [activeTab, setActiveTab] = useState(1)
+    const [category, setCategory] = useState([])
+
+    useEffect(() => {
+        getCategories().then(resp => setCategory(resp))
+    }, [])
 
     return (
         
@@ -193,48 +199,42 @@ function Header({items}) {
             <nav>
                 <div className='height-full border-b border-t'>
                 <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
-                <li className='border-r px-4  xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
-                    <Link to={'/kateqoriler'}>Elektronik</Link>
-                    <div className='mega-menu bg-white hidden absolute gap-1 top-[100%] w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
-                        <div className=' scroll overflow-y-scroll  min-w-[380px]'>                        
-                            <ul className='p-4'>
-                            <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-[600] capitalize'>Eysu <IoChevronForward /></li></Link> 
-                            <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link> 
-                            <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link> 
-                            <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-normal'>Salam men Zay Aysu <IoChevronForward /></li></Link> 
-                            <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-normal'>Salam aysu <IoChevronForward /></li></Link> 
-                            <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-normal'>aaaa ozune nie zay deyirsen nc nc nc <IoChevronForward /></li></Link> 
-                            </ul>
-                        </div>
-                        <div className='scroll overflow-y-scroll min-w-[350px]'>
-                            <ul className=' p-3'>
-                                <Link to={''} ><li className='p-1 font-[500] capitalize'>Ay maama</li></Link>
-                                <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                                <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                                <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                                <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                                <Link to={''} ><li className='p-1 font-[500] capitalize'>lasdkfjgh</li></Link>
-                            </ul>
-                        </div>
-                        <div className='p-3 overflow-y-hidden'>
-                            <div>
-                                <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
-                                <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                    {
+                        category && category.map(item =><li className='border-r px-4  xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
+                            <Link to={'/kateqoriler'}>{item.name}</Link>
+                            <div className='mega-menu bg-white hidden absolute gap-1 top-[100%] w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
+                                <div className=' scroll overflow-y-scroll  min-w-[380px]'>                        
+                                    <ul className='p-4'>
+                                      {
+                                        item.subcategory?.map(elem => <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-[600] capitalize'>{elem.name} <IoChevronForward /></li></Link> )
+                                      }
+                                        
+                                    </ul>
+                                </div>
+                                <div className='scroll overflow-y-scroll min-w-[350px]'>
+                                    <ul className=' p-3'>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>Ay maama</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
+                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>lasdkfjgh</li></Link>
+                                    </ul>
+                                </div>
+                                <div className='p-3 overflow-y-hidden'>
+                                    <div>
+                                        <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                                        <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                                    </div>
+                                    <div>
+                                        <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                                        <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
-                                <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li className='border-r px-4 xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-                <li className='border-r px-4 xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-                <li className='border-r px-4 xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-                <li className='border-r px-4 xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-                <li className='border-r px-4 xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-                <li className='border-r px-4 xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-                <li className='hover:border-r         px-4 xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                        </li> )
+                    }
+                
                 </ul>
                 </div>
                 <div className='icons flex lg:hidden md:px-8 justify-between px-3 fixed w-full bottom-0 bg-white pt-2.5'>
@@ -376,27 +376,24 @@ function Header({items}) {
                             </h5>
                         </div>
                     <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
-                        <li className='border-r px-4  lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
-                            Elektronik
-                            <div className='mega-menu bg-white hidden absolute gap-1 top-[100%] w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
+                        {
+                            category && category.map(item => 
+
+                                <li className='border-r px-4  lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
+                            {item.name}
+                            <div className='mega-menu bg-white  absolute gap-1 top-[100%] w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
                                 <div className=' scroll overflow-y-scroll  min-w-[380px]'>
                                     <ul className='p-4'>
-                                        <Link to={''}><li className=' flex justify-between p-1 font-[600] capitalize'>Eysu <IoChevronForward /></li></Link>
-                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link>
-                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>Eysu <IoChevronForward /></li></Link>
-                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>Salam men Zay Aysu <IoChevronForward /></li></Link>
-                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>Salam aysu <IoChevronForward /></li></Link>
-                                        <Link to={''}><li className=' flex justify-between p-1 font-normal'>aaaa ozune nie zay deyirsen nc nc nc <IoChevronForward /></li></Link>
+                                    {
+                                        item.subcategory?.map(elem =>  <Link to={''}><li className=' flex justify-between p-1 font-[600] capitalize'>{elem.name} <IoChevronForward /></li></Link>)
+                                    }
                                     </ul>
                                 </div>
                                 <div className='scroll overflow-y-scroll min-w-[350px]'>
                                     <ul className=' p-3'>
-                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>Ay maama</li></Link>
-                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                                        <Link to={''} ><li className='p-1 font-[500] capitalize'>lasdkfjgh</li></Link>
+                                        {
+                                            item.subcategory?.map(elem =>  <Link to={''}><li className=' flex justify-between p-1 font-[600] capitalize'>{elem.name} <IoChevronForward /></li></Link>)
+                                        }
                                     </ul>
                                 </div>
                                 <div className='p-3 overflow-y-hidden'>
@@ -411,14 +408,11 @@ function Header({items}) {
                                 </div>
                             </div>
                         </li>
+                            )
+                        }
                         <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik
                         </li>
-                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-                        <li className='border-r px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
-                        <li className='hover:border-r         px-4 lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit  hover-menu'>Elektronik </li>
+                        
                     </ul>
                 </div>
                 <div className='icons flex lg:hidden justify-between px-3 fixed w-full bottom-0 bg-white pt-2.5'>

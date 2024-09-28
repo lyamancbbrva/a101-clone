@@ -10,6 +10,7 @@ import { createImage, createProduct, deleteProduct, editProduct, getCategories, 
 import toast from "react-hot-toast";
 
 function Product() {
+
 	const formdata = new FormData()
 	const apiKey = configObj.editorKey
 	const editorRef = useRef(null)
@@ -17,7 +18,9 @@ function Product() {
 	const [deleteOpen, setDeleteOpen] = useState(false)
 	const [category, setCategory] = useState([])
 	const [product, setProduct] = useState([])
-	const [id, setId] = useState(0)
+	const [catId, setCatId] = useState(0)
+	const [subcatId, setSubcatId] = useState(0)
+	const [productId, setProductId] = useState(0)
 	const [img, setImg] = useState([])
 	const [imgSrc, setImgSrc] = useState('')
 	const [name, setName] = useState('')
@@ -25,34 +28,37 @@ function Product() {
 	const [discount, setDiscount] = useState(0)
 	const [price, setPrice] = useState(0)
 
+	
 	useEffect(() => {
 		getCategories().then(resp => setCategory(resp))
-		getProducts().then(resp => console.log(resp)
+		getProducts().then(resp => setProduct(resp)
 		)
 	}, [])
 
 	
 	
-	function addProduct() {
+	async function addProduct() {
+
 		const obj = {
-			name: 'name',
+			name: name,
 			isTopSelling: true,
 			isStok: true,
 			isCheaps: true,
-			price: 20,
-			discount: 20,
+			price: price,
+			discount: discount,
 			imageUrl: ['https://pbs.twimg.com/profile_images/551416883191087104/gxoNeGX8_400x400.jpeg'],
 			sizes: ['salam', 'necesen'],
-			categoryId: Number(id),
-			subcategoryId: Number(id),
+			categoryId: catId,
+			subcategoryId: subcatId,
 			description: 'zaysu',
 			metadata: metaData
 			
 		}
-		createProduct(obj).then(res => console.log(res))
-		setAddOpen(!addOpen)
-		console.log(obj);
 		
+	const newProduct = await createProduct(obj)
+	setProduct([...product, newProduct]);
+
+		setAddOpen(!addOpen)
 	}
 	
 	// function editProd() {
@@ -61,12 +67,9 @@ function Product() {
 	// 	// editProduct(obj)
 	// }
 	
-	async function handleDelete(id) {
-		await deleteProduct(id)
-		setProduct(() => {
-			const data = product.filter(item => item.id !== id)
-            return data;
-        })
+	async function handleDelete() {
+		await deleteProduct(productId)
+		setProduct( product.filter(item => item.id !== productId))
         toast.success('Ürünü sildün!');
 	}
 	
@@ -74,10 +77,14 @@ function Product() {
 		formdata.append('img', acceptedFiles)
 		const newImg = await createImage(formdata)
 		setImg([...img, newImg.img_url])
+		console.log(newImg);
+		
 	};
 
 	const { getRootProps, getInputProps } = useDropzone({ onDrop, maxFiles: 5 });
+
 	return (
+
 		<>
 			<div className="mx-auto pt-[30px] mt-[30px] text-center">
 				<h1 className="text-4xl py-5 mt-[30px] font-bold leading-none sm:text-5xl">
@@ -130,13 +137,15 @@ function Product() {
 						<tbody className="text-black text-[1.2em]">
 							{product.length > 0 ?
 								product.map((item, i) => {
-									const { name, discount, price, img } = item;
+
+									const { name, discount, price } = item;
+				
 									return (
 										<tr key={i} className="hover:bg-gray-200">
 											<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
 												<div className="flex items-center">
 													<div className="h-10 w-10 flex-shrink-0">
-														<img className="h-10 w-10 rounded-full" src={img[0]} alt={name} />
+														<img className="h-10 w-10 rounded-full" src={item?.imageUrl} alt={name} />
 													</div>
 													<div className="ml-4">
 														<div className="font-medium text-gray-900">{name}</div>
@@ -157,7 +166,7 @@ function Product() {
 														onClick={() => setAddOpen(true)}
 														className="text-[1.8em] cursor-pointer hover:text-blue-500" />
 													<FaRegTrashAlt
-														onClick={() => { setDeleteOpen(true); setId(id) }}
+														onClick={() => { setDeleteOpen(true); setProductId(item.id) }}
 														className="text-[1.2em] cursor-pointer hover:text-red-700" />
 												</div>
 											</td>
@@ -211,7 +220,7 @@ function Product() {
 							<div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
 								<button
 									type="button"
-									onClick={() => {setDeleteOpen(false); handleDelete(id)}}
+									onClick={() => {setDeleteOpen(false); handleDelete()}}
 									className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
 								>
 									Evet
@@ -275,7 +284,7 @@ function Product() {
 									<div className='my-3'>
 										<label htmlFor="" className="block text-[12px] py-2 font-bold text-gray-700 uppercase">Kateqoriya seçin:</label>
 										<select
-											onChange={(e) => setId(e.target.value)}
+											onChange={(e) => setCatId(e.target.value)}
 											className="block w-full rounded-md border-gray-300 bg-gray-50 p-2 border outline-indigo-600 shadow-sm">
 											<option>Kateqori seçin:</option>
 											{
@@ -285,10 +294,10 @@ function Product() {
 									</div>
 									<div className='my-3'>
 										<label htmlFor="" className="block text-[12px] py-2 font-bold text-gray-700 uppercase">Subkateqoriya:</label>
-										<select className="block w-full rounded-md border-gray-300 bg-gray-50 p-2 border outline-indigo-600 shadow-sm">
+										<select onClick={(e) => setSubcatId(e.target.value)} className="block w-full rounded-md border-gray-300 bg-gray-50 p-2 border outline-indigo-600 shadow-sm">
 											<option>alt kateqori seçin</option>
 											{
-												category?.filter(item => item.id == id)[0]?.subcategory?.map((item, i) => <option key={i}>{item.name}</option>)
+												category?.filter(item => item.id == catId)[0]?.subcategory?.map((item, i) => <option key={i} value={item.id} >{item.name}</option>)
 											}
 										</select>
 									</div>
@@ -310,7 +319,7 @@ function Product() {
 											className="block w-full rounded-md border-gray-300 bg-gray-50 p-2 border outline-indigo-600 shadow-sm"
 										/>
 									</div>
-									{/* <div className="my-3">
+									<div className="my-3">
 										<label htmlFor="" className="block text-[12px] py-2 font-bold text-gray-700 uppercase">Resim ekle!</label>
 										<div className="space-y-2 text-center">
 											<div
@@ -355,7 +364,7 @@ function Product() {
 											}}
 											textareaName="description"
 										/>
-									</div> */}
+									</div>
 									<div className='mb-3 border-b border-gray-400 py-3'>
 										<label htmlFor="" className="block text-[12px] py-2 font-bold text-gray-700 uppercase">Meta bilgi</label>
 										<textarea

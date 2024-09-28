@@ -49,13 +49,13 @@ function Category() {
 
   async function handleDelete() {
     setDeleteOpen(false);
-    const delCat = await deleteCategory(catId);
+     await deleteCategory(catId);
     setCategory(category.filter((item) => item.id !== catId));
   }
 
   function editCategories() {
     const obj = { name: catName, img: catImg };
-    editCategory(catId, obj).then((resp) => console.log(resp));
+    editCategory(catId, obj)
     setEditOpen(false);
   }
 

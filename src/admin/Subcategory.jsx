@@ -40,7 +40,6 @@ function Subcategory() {
 		console.log(newSubcat);
 		
 		setSubcat([...subcat, obj])
-		toast.success("Hadi yine iyisin!")
 		setAddOpen(false);
 		
     } else toast.error("subcat ve ya select sec");
@@ -53,14 +52,11 @@ function Subcategory() {
 	setEditOpen(false)
 
 	const obj = {name: subcatName}
-	
+	console.log(category);
+	console.log(obj);
 	console.log(subcatId);
-	
 	editSubcategory(subcatId,obj).then(resp => console.log(resp))
 
-	console.log(obj);
-	
-	
   }
   
   
@@ -228,7 +224,7 @@ function Subcategory() {
 		</div>
 	  </Dialog>
 
-	  {/*Add category modal */}
+	  {/*Add subcategory modal */}
 	  <Dialog open={addOpen} onClose={setAddOpen} className="relative z-10">
 		<DialogBackdrop
 		  transition
@@ -298,7 +294,7 @@ function Subcategory() {
 		</div>
 	  </Dialog>
 
-	  {/* Edit Category modal */}
+	  {/* Edit subcategory modal */}
 	  <Dialog open={editOpen} onClose={setEditOpen} className="relative z-10">
 		<DialogBackdrop
 		  transition
