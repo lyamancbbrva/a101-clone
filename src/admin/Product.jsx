@@ -463,25 +463,14 @@ function Product() {
                       </div>
                     </div>
                     <div className="flex my-2 gap-1">
-                      {
-					  editOpen
-                        ? new Array(
-                            product?.find(
-                              (item) => item.id == productId
-                            )?.imageUrl?.length
-                          )
-                            .fill(
-                              product?.find((item) => item.id == productId)
-                                ?.imageUrl
-                            )
-                            .map((item) => 
-                              <div>
-                                <img
-                                  className="w-[100px]"
-                                  src={item.map(elem => elem)}
-                        		/>
+                      {editOpen
+                        ? product
+                            ?.find((item) => item.id == productId)
+                            ?.imageUrl?.map((url) => (
+                              <div key={url}>
+                                <img className="w-[100px]" src={url} />
                               </div>
-                            )
+                            ))
                         : img.map((item, i) => (
                             <img
                               key={i}
