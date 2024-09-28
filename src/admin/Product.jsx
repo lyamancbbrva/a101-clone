@@ -66,27 +66,16 @@ function Product() {
     };
 
     const newProduct = await createProduct(obj);
+	console.log(obj);
+	
     setImg("");
     if (newProduct.status == true) {
       setProduct([...product, newProduct]);
     } else toast.error("Product yarannamadi");
 
     setAddOpen(!addOpen);
-    console.log(metaData);
   }
 
-  console.log(product);
-  new Array(product?.find((item) => item.id == productId)?.imageUrl?.length)
-    .fill(product?.find((item) => item.id == productId)?.imageUrl)
-    .map((item) => (
-      <div>
-        <img
-          className="w-[100px]"
-          src={product.find((item) => item.id == productId)?.imageUrl}
-          alt=""
-        />
-      </div>
-    ));
 
   // function editProd() {
   // 	console.log('zatna nehlet bunu cixaranin');
@@ -371,6 +360,7 @@ function Product() {
                     </label>
                     <select
                       onClick={(e) => setSubcatId(e.target.value)}
+					//   value={editOpen ? product.find(item => item.subcategoryId == subcatId )?.subcategoryId : ''}
                       className="block w-full rounded-md border-gray-300 bg-gray-50 p-2 border outline-indigo-600 shadow-sm"
                     >
                       <option>alt kateqori seçin</option>
@@ -471,7 +461,7 @@ function Product() {
                                 <img className="w-[100px]" src={url} />
                               </div>
                             ))
-                        : img.map((item, i) => (
+                        : img  && img?.map((item, i) => (
                             <img
                               key={i}
                               onClick={() => setImgSrc(item)}
