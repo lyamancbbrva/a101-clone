@@ -14,7 +14,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useDropzone } from "react-dropzone";
 import { Editor } from "@tinymce/tinymce-react";
-import configObj from "../config/config";
+import configObj from '../config/config';
 import {
   createImage,
   createProduct,
@@ -333,7 +333,7 @@ function Product() {
                       value={
                         editOpen
                           ? name ||
-                            product?.find((item) => item.id == productId)?.name
+                          product?.find((item) => item.id == productId)?.name
                           : name
                       }
                       onInput={(e) => setName(e.target.value)}
@@ -394,8 +394,8 @@ function Product() {
                       value={
                         editOpen
                           ? discount ||
-                            product?.find((item) => item.id == productId)
-                              ?.discount
+                          product?.find((item) => item.id == productId)
+                            ?.discount
                           : discount
                       }
                       onInput={(e) => setDiscount(e.target.value)}
@@ -415,7 +415,7 @@ function Product() {
                       value={
                         editOpen
                           ? price ||
-                            product.find((item) => item.id == productId).price
+                          product.find((item) => item.id == productId).price
                           : price
                       }
                       onInput={(e) => setPrice(e.target.value)}
@@ -465,42 +465,46 @@ function Product() {
                     <div className="flex my-2 gap-1">
                       {editOpen
                         ? product
-                            ?.find((item) => item.id == productId)
-                            ?.imageUrl?.map((url) => (
-                              <div key={url}>
-                                <img className="w-[100px]" src={url} />
-                              </div>
-                            ))
+                          ?.find((item) => item.id == productId)
+                          ?.imageUrl?.map((url) => (
+                            <div key={url}>
+                              <img className="w-[100px]" src={url} />
+                            </div>
+                          ))
                         : img.map((item, i) => (
-                            <img
-                              key={i}
-                              onClick={() => setImgSrc(item)}
-                              className="w-[100px] object-cover"
-                              src={item}
-                            />
-                          ))}
+                          <img
+                            key={i}
+                            onClick={() => setImgSrc(item)}
+                            className="w-[100px] object-cover"
+                            src={item}
+                          />
+                        ))}
                     </div>
                   </div>
-                  {/* <div className='my-3'>
-										<label htmlFor="" className="block text-[12px] py-2 font-bold text-gray-700 uppercase">Ürün hakkında bilgi</label>
-										<Editor
-											apiKey={apiKey}
-											onInit={(_, editor) => editorRef.current = editor}
-											initialValue={"Ürün hakkında bilgi yazınız..."}
-											init={{
-												height: 300,
-												menubar: true,
-												branding: false,
-												plugins: [
-													'advlist autolink lists link image charmap print preview anchor',
-													'searchreplace visualblocks code fullscreen',
-													'insertdatetime media table paste code help wordcount'
-												],
-												toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
-											}}
-											textareaName="description"
-										/>
-					</div> */}
+                  <div className='my-3'>
+                    <label htmlFor="" className="block text-[12px] py-2 font-bold text-gray-700 uppercase">Məhsul haqqında məlumat</label>
+                    <Editor
+                      apiKey='2wkbutnkzr2q6hnvr0v49skuhaj3aw43dzzgdn28keean5b6'
+                      init={{
+                        height: 300,
+                        menubar: true,
+                        branding: false,
+                        plugins: [
+                          'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+                          'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown',
+                        ],
+                        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                        tinycomments_mode: 'embedded',
+                        tinycomments_author: 'Author name',
+                        mergetags_list: [
+                          { value: 'First.Name', title: 'First Name' },
+                          { value: 'Email', title: 'Email' },
+                        ],
+                        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
+                      }}
+                      initialValue="Say something!"
+                    />
+                  </div>
                   <div className="mb-3 border-b border-gray-400 py-3">
                     <label
                       htmlFor=""
@@ -512,8 +516,8 @@ function Product() {
                       value={
                         editOpen
                           ? metaData ||
-                            product.find((item) => item.id == productId)
-                              ?.metadata
+                          product.find((item) => item.id == productId)
+                            ?.metadata
                           : metaData
                       }
                       onInput={(e) => setMetaData(e.target.value)}
