@@ -57,16 +57,13 @@ export default function CategorySlider() {
                 className="mySwiper catSlider"
             >
                 {
-                    category && category.map(item => <SwiperSlide>
-                        <div className='text-center sm:w-20'>
+                    category && category.map((item, i) => <SwiperSlide key={i}>
+                        <div  className='text-center sm:w-20'>
                             <img src={item.img[0]} className='rounded-xl h-[100px] object-cover ' alt="" />
                             <p className='text-[.8em] font-medium py-2'>{item.name}</p>
                         </div>
                     </SwiperSlide> )
-                }
-                
-               
-                
+                }         
             </Swiper>
         </div>
     );

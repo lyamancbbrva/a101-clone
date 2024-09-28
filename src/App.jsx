@@ -45,17 +45,17 @@ function App() {
 	<>
 	  <Toaster position="top-center" reverseOrder={false} />
 	  <Routes>
-		{auth ? (
-		  <Route path="/admin" element={<AdminLayout />}>
-			<Route path="/admin" element={<Home />} />
-			<Route path="kateqori" element={<Category />} />
-			<Route path="altkateqori" element={<Subcategory />} />
-			<Route path="urun" element={<Product />} />
-			<Route path="slayt" element={<Slider />} />
-		  </Route>
-		) : (
+		{auth == 401 || auth == false ?  (
 		  <Route path="/admin" element={<Login />} />
-		)}
+		)  : (
+			<Route path="/admin" element={<AdminLayout />}>
+			  <Route path="/admin" element={<Home />} />
+			  <Route path="kateqori" element={<Category />} />
+			  <Route path="altkateqori" element={<Subcategory />} />
+			  <Route path="urun" element={<Product />} />
+			  <Route path="slayt" element={<Slider />} />
+			</Route>
+		  )}
 		<Route path="/" element={<Layout items={items} setItems={setItems} />}>
 		  <Route path="/" element={<Main />} />
 		  <Route path="/sepet" element={<Basket items={items} />} />

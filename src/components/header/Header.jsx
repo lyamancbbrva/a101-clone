@@ -200,13 +200,13 @@ function Header({items}) {
                 <div className='height-full border-b border-t'>
                 <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
                     {
-                        category && category.map(item =><li className='border-r px-4  xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
+                        category && category.map((item, i) =><li key={i} className='border-r px-4  xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
                             <Link to={'/kateqoriler'}>{item.name}</Link>
                             <div className='mega-menu bg-white hidden absolute gap-1 top-[100%] w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
                                 <div className=' scroll overflow-y-scroll  min-w-[380px]'>                        
                                     <ul className='p-4'>
                                       {
-                                        item.subcategory?.map(elem => <Link to={'/kateqoriler'}><li className=' flex justify-between p-1 font-[600] capitalize'>{elem.name} <IoChevronForward /></li></Link> )
+                                        item.subcategory?.map((elem, i) => <Link key={i} to={'/kateqoriler'}><li className=' flex justify-between p-1 font-[600] capitalize'>{elem.name} <IoChevronForward /></li></Link> )
                                       }
                                         
                                     </ul>
@@ -377,22 +377,22 @@ function Header({items}) {
                         </div>
                     <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
                         {
-                            category && category.map(item => 
+                            category && category.map((item, i) => 
 
-                                <li className='border-r px-4  lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
+                                <li key={i} className='border-r px-4  lg:font-semibold text-[.675rem] cursor-pointer py-2 lg:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
                             {item.name}
                             <div className='mega-menu bg-white  absolute gap-1 top-[100%] w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
                                 <div className=' scroll overflow-y-scroll  min-w-[380px]'>
                                     <ul className='p-4'>
                                     {
-                                        item.subcategory?.map(elem =>  <Link to={''}><li className=' flex justify-between p-1 font-[600] capitalize'>{elem.name} <IoChevronForward /></li></Link>)
+                                        item.subcategory?.map((elem, j) =>  <Link key={j} to={''}><li className=' flex justify-between p-1 font-[600] capitalize'>{elem.name} <IoChevronForward /></li></Link>)
                                     }
                                     </ul>
                                 </div>
                                 <div className='scroll overflow-y-scroll min-w-[350px]'>
                                     <ul className=' p-3'>
                                         {
-                                            item.subcategory?.map(elem =>  <Link to={''}><li className=' flex justify-between p-1 font-[600] capitalize'>{elem.name} <IoChevronForward /></li></Link>)
+                                            item.subcategory?.map((elem,i) =>  <Link key={i} to={''}><li className=' flex justify-between p-1 font-[600] capitalize'>{elem.name} <IoChevronForward /></li></Link>)
                                         }
                                     </ul>
                                 </div>
