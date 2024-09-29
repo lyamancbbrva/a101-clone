@@ -15,6 +15,7 @@ import { useDropzone } from "react-dropzone";
 import { createSlider, getCategories } from "../api/api";
 
 function Slider() {
+  
   const formdata = new FormData();
 
   const [addOpen, setAddOpen] = useState(false);

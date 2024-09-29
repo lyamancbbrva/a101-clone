@@ -18,6 +18,7 @@ import configObj from '../config/config';
 import {
   createImage,
   createProduct,
+  deleteImage,
   deleteProduct,
   editProduct,
   getCategories,
@@ -26,12 +27,19 @@ import {
 import toast from "react-hot-toast";
 
 function Product() {
+
   const formdata = new FormData();
   const apiKey = configObj.editorKey;
+
   const editorRef = useRef(null);
+
   const [addOpen, setAddOpen] = useState(false);
+  const [imgDelOpen, setImgDelOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
+  const [topSelling, setTopSelling] = useState(false);
+  const [stok, setStok] = useState(false);
+  const [cheap, setCheap] = useState(false);
   const [category, setCategory] = useState([]);
   const [product, setProduct] = useState([]);
   const [catId, setCatId] = useState(0);
@@ -43,6 +51,15 @@ function Product() {
   const [metaData, setMetaData] = useState("");
   const [discount, setDiscount] = useState(0);
   const [price, setPrice] = useState(0);
+  const [content, setContent] = useState('');
+
+  const handleEditorChange = (newContent) => {
+    const elem = document.createElement('div')
+    elem.innerHTML = newContent
+    const text = newContent.textContent || elem.innerText || ''    
+    setContent(text);
+
+  };
 
   useEffect(() => {
     getCategories().then((resp) => setCategory(resp));
@@ -52,32 +69,42 @@ function Product() {
   async function addProduct() {
     const obj = {
       name: name,
-      isTopSelling: true,
-      isStok: true,
-      isCheaps: true,
+      isTopSelling: topSelling,
+      isStok: stok,
+      isCheaps: cheap,
       price: price,
       discount: discount,
       imageUrl: img,
       sizes: ["salam", "necesen"],
       categoryId: catId,
       subcategoryId: subcatId,
-      description: "zaysu",
+      description: content,
       metadata: metaData,
     };
-
-    const newProduct = await createProduct(obj);
-	console.log(obj);
-	
+    console.log(obj);
+    
+    
+    
+    const newProduct = await createProduct(obj);    
     setImg("");
+    
     if (newProduct.status == true) {
-      setProduct([...product, newProduct]);
+        if (newProduct.status == true) 
+            setProduct([...product, newProduct]);
     } else toast.error("Product yarannamadi");
-
+    
     setAddOpen(!addOpen);
+}  
+
+  function deleteImg() {
+    const url = imgSrc.split('/').at(-1)
+    deleteImage(url).then(res => console.log(res))
+    
+    
   }
 
-
   // function editProd() {
+  // 	console.log('zatna nehlet bunu cixaranin');
   // 	console.log('zatna nehlet bunu cixaranin');
   // 	setAddOpen(!addOpen)
   // 	// editProduct(obj)
@@ -88,12 +115,13 @@ function Product() {
     setProduct(product.filter((item) => item.id !== productId));
     toast.success("Ürünü sildün!");
   }
+  
 
   const onDrop = async (acceptedFiles) => {
     formdata.append("img", acceptedFiles[0]);
     const newImg = await createImage(formdata);
     setImg([...img, newImg.img_url]);
-    console.log(imgSrc);
+  
   };
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop, maxFiles: 5 });
@@ -195,6 +223,7 @@ function Product() {
                           />
                           <FaRegTrashAlt
                             onClick={() => {
+                                setImgDelOpen(false)
                               setDeleteOpen(true);
                               setProductId(item.id);
                             }}
@@ -246,7 +275,7 @@ function Product() {
                       as="h3"
                       className="text-base font-semibold leading-6 text-gray-900"
                     >
-                      Ürünü silmek istediğine emin misin ?
+                    {imgDelOpen? 'Resimi Silmek Istedigine eminmisin?' : 'Ürünü silmek istediğine emin misin ?'}  
                     </DialogTitle>
                   </div>
                 </div>
@@ -256,7 +285,7 @@ function Product() {
                   type="button"
                   onClick={() => {
                     setDeleteOpen(false);
-                    handleDelete();
+                    imgDelOpen ? deleteImg() : handleDelete();
                   }}
                   className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                 >
@@ -360,7 +389,7 @@ function Product() {
                     </label>
                     <select
                       onClick={(e) => setSubcatId(e.target.value)}
-					//   value={editOpen ? product.find(item => item.subcategoryId == subcatId )?.subcategoryId : ''}
+                    //   value={editOpen ? product.find(item => item.subcategoryId == subcatId )?.subcategoryId : ''}
                       className="block w-full rounded-md border-gray-300 bg-gray-50 p-2 border outline-indigo-600 shadow-sm"
                     >
                       <option>alt kateqori seçin</option>
@@ -401,6 +430,11 @@ function Product() {
                     >
                       Ürün fiyatı:
                     </label>
+                    <div>
+                        <label className="block" htmlFor=""><input onClick={(e)=> setTopSelling(e.target.checked)} className="inline-block mr-2" type="checkbox" name="" id="" />isTopSelling</label>
+                        <label className="block" htmlFor=""><input onClick={(e)=> setStok(e.target.checked)} className="inline-block mr-2" type="checkbox" name="" id="" />isStok</label>
+                        <label className="block" htmlFor=""><input onClick={(e)=> setCheap(e.target.checked)} className="inline-block mr-2" type="checkbox" name="" id="" />isCheaps</label>
+                    </div>
                     <input
                       value={
                         editOpen
@@ -455,10 +489,10 @@ function Product() {
                     <div className="flex my-2 gap-1">
                       {editOpen
                         ? product
-<<<<<<< HEAD
+
                             ?.find((item) => item.id == productId)
                             ?.imageUrl?.map((url) => (
-                              <div key={url}>
+                              <div key={url} className="cursor-pointer" onClick={() =>{setDeleteOpen(true); setImgSrc(url); setImgDelOpen(true)}}>
                                 <img className="w-[100px]" src={url} />
                               </div>
                             ))
@@ -470,28 +504,14 @@ function Product() {
                               src={item}
                             />
                           ))}
-=======
-                          ?.find((item) => item.id == productId)
-                          ?.imageUrl?.map((url) => (
-                            <div key={url}>
-                              <img className="w-[100px]" src={url} />
-                            </div>
-                          ))
-                        : img.map((item, i) => (
-                          <img
-                            key={i}
-                            onClick={() => setImgSrc(item)}
-                            className="w-[100px] object-cover"
-                            src={item}
-                          />
-                        ))}
->>>>>>> ae7d9ccfb172b8d5c022d71d49bb3f5bebf90808
                     </div>
                   </div>
                   <div className='my-3'>
                     <label htmlFor="" className="block text-[12px] py-2 font-bold text-gray-700 uppercase">Məhsul haqqında məlumat</label>
                     <Editor
-                      apiKey='2wkbutnkzr2q6hnvr0v49skuhaj3aw43dzzgdn28keean5b6'
+                      apiKey={configObj.editorKey}
+                      onEditorChange={handleEditorChange}
+                      value={content}
                       init={{
                         height: 300,
                         menubar: true,
@@ -546,6 +566,9 @@ function Product() {
           </div>
         </Dialog>
       </Transition.Root>
+
+
+     
     </>
   );
 }
