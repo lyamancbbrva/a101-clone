@@ -5,6 +5,7 @@ import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { useEffect, useState } from 'react';
 import { getCategories } from '../../api/api';
+import { Link } from 'react-router-dom';
 
 export default function CategorySlider() {
 
@@ -58,10 +59,10 @@ export default function CategorySlider() {
             >
                 {
                     category && category.map((item, i) => <SwiperSlide key={i}>
-                        <div  className='text-center sm:w-20'>
-                            <img src={item.img[0]} className='rounded-xl h-[100px] object-cover ' alt="" />
+                        <Link to={'/kateqoriler'} className='text-center block sm:w-24'>
+                            <img src={item.img[0]} className='rounded-xl h-[90px] object-cover ' alt="" />
                             <p className='text-[.8em] font-medium py-2'>{item.name}</p>
-                        </div>
+                        </Link>
                     </SwiperSlide> )
                 }         
             </Swiper>

@@ -3,16 +3,21 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Mousewheel } from 'swiper/modules';
 import Cart from './Cart';
-
+import { useEffect, useState } from 'react';
+import { getProducts } from '../../api/api';
 
 function Highlights() {
-  
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        getProducts().then(res => setData(res))
+    }, [])
+
     return (
-        
         <div className='sm:p-3 md:px-0 py-3'>
             <h5 className='pb-3 font-medium text-base'>Öne Çıkanlar</h5>
             <Swiper
-                  breakpoints={{
+                breakpoints={{
                     300: {
                         slidesPerView: 2,
                         spaceBetween: 10,
@@ -40,15 +45,13 @@ function Highlights() {
                     }
                 }
                 direction="horizontal"
-                modules={[Navigation,  Mousewheel]}
+                modules={[Navigation, Mousewheel]}
                 className='mySwiper mainSlider'
             >
-
                 {
-                    new Array(10).fill(null).map((_,item) => <SwiperSlide key={item}  ><Cart/></SwiperSlide>)
+                    data.length == 0 ? <div class="loader m-auto py-2"></div> :
+                    data.map((item) => <SwiperSlide key={item.id}><Cart item={item} /></SwiperSlide>)
                 }
-                
-         
             </Swiper>
         </div>
     );

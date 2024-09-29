@@ -37,7 +37,7 @@ function App() {
 			})
 		} else setAuth(false);
 	}
-  }, []);
+  }, [pathname]);
 
   const [items, setItems] = useState([]);
 
@@ -60,7 +60,7 @@ function App() {
 		  <Route path="/" element={<Main />} />
 		  <Route path="/sepet" element={<Basket items={items} />} />
 		  <Route path="/kampanyalar" element={<Campaigns />} />
-		  <Route path="/cardInfo" element={<CardInfo />} />
+		  <Route path="/product/:id" element={<CardInfo />} />
 		  <Route path="/kateqoriler" element={<Categories />} />
 		</Route>
 		<Route>
