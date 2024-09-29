@@ -5,21 +5,35 @@
 @font-face {
     font-family: 'CustomFont' !important;
     src: url('/src/assets/font/TT-Fors-Trial-Regular.woff2') format('woff2'),
-    url('/src/assets/font/TT-Fors-Trial-Regular.woff') format('woff'),
-    url('/src/assets/font/TT-Fors-Trial-Regular.ttf') format('truetype');
+        url('/src/assets/font/TT-Fors-Trial-Regular.woff') format('woff'),
+        url('/src/assets/font/TT-Fors-Trial-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-  }
+}
 
-   #nav-icon4 {
+.loader {
+    width: 60px;
+    aspect-ratio: 4;
+    background: radial-gradient(circle closest-side, #00BAD3 90%, #0000) 0/calc(100%/3) 100% space;
+    clip-path: inset(0 100% 0 0);
+    animation: l1 1s steps(4) infinite;
+}
+
+@keyframes l1 {
+    to {
+        clip-path: inset(0 -34% 0 0)
+    }
+}
+
+#nav-icon4 {
     width: 20px;
     height: 25px;
     position: relative;
     transition: .5s ease-in-out;
     cursor: pointer;
-  }
-  
-  #nav-icon4 span {
+}
+
+#nav-icon4 span {
     display: block;
     position: absolute;
     height: 2px;
@@ -29,85 +43,98 @@
     opacity: 1;
     left: 0;
     transition: .25s ease-in-out;
-  }
+}
 
-  
-  #nav-icon4 span:nth-child(1) {
+
+#nav-icon4 span:nth-child(1) {
     top: 0px;
     transform-origin: left center;
-  }
-  
-  #nav-icon4 span:nth-child(2) {
+}
+
+#nav-icon4 span:nth-child(2) {
     top: 10px;
     transform-origin: left center;
-  }
-  
-  #nav-icon4 span:nth-child(3) {
+}
+
+#nav-icon4 span:nth-child(3) {
     top: 20px;
     transform-origin: left center;
-  }
-  
-  #nav-icon4.open span:nth-child(1) {
+}
+
+#nav-icon4.open span:nth-child(1) {
     transform: rotate(45deg);
     top: -3px;
     left: 8px;
-  }
-  
-  #nav-icon4.open span:nth-child(2) {
+}
+
+#nav-icon4.open span:nth-child(2) {
     width: 0%;
     opacity: 0;
-  }
-  
-  #nav-icon4.open span:nth-child(3) {
+}
+
+#nav-icon4.open span:nth-child(3) {
     transform: rotate(-45deg);
     left: 8px;
-  }
-  .admin-sidebar, .admin-logo{
+}
+
+.admin-sidebar,
+.admin-logo {
     transition: .5s;
-  }
-  .admin-sidebar:hover .admin-logo{
+}
+
+.admin-sidebar:hover .admin-logo {
     max-width: 120px;
     margin-left: -20px;
-  }
-  .scroll::-webkit-scrollbar {
-    width: 5px; /* Scroll genişliyi */
-  }
-  
-  .scroll::-webkit-scrollbar-track {
-    background: #f0f0f0; /* Arxa fon */
-  }
-  
-  .scroll::-webkit-scrollbar-thumb {
-    background-color: #190303; /* Tutacaq rəngi */
-    border-radius: 5px; /* Dairəvi kənarlar */
-  }
+}
 
-  body {
-    font-family: 'CustomFont', sans-serif ;
-  }
-.hover-menu:hover{
+.scroll::-webkit-scrollbar {
+    width: 5px;
+    /* Scroll genişliyi */
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    /* Arxa fon */
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background-color: #190303;
+    /* Tutacaq rəngi */
+    border-radius: 5px;
+    /* Dairəvi kənarlar */
+}
+
+body {
+    font-family: 'CustomFont', sans-serif;
+}
+
+.hover-menu:hover {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
 
-.hover-menu:hover .mega-menu{
+.hover-menu:hover .mega-menu {
     display: flex;
 }
-.hover-menu:hover header{
+
+.hover-menu:hover header {
     height: 60vh;
 }
-.mobileCatSlider .swiper-pagination-bullet-active{
+
+.mobileCatSlider .swiper-pagination-bullet-active {
     background-color: #00BAD3 !important;
     width: 15px !important;
     border-radius: 7px !important;
     height: 3px;
     opacity: 1 !important;
 }
-.active-nav{
+
+.active-nav {
     background: #00BAD3;
     color: white;
 }
-.mobileCatSlider .swiper-pagination-bullet{
+
+.mobileCatSlider .swiper-pagination-bullet {
     background-color: #00BAD3 !important;
     opacity: .5;
     height: 3px;
@@ -115,18 +142,25 @@
     width: 3px;
     margin: 0 1px !important;
 }
-.mobileCatSlider .swiper-pagination{
+
+.mobileCatSlider .swiper-pagination {
     text-align: start;
 }
-.mobileCatSlider .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
+
+.mobileCatSlider .swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
     left: 5%;
     bottom: 7%;
 }
-.mega-menu{
+
+.mega-menu {
     border-bottom-left-radius: 20px;
-    border-bottom-right-radius:20px;
+    border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
 }
+
 .search {
     caret-color: #00BAD3;
 }
@@ -166,28 +200,35 @@
 .mainSlider .swiper-button-prev {
     margin-left: -23px;
 }
-.marks .swiper-button-next, .marks .swiper-button-prev{
+
+.marks .swiper-button-next,
+.marks .swiper-button-prev {
     color: #000 !important;
 
 }
-.marks .swiper-button-next:after, .marks .swiper-button-prev:after{
+
+.marks .swiper-button-next:after,
+.marks .swiper-button-prev:after {
     font-size: 1em !important;
     font-weight: 600 !important;
 
 }
-.marks .swiper-button-next{
+
+.marks .swiper-button-next {
     right: 0 !important;
     box-shadow: -20px 0 13px 30px #f3f6faae;
     background: #f3f6fac7;
     z-index: 999;
 
 }
-.marks .swiper-button-prev{
+
+.marks .swiper-button-prev {
     left: 0 !important;
     box-shadow: 20px 0 13px 30px #f3f6faae;
     background: #f3f6fac7;
     z-index: 999;
 }
+
 .catSlider .swiper-button-prev {
     box-shadow: -10px 0 40px 30px #f3f6faf6;
     background: #f3f6fae3;
@@ -195,6 +236,7 @@
     left: 5px;
     transform: translateY(-50%);
 }
+
 .catSlider .swiper-button-next {
     box-shadow: 10px 0 40px 30px #f3f6fa;
     background: #f3f6fab0;
@@ -223,22 +265,26 @@
         max-width: 750px;
         margin: auto;
     }
-    .ucuz-fiyatlar{
+
+    .ucuz-fiyatlar {
         background: url('./assets/img/mobil-web.jpg') center/cover no-repeat;
         height: 100vh;
     }
 }
+
 @media only screen and (min-width: 1024px) {
     .wrapper {
         max-width: 980px;
         margin: auto;
     }
-    .ucuz-fiyatlar{
+
+    .ucuz-fiyatlar {
         background: url('./assets/img/desktop.jpg') center/cover no-repeat;
         height: 50vh;
     }
-    
+
 }
+
 @media only screen and (min-width: 1280px) {
     .wrapper {
         max-width: 1210px;
