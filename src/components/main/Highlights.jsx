@@ -30,6 +30,11 @@ function Highlights() {
                         slidesPerView: 2,
                         spaceBetween: 10,
                     },
+                    1024:{
+                        slidesPerView: 6,
+                        spaceBetween: 7,
+                    },
+
                     1280: {
                         slidesPerView: 7,
                         spaceBetween: 7,
@@ -49,7 +54,7 @@ function Highlights() {
                 className='mySwiper mainSlider'
             >
                 {
-                    data.length == 0 ? <div class="loader m-auto py-2"></div> :
+                    data.length == 0 ? <div className="loader m-auto py-2"></div> :
                     data.map((item) => <SwiperSlide key={item.id}><Cart item={item} /></SwiperSlide>)
                 }
             </Swiper>

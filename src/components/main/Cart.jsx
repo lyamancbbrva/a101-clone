@@ -13,6 +13,7 @@ export default function Cart({item}) {
         setSepet([...sepet, item])
         console.log(sepet);
     }
+    
 
     return (
         <>
@@ -23,7 +24,7 @@ export default function Cart({item}) {
                         setModal(true)
                     }}
                     className="text-2xl absolute right-3 top-5" />
-                <img src={item?.img} alt={item?.name} className="object-cover h-[20vh] mt-4 object-center w-full rounded-md dark:bg-gray-500" />
+                <img src={item?.imageUrl[0]} alt={item?.name} className="object-cover h-[40vh] lg:h-[25vh] xl:h-[20vh] mt-4 object-center w-full rounded-md dark:bg-gray-500" />
                 <div className="mt-2.5 mb-2">
                     <h2 className="text-[.8em] h-10 capitalize tracking-wide">{item?.name}</h2>
                 </div>

@@ -4,17 +4,16 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { useEffect, useState } from 'react';
-import { getCategories } from '../../api/api';
+import { getCategories, getSlider } from '../../api/api';
 import { Link } from 'react-router-dom';
 
 export default function CategorySlider() {
 
-    const [category, setCategory] = useState([])
+    const [slider, setSlider] = useState([])
 
     useEffect(() => {
-        getCategories().then(res => setCategory(res))
+        getSlider().then(res => setSlider(res))
     }, [])
-    console.log(category);
     
 
     return (
@@ -58,10 +57,10 @@ export default function CategorySlider() {
                 className="mySwiper catSlider"
             >
                 {
-                    category && category.map((item, i) => <SwiperSlide key={i}>
-                        <Link to={'/kateqoriler'} className='text-center block sm:w-24'>
-                            <img src={item.img[0]} className='rounded-xl h-[90px] object-cover ' alt="" />
-                            <p className='text-[.8em] font-medium py-2'>{item.name}</p>
+                    slider && slider.map((item, i) => <SwiperSlide key={i}>
+                        <Link to={item.slug} className='text-center block sm:w-24'>
+                            <img src={item.img} className='rounded-xl h-[90px] object-cover ' alt={item.slug.split('/'.at(0))} />
+                            <p className='text-[.8em] font-medium py-2'>{item.slug.split('/').at(0)}</p>
                         </Link>
                     </SwiperSlide> )
                 }         
