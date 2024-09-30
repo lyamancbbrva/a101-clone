@@ -80,7 +80,7 @@ function Nav() {
 				  <Link
 					to={item.link}
 					key={i}
-					className="flex gap-3 border-b-[#54e4f7] items-center text-white py-4 pl-6"
+					className="flex gap-3 text-nowrap border-b-[#54e4f7] items-center text-white py-4 pl-6"
 				  >
 					<item.icon
 					  className="text-white mr-3 flex-shrink-0 h-6 w-6"
@@ -91,11 +91,11 @@ function Nav() {
 				))}
 			</div>
 			<div>
-			  <Link to={'/register'} className="cursor-pointer pt-2 pl-6 flex gap-3 text-white">
+			  <Link to={'/register'} className="cursor-pointer text-nowrap pt-2 pl-6 flex gap-3 text-white">
 				<RiUserAddLine className="flex-shrink-0 text-[1.4em] w-6 mr-3 " />
 				Yeni admin ekle
 			  </Link>
-			  <div onClick={logOut} className="cursor-pointer pt-2 pl-6 flex gap-3 text-white">
+			  <div onClick={logOut} className="cursor-pointer text-nowrap pt-2 pl-6 flex gap-3 text-white">
 				<TbLogout className="flex-shrink-0 text-[1.4em] w-6 mr-3 " />
 				Çıkış yap
 			  </div>

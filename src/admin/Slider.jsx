@@ -12,37 +12,57 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { useDropzone } from "react-dropzone";
-import { createSlider, getCategories } from "../api/api";
+import { createImage, createSlider, deleteSlider, getCategories, getSlider } from "../api/api";
+import toast from "react-hot-toast";
 
 function Slider() {
-  
   const formdata = new FormData();
 
+  const initialObj = {
+  img: "",
+  categoryId: 0,
+  subcategoryId: 0
+  }
   const [addOpen, setAddOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
-  const [slider, setSlider] = useState([]);
+  const [slider, setSlider] = useState(initialObj)
   const [category, setCategory] = useState([]);
-  const [catId, setCatId] = useState();
-  const [subcatId, setSubcatId] = useState();
+  const [allSliders, setAllSliders] = useState([]);
+  const [id, setId] = useState(0);
 
   useEffect(() => {
     getCategories().then((resp) => setCategory(resp));
+    getSlider().then(resp => setAllSliders(resp))
   }, []);
+  
 
-  function addSlider(newSlide) {
-	const obj = {img : formdata, categoryId: catId, subcategoryId: subcatId}
-	createSlider(obj).then(res => console.log(res))
+  function addSlider() {
+    
+    createSlider(slider).then((res) => setAllSliders([...allSliders, res]));
     setAddOpen(false);
+    setSlider(initialObj)
+  }
+
+  function delSlider() {
+
+    deleteSlider(id)
+    setAllSliders(allSliders.filter(item => item.id !== id))
+    setDeleteOpen(false)
+    
   }
 
   const onDrop = async (acceptedFiles) => {
+
+
     formdata.append("img", acceptedFiles[0]);
-    
+    const newSlide = await createImage(formdata);
+    setSlider({...slider, img: newSlide.img_url})
+
   };
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    maxFiles: 5,
+    maxFiles: 1,
   });
 
   return (
@@ -77,6 +97,13 @@ function Slider() {
                 <th
                   scope="col"
                   colSpan={1}
+                  className="text-[1.6em] p-5 text-white "
+                >
+                  Kateqori ismi
+                </th>
+                <th
+                  scope="col"
+                  colSpan={1}
                   className="text-[1.6em] text-center p-5 text-white "
                 >
                   Sil ve ya düzenle
@@ -84,13 +111,33 @@ function Slider() {
               </tr>
             </thead>
             <tbody className="text-black text-[1.2em]">
-              <tr className=" border">
+              {
+                allSliders.length > 0 ? allSliders.map((item, i) => <tr key={i} className=" border">
+                    <td scope="row" className="px-6 py-4 font-medium">
+                      <img
+                        className="w-[50px] h-[50px] rounded-full object-cover "
+                        src={item.img}
+                        alt=""
+                      />
+                    </td>
+                    <td scope="row" className="px-6 py-4 font-medium">
+                      {category.find(elem => elem.id == item.categoryId).name}
+                    </td>
+                    <td
+                      scope="row"
+                      className="px-6 flex gap-2 justify-center items-center py-4 font-medium"
+                    >
+                      <FaRegTrashAlt
+                        className="cursor-pointer"
+                        onClick={() => {setDeleteOpen(true); setId(item.id)}}
+                      />
+                    </td>
+                  </tr>
+                  )
+                  :
+                  <tr className=" border">
                 <td scope="row" className="px-6 py-4 font-medium">
-                  <img
-                    className="w-[100px] h-[100px] rounded-[5px] object-cover "
-                    src="https://avatars.githubusercontent.com/u/117363665?v=4"
-                    alt=""
-                  />
+                 Slider yok
                 </td>
                 <td
                   scope="row"
@@ -102,6 +149,7 @@ function Slider() {
                   />
                 </td>
               </tr>
+              }
             </tbody>
           </table>
         </div>
@@ -146,7 +194,7 @@ function Slider() {
               <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                 <button
                   type="button"
-                  onClick={() => setDeleteOpen(false)}
+                  onClick={() =>delSlider()}
                   className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                 >
                   Evet
@@ -203,7 +251,7 @@ function Slider() {
                   </div>
                   <div>
                     <select
-                      onChange={(e) => setCatId(e.target.value)}
+                      onChange={(e) => setSlider({...slider, categoryId: e.target.value})}
                       className="w-full outline-none text-[1em] border rounded-[5px] inline-block py-3 px-4 mt-7 mb-2 "
                     >
                       <option defaultValue>Kateqori seç</option>
@@ -215,14 +263,16 @@ function Slider() {
                         ))}
                     </select>
                     <select
-                      onChange={(e) => setSubcatId(e.target.value)}
+                      onChange={(e) => setSlider({...slider, subcategoryId: e.target.value})}
                       className="w-full outline-none text-[1em] border rounded-[5px] inline-block py-3 px-4 mt-7 mb-2 "
                     >
-                      <option >Kateqori seç</option>
-                      {
-						category && category.find(item => item.id == catId)?.subcategory?.map((elem, i) => <option key={i}>{elem.name}</option>)
-						
-					  }
+                      <option>Kateqori seç</option>
+                      {category &&
+                        category
+                          .find((item) => item.id == slider.categoryId)
+                          ?.subcategory?.map((elem, i) => (
+                            <option value={elem.id} key={i}>{elem.name}</option>
+                          ))}
                     </select>
                   </div>
                   <div className="my-3">
@@ -258,13 +308,22 @@ function Slider() {
                           </div>
                           <p className="text-xs leading-5 text-gray-600">
                             PNG, JPG, GIF up to 10MB <br />
-                            maksimum 5 tane
+                            maksimum 1 tane
                           </p>
                         </div>
                       </div>
                     </div>
                     <div className="flex my-2 gap-1">
-                      {/* {img?.map(item => <img onClick={() => { setImgSrc(item); setDelModal(true) }} className="w-[100px] object-cover" src={item} />)} */}
+                      { 
+                        <img
+                        //   onClick={() => {
+                        //     setImgSrc(item);
+                        //     setDelModal(true);
+                        //   }}
+                          className="w-[100px] object-cover"
+                          src={slider.img}
+                        />
+                      }
                     </div>
                   </div>
 

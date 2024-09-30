@@ -166,9 +166,9 @@ async function deleteImage(filename) {
     return error;
   }
 }
-async function createSlider(formData) {
+async function createSlider(obj) {
   try {
-    const res = await axiosInstance.post(`/slider`,formData, {headers: {"content-Type" : 'multipart/formdata'}});
+    const res = await axiosInstance.post(`/slider`, obj);
     return res.data;
   } catch (error) {
     return error;
