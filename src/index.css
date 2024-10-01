@@ -89,19 +89,15 @@
 
 .scroll::-webkit-scrollbar {
     width: 5px;
-    /* Scroll genişliyi */
 }
 
 .scroll::-webkit-scrollbar-track {
     background: #f0f0f0;
-    /* Arxa fon */
 }
 
 .scroll::-webkit-scrollbar-thumb {
-    background-color: #190303;
-    /* Tutacaq rəngi */
+    background-color: #1903034f;
     border-radius: 5px;
-    /* Dairəvi kənarlar */
 }
 
 body {

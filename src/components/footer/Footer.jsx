@@ -7,6 +7,9 @@ import linkedin from "../../assets/img/linkedin.webp";
 import applemarket from "../../assets/img/apple-market-logo.png";
 import androidmarket from "../../assets/img/android-market-logo.png";
 import { Link } from "react-router-dom";
+import qrcode from "../../assets/img/a101_qr_icon.jpeg";
+import trgo from "../../assets/img/tr_go.jpeg";
+import etbis from "../../assets/img/etbis.jpeg";
 
 function Footer() {
 
@@ -313,7 +316,7 @@ function Footer() {
             </div>
             <div className="border-b">
                 <div className="hidden md:block wrapper">
-                    <div className="flex items-start justify-between my-2">
+                    <div className="flex items-start justify-between my-2 mt-8">
                     <ul>
                             <li className="text-[1em] text-[#00BAD3] py-1 inline-flex items-center justify-between gap-x-3 w-full  text-start rounded-lg ">Site Haritası</li>
                             <Link><li className="text-[.875rem] py-1 leading-[1.25rem]">Ana Sayfa Kampanyalar</li></Link>
@@ -428,9 +431,9 @@ function Footer() {
                           />
                       </div>
                       <div className="md:flex gap-2 hidden">
-                        <img className="w-[100px] object-contain " src="./src/assets/img/a101_qr_icon.jpeg" alt="a101 qr" />
-                        <img className="w-[100px] object-contain " src="./src/assets/img/tr_go.jpeg" alt="tr go" />
-                        <img className="w-[75px] object-contain " src="./src/assets/img/etbis.jpeg" alt="etbis" />
+                        <img className="w-[90px] object-contain " src={qrcode} alt="a101 qr" />
+                        <img className="w-[80px] object-contain " src={trgo} alt="tr go" />
+                        <img className="w-[70px] object-contain " src={etbis} alt="etbis" />
                       </div>
                 </div>
               </div>

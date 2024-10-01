@@ -1,12 +1,11 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 
-function Layout({ items, setItems }) {
+function Layout() {
   return (
     <>
-      <Header  items={items} setItems={setItems} />
+      <Header />
       <main className="min-h-[45vh]">
         <Outlet />
       </main>

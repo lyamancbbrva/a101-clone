@@ -25,18 +25,18 @@ function CardInfo() {
                 <div className="wrapper">
                     <div className="py-5 px-3 flex gap-2">
                         <Link className="text-sm inline-flex items-center gap-1" to={'/'}>Ana Sayfa <IoIosArrowForward className="text-gray-400 " /></Link>
-                        <p className="text-sm inline-flex items-center gap-1"> Katagory <IoIosArrowForward className="text-gray-400 " /></p>
-                        <p className="text-sm inline-flex items-center gap-1"> Subkatagory <IoIosArrowForward className="text-gray-400 " /></p>
-                        <p className="text-sm"> {item?.name}</p>
+                        <p className="text-sm capitalize"> {item?.name}</p>
                     </div>
                     <div className="flex gap-8 lg:gap-[1vw] lg:flex-row flex-col px-3 pb-5">
-                        <img src={item?.img} className="w-[100vw] lg:w-[38vw] rounded-3xl" alt="" />
-                        <div className="bg-white h-fit rounded-3xl p-5">
+                        <img src={item?.imageUrl} className="w-[100vw] lg:w-[38vw] rounded-3xl" alt="" />
+                        <div className="bg-white h-fit rounded-3xl p-5  sm:min-w-[500px]">
                             <img className="md:h-[50%] pb-3" src={aldin_extra} alt="aldin-aldin" />
-                            <div className="flex gap-2 items-center">
-                                <h1 className="text-2xl">{item?.name}</h1>
-                                <GoHeart onClick={() => setLikeModal(true)} className="border lg:inline hidden w-12 h-12 rounded-full p-3 cursor-pointer" />
-                                <GoShareAndroid className="border lg:inline hidden w-12 h-12 rounded-full p-3 cursor-pointer" />
+                            <div className="flex gap-2 items-center justify-between">
+                                <h1 className="text-2xl capitalize py-2">{item?.name}</h1>
+                                <div>
+                                    <GoHeart onClick={() => setLikeModal(true)} className="border lg:inline hidden w-12 h-12 rounded-full p-3 cursor-pointer" />
+                                    <GoShareAndroid className="border lg:inline hidden w-12 h-12 ml-3 rounded-full p-3 cursor-pointer" />
+                                </div>
                             </div>
                             <p className="text-sm">Ürün Kodu: <span className="font-semibold">24004920</span></p>
                             <p className="text-red-600 text-2xl py-5">₺{item?.price}</p>
@@ -57,10 +57,6 @@ function CardInfo() {
                     </div>
                 </div>
             </section>
-
-            <div className="urunOzellikleri">
-
-            </div>
 
             {/* like modal */}
             <Transition.Root show={likeModal} as={Fragment}>

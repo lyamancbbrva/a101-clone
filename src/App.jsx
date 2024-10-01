@@ -22,55 +22,53 @@ import { Cookies } from "react-cookie";
 const cook = new Cookies();
 
 function App() {
-  const [auth, setAuth] = useState(false);
-  const { pathname } = useLocation();
+	const [auth, setAuth] = useState(false);
+	const { pathname } = useLocation();
 
-  useEffect(() => {
-	window.scroll(0, 0);
-	if (pathname.split('/')[1] === 'admin') {
+	useEffect(() => {
+		window.scroll(0, 0);
+		if (pathname.split('/')[1] === 'admin') {
+			if (pathname.startsWith('/admin')) {
+				const check = verifyToken()
+				check.then(res => {
+					setAuth(res.status)
+					cook.set("user", res.user_login)
+				})
+			} else setAuth(false);
+		}
+	}, [pathname]);
 
-		if (pathname.startsWith('/admin')) {
-			const check = verifyToken()
-			 check.then(res => {
-				setAuth(res.status)
-				cook.set("user", res.user_login)
-			})
-		} else setAuth(false);
-	}
-  }, [pathname]);
 
-  const [items, setItems] = useState([]);
-
-  return (
-	<>
-	  <Toaster position="top-center" reverseOrder={false} />
-	  <Routes>
-		{auth == 401 || auth == false ?  (
-		  <Route path="/admin" element={<Login />} />
-		)  : (
-			<Route path="/admin" element={<AdminLayout />}>
-			  <Route path="/admin" element={<Home />} />
-			  <Route path="kateqori" element={<Category />} />
-			  <Route path="altkateqori" element={<Subcategory />} />
-			  <Route path="urun" element={<Product />} />
-			  <Route path="slayt" element={<Slider />} />
-			</Route>
-		  )}
-		<Route path="/" element={<Layout items={items} setItems={setItems} />}>
-		  <Route path="/" element={<Main />} />
-		  <Route path="/sepet" element={<Basket items={items} />} />
-		  <Route path="/kampanyalar" element={<Campaigns />} />
-		  <Route path="/product/:id" element={<CardInfo />} />
-		  <Route path="/kateqoriler" element={<Categories />} />
-		</Route>
-		<Route>
-		  <Route path="/giris" element={<Login />} />
-		  <Route path="/register" element={<Register />} />
-		  {/* <Route path="*" element={<Error404 />} /> */}
-		</Route>
-	  </Routes>
-	</>
-  );
+	return (
+		<>
+			<Toaster position="top-center" reverseOrder={false} />
+			<Routes>
+				{auth == 401 || auth == false ? (
+					<Route path="/admin" element={<Login />} />
+				) : (
+					<Route path="/admin" element={<AdminLayout />}>
+						<Route path="/admin" element={<Home />} />
+						<Route path="kateqori" element={<Category />} />
+						<Route path="altkateqori" element={<Subcategory />} />
+						<Route path="urun" element={<Product />} />
+						<Route path="slayt" element={<Slider />} />
+					</Route>
+				)}
+				<Route path="/" element={<Layout />}>
+					<Route path="/" element={<Main />} />
+					<Route path="/sepet" element={<Basket />} />
+					<Route path="/kampanyalar" element={<Campaigns />} />
+					<Route path="/product/:id" element={<CardInfo />} />
+					<Route path="/kateqoriler" element={<Categories />} />
+				</Route>
+				<Route>
+					<Route path="/giris" element={<Login />} />
+					<Route path="/register" element={<Register />} />
+					<Route path="*" element={<Error404 />} />
+				</Route>
+			</Routes>
+		</>
+	);
 }
 
 export default App;
