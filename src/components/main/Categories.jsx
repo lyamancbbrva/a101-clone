@@ -18,11 +18,11 @@ function Categories() {
 
     const [onerilen, setOnerilen] = useState(false)
 
-
+    
 
     return (
         <div className="bg-[#F3F6FA]">
-            {/* <div className={` lg:hidden  mobileCat fixed bg-[white] w-full flex gap-4`}>
+            <div className={` lg:hidden  mobileCat fixed bg-[white] w-full flex gap-4`}>
                 <div className="scroll min-w-[100px]  md:min-w-[150px] max-h-[100vh] overflow-y-scroll">
                     {new Array(10).fill(null).map((_, index) => (
                         <div className="p-2" key={index}>
@@ -35,7 +35,6 @@ function Categories() {
                         </div>
                     ))}
                 </div>
->>>>>>> 67a5a0ff908f615282a2f703e24f2ffe7662234a
 
                 <div className="w-full scroll overflow-y-scroll max-h-[100vh]">
                     <div>
@@ -58,17 +57,19 @@ function Categories() {
                         </Swiper>
                     </div>
                     <ul className="inline-block w-full">
+                            <li  className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
+                                    Tümünü gör
+                                    <FaChevronRight className="text-[.8em] text-[#333] " />
+                            </li>
                         {new Array(15).fill(null).map((_, index) => (
-                            <Link to={''} key={index}>
-                                <li className="flex justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
+                            <li key={index} className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
                                     xezer emi bize data
                                     <FaChevronRight className="text-[.8em] text-[#333] " />
-                                </li>
-                            </Link>
+                            </li>
                         ))}
                     </ul>
                 </div>
-            </div> */}
+            </div>
             <div className="mobilCat block lg:hidden">
                 <div className="bg-white flex w-full">
                     <button className="flex items-center gap-2 p-3 border w-full justify-center">
@@ -80,7 +81,7 @@ function Categories() {
                         Filtrele
                     </button>
                 </div>
-                <div className="wrapper px-3">
+                <div className="wrapper px-3 hidden">
                     <h2 className="py-4">"Elektronik" için <span className="font-semibold">891 ürün</span> bulundu.</h2>
                     <div className="flex justify-between pb-6 pt-2">
                         <div className="flex items-center gap-2 cursor-pointer">

@@ -54,8 +54,8 @@ function Highlights() {
                 className='mySwiper mainSlider'
             >
                 {
-                    data.length == 0 ? <div className="loader m-auto py-2"></div> :
-                    data.map((item) => <SwiperSlide key={item.id}><Cart item={item} /></SwiperSlide>)
+                    data.products?.length == 0 ? <div className="loader m-auto py-2"></div> :
+                    data.products?.map((item) => <SwiperSlide key={item.id}><Cart item={item} /></SwiperSlide>)
                 }
             </Swiper>
         </div>

@@ -24,7 +24,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useDropzone } from "react-dropzone";
 
-function Category() {
+function Category({mainCategory}) {
   const formdata = new FormData();
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [catName, setCatName] = useState("");
@@ -116,7 +116,7 @@ function Category() {
 					>
 					  <img
 						className="w-[80px] h-[80px] object-cover "
-						src={item.img[0]}
+						src={item.img}
 						alt={item.name}
 					  />
 					  {item.name}

@@ -8,11 +8,13 @@ import { Cookies } from "react-cookie";
 const cook = new Cookies();
 
 export default function Login() {
+
 	const [login, setLogin] = useState("");
 	const [password, setPassword] = useState("");
 	const [type, setType] = useState("password");
 
 	async function handleLogin(e) {
+		
 		e.preventDefault();
 		const obj = { username: login, password };
 
@@ -23,10 +25,11 @@ export default function Login() {
 		const user = await loginAuth(obj);
 
 		if (user.status == true) {
+
 			toast.success("Giris olundu");
 			cook.set("resfresh", user.refresh);
 			cook.set("token", user.token);
-			cook.set("token", user.token);
+			
 			window.location.href = "/admin";
 		} 
 		else toast.error("Username ve ya password sehvdi!");

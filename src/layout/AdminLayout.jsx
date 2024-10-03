@@ -1,32 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../admin/Nav";
 import { Link, Outlet } from "react-router-dom";
 import { TbLogout } from "react-icons/tb";
 import { RiUserAddLine } from "react-icons/ri";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { ChevronDownIcon, Square2StackIcon } from "@heroicons/react/16/solid";
+import { ChevronDownIcon } from "@heroicons/react/16/solid";
+import { Cookies } from "react-cookie";
+
+const cook = new Cookies()
 
 function AdminLayout() {
+
 	function logOut() {
 		cook.remove('token')
 		cook.remove('refresh')
-		cook.remove('userName')
 		window.location.href = '/giris'
 	  }
-	
+	  const [sidebar, setSidebar] = useState(false);	
 
   return (
-	<div className="sm:flex gap-5 relative">
+
+	<div onClick={( ) => {
+		sidebar ? setSidebar(!sidebar) : setSidebar(null)
+	  }} className="sm:flex gap-5 relative">
 	  <div className="fixed hidden md:block bg-white w-[100%] top-0 right-0 shadow-md  h-[70px] z-[8]"></div>
 	  <div className="fixed top-3 hidden md:block right-10 text-right z-[9]">
 		<Menu>
 		  <MenuButton className="inline-flex items-center gap-4 rounded-md py-1.5 px-3 text-sm/6 font-semibold ">
 			<img
-			  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvljIOzu5-cOANxNofDDPKR7eZvTBWpMQAQQ&s"
-			  alt="quzu"
+			  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&s"
+			  alt="admin profile"
 			  className="w-[40px] h-[40px] object-cover rounded-full "
 			/>
-			<span>Xezer</span>
+			<span>Admin</span>
 			<ChevronDownIcon className="size-4 " />
 		  </MenuButton>
 
@@ -60,7 +66,7 @@ function AdminLayout() {
 		</Menu>
 	  </div>
 
-	  <Nav />
+	  <Nav sidebar={sidebar} setSidebar={setSidebar}/>
 	  <main className="w-full">
 		<Outlet />
 	  </main>

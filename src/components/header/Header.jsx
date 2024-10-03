@@ -4,17 +4,20 @@ import { IoChevronForward } from "react-icons/io5";
 import { useEffect, useState } from 'react';
 import { getCategories, getProducts } from '../../api/api';
 
-function Header() {
+function Header({mainCategory}) {
+
     const [activeTab, setActiveTab] = useState(1)
-    const [category, setCategory] = useState([])
+    const [category, setCategory] = useState(['salam', 'necesen'])
     const [product, setProduct] = useState([])
     const [inpValue, setInpValue] = useState('')
     const [status, setStatus] = useState(false)
 
     useEffect(() => {
-        getCategories().then(resp => setCategory(resp))
-        getProducts().then(resp => setProduct(resp))
+        // getCategories().then(resp => setCategory(resp))
+        getProducts().then(resp => setProduct(resp.products))
     }, [])
+   console.log(category);
+   
 
     return (
         <header onClick={()=> setStatus(false)} className='sticky top-0 z-[9] bg-white shadow-gray-100 shadow-sm'>
@@ -143,11 +146,10 @@ function Header() {
                     </div>
                     <div className={`${status ? 'block' : 'hidden'} max-h-[350px] sm:max-h-[450px] overflow-y-auto absolute top-[70px] right-[0%] z-[1000] rounded-b-md scroll shadow-md w-[100%]`}>
                         {
-                            product
-                                .filter(item => item?.name.toLowerCase().startsWith(inpValue.toLowerCase()))
+                            product &&
+                            product?.filter(item => item?.name.toLowerCase().startsWith(inpValue.toLowerCase()))
                                 .length > 0 ? (
-                                product
-                                    .filter(item => item?.name.toLowerCase().startsWith(inpValue.toLowerCase()))
+                                product?.filter(item => item?.name.toLowerCase().startsWith(inpValue.toLowerCase()))
                                     .map((item, i) => (
                                         <Link
                                             to={`/product/${item.id}`}
@@ -215,13 +217,13 @@ function Header() {
                 <div className='height-full border-b border-t'>
                     <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
                         {
-                            category && category.map((item, i) => <li key={i} className='border-r px-4  xl:font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.876rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
-                                <Link to={'/kateqoriler'}>{item.name}</Link>
-                                <div className='mega-menu bg-white hidden absolute gap-1 top-[100%] w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
+                            mainCategory && mainCategory.map((item, i) => <li key={i} className='border-r px-2 text-nowrap  xl:font-medium font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.8rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
+                                <Link to={'/kateqoriler'}>{item}</Link>
+                                <div className='mega-menu bg-white hidden absolute gap-1 top-[100%]  w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
                                     <div className=' scroll overflow-y-scroll  min-w-[380px]'>
                                         <ul className='p-4'>
                                             {
-                                                item.subcategory?.map((elem, i) => <Link key={i} to={'/kateqoriler'}><li className=' flex justify-between p-1 font-[600] capitalize'>{elem.name} <IoChevronForward /></li></Link>)
+                                                category.map(item => item)?.subcategory?.map((elem, i) => <Link key={i} to={'/kateqoriler'}><li className=' flex justify-between p-1 font-[600] capitalize'>{elem.name} <IoChevronForward /></li></Link>)
                                             }
                                         </ul>
                                     </div>

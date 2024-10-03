@@ -9,11 +9,12 @@ import { TbLogout } from "react-icons/tb";
 import { SlBasket } from "react-icons/sl";
 import { CiSliderHorizontal } from "react-icons/ci";
 import { Cookies } from "react-cookie";
+
 const cook = new Cookies()
 
-function Nav() {
+function Nav({sidebar, setSidebar}) {
   
-  const [sidebar, setSidebar] = useState(false);
+
 
   const links = [
 	{ name: "Ana sayfa", link: "/admin", icon: IoHomeOutline },
@@ -24,20 +25,24 @@ function Nav() {
   ];
 
   function logOut() {
+	console.log('salam');
+	
 	cook.remove('token')
 	cook.remove('refresh')
-	cook.remove('userName')
+	cook.remove('user')
 	window.location.href = '/giris'
   }
 
   return (
 	<>
-	  <nav className="relative">
+	  <nav onClick={( ) => {
+		sidebar ? setSidebar(!sidebar) : setSidebar(null)
+	  }} className="relative ">
 		<div className="flex sm:hidden justify-between items-center p-5 border-b">
 		  <div
 			id="nav-icon4"
 			className={`${sidebar ? "open" : ""}`}
-			onClick={() => setSidebar(!sidebar)}
+			onClick={(e) => { e.stopPropagation(); setSidebar(!sidebar) }}
 		  >
 			<span></span>
 			<span></span>

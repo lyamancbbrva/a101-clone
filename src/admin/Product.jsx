@@ -40,7 +40,7 @@ function Product() {
 
 	useEffect(() => {
 		getCategories().then((resp) => setCategory(resp));
-		getProducts().then((resp) => setProduct(resp));
+		getProducts().then((resp) => setProduct(resp.products));
 	}, []);
 
 	const handleEditorChange = (newContent) => {
@@ -50,7 +50,9 @@ function Product() {
 		setMehsul({ ...mehsul, description: text });
 	};
 
+
 	async function addProduct() {
+
 		console.log(mehsul);
 		const newProduct = await createProduct(mehsul);
 		if (newProduct.status == true) {
@@ -61,8 +63,11 @@ function Product() {
 	}
 
 	function deleteImg() {
+		
 		const url = imgSrc.split("/").at(-1);
 		deleteImage(url).then((res) => console.log(res));
+		console.log(url);
+		
 	}
 
 	function editProducts() {
@@ -98,7 +103,7 @@ function Product() {
 					Yeni ürün ekle
 				</h1>
 			</div>
-			<div className="my-5 w-[85%] lg:w-[70%] mx-auto py-5">
+			<div className="my-5 w-[85%] lg:w-[70%] mx-auto p-5">
 				<div className="flex items-center">
 					<button
 						onClick={() => { setEditOpen(false); setAddOpen(true) }}
@@ -144,6 +149,7 @@ function Product() {
 						<tbody className="text-black text-[1.2em]">
 							{product.length > 0 ? (
 								product.map((item, i) => {
+
 									const { name, discount, price } = item;
 
 									return (
@@ -154,9 +160,7 @@ function Product() {
 														<img
 															className="h-10 w-10 rounded-full object-cover"
 															src={
-																item?.imageUrl?.length > 0
-																	? item.imageUrl[0]
-																	: item.imageUrl
+																item?.imageUrl?.length > 0 ? item?.imageUrl[0] : item?.imageUrl
 															}
 															alt={name}
 														/>
@@ -356,9 +360,7 @@ function Product() {
 											Subkateqoriya:
 										</label>
 										<select
-											onChange={(e) =>
-												setMehsul({ ...mehsul, subcategoryId: e.target.value })
-											}
+											onChange={(e) => setMehsul({ ...mehsul, subcategoryId: e.target.value })}
 											value={editOpen ? (product.find(item => item.id == productId).subcategoryId || mehsul.subcategoryId) : mehsul.subcategoryId}
 											className="block w-full rounded-md border-gray-300 bg-gray-50 p-2 border outline-indigo-600 shadow-sm"
 										>
@@ -381,9 +383,7 @@ function Product() {
 										</label>
 										<input
 											value={editOpen ? (mehsul.discount || product.find(item => item.id == productId).discount) : mehsul.discount}
-											onInput={(e) =>
-												setMehsul({ ...mehsul, discount: e.target.value })
-											}
+											onInput={(e) =>setMehsul({ ...mehsul, discount: e.target.value })}
 											type="number"
 											placeholder="0"
 											className="block w-full rounded-md border-gray-300 bg-gray-50 p-2 border outline-indigo-600 shadow-sm"
@@ -396,7 +396,14 @@ function Product() {
 										>
 											Ürün fiyatı:
 										</label>
-										<div>
+										<input
+											value={editOpen ? (mehsul.price || product.find(item => item.id == productId).price) : mehsul.price}
+											onInput={(e) => setMehsul({ ...mehsul, price: e.target.value })}
+											type="number"
+											placeholder="123"
+											className="block w-full rounded-md border-gray-300 bg-gray-50 p-2 border outline-indigo-600 shadow-sm"
+										/>
+										<div className="py-5">
 											<label className="block" htmlFor="">
 												<input
 													value={editOpen ? (mehsul.isTopSelling || product.find(item => item.id == productId).isTopSelling) : mehsul.isTopSelling}
@@ -425,13 +432,6 @@ function Product() {
 												isCheaps
 											</label>
 										</div>
-										<input
-											value={editOpen ? (mehsul.price || product.find(item => item.id == productId).price) : mehsul.price}
-											onInput={(e) => setMehsul({ ...mehsul, price: e.target.value })}
-											type="number"
-											placeholder="123"
-											className="block w-full rounded-md border-gray-300 bg-gray-50 p-2 border outline-indigo-600 shadow-sm"
-										/>
 									</div>
 									<div className="my-3">
 										<label
@@ -446,7 +446,7 @@ function Product() {
 														"mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 cursor-pointer",
 												})}
 											>
-												<input {...getInputProps()} />
+												<input value={imgSrc} {...getInputProps()} />
 												<div className="text-center">
 													<svg
 														className="mx-auto h-12 w-12 text-gray-300"
