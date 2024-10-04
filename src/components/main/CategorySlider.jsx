@@ -7,10 +7,42 @@ import { useEffect, useState } from 'react';
 import { getCategories } from '../../api/api';
 import { Link } from 'react-router-dom';
 
-export default function CategorySlider({mainCategory}) {
+export default function CategorySlider() {
 
-
-    console.log(mainCategory);
+    const mainCategory = [
+        {
+          name: "Elektronik",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/j-4GhgugfQ_1024x1024.png",
+        },
+        {
+          name: "Ev & Yaşam",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/oZ4CLG763L_1024x1024.png",
+        },
+        {
+          name: "Giyim & Aksesuar",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/K7Dojvagto_1024x1024.png",
+        },
+        {
+          name: "Oto & Bahçe & Yapı",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/NY0jC-lxUV_1024x1024.png",
+        },
+        {
+          name: "Anne & Bebek & Oyuncak",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/HypCfDo2sq_1024x1024.png",
+        },
+        {
+          name: "Kozmetik & Kişisel Bakım",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/lgXbpkYp1d_1024x1024.png",
+        },
+        {
+          name: "Kitap & Kırtasiye",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/aLjegjIe3Q_1024x1024.png",
+        },
+        {
+          name: "Market",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/BRNpLVW214_1024x1024.png",
+        },
+      ];
     
     
 
@@ -57,8 +89,8 @@ export default function CategorySlider({mainCategory}) {
                 {
                     mainCategory && mainCategory.map((item, i) => <SwiperSlide key={i}>
                         <Link to={item.slug} className='text-center block sm:w-24'>
-                            <img src={item.img} className='rounded-xl h-[90px] object-cover ' alt={item.slug.split('/'.at(0))} />
-                            <p className='text-[.8em] font-medium py-2'>{item.slug.split('/').at(0)}</p>
+                            <img src={item.img} className='rounded-xl h-[90px] object-cover ' alt={item.name} />
+                            <p className='text-[.8em] font-medium py-2'>{item.name}</p>
                         </Link>
                     </SwiperSlide> )
                 }         

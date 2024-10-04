@@ -24,9 +24,18 @@ function Layout() {
       name: "Anne & Bebek & Oyuncak",
       img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/HypCfDo2sq_1024x1024.png",
     },
-    {name:"Kozmetik & Kişisel Bakım", img:'https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/lgXbpkYp1d_1024x1024.png'},
-    {name:"Kitap & Kırtasiye", img:'https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/aLjegjIe3Q_1024x1024.png'},
-    {name: "Market", img:'https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/BRNpLVW214_1024x1024.png'},
+    {
+      name: "Kozmetik & Kişisel Bakım",
+      img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/lgXbpkYp1d_1024x1024.png",
+    },
+    {
+      name: "Kitap & Kırtasiye",
+      img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/aLjegjIe3Q_1024x1024.png",
+    },
+    {
+      name: "Market",
+      img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/BRNpLVW214_1024x1024.png",
+    },
   ];
 
   return (

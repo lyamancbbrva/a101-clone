@@ -11,12 +11,12 @@ function Header({mainCategory}) {
     const [product, setProduct] = useState([])
     const [inpValue, setInpValue] = useState('')
     const [status, setStatus] = useState(false)
+    const [catId, setCatId] = useState(2)
 
     useEffect(() => {
         getCategories().then(resp => setCategory(resp))
         getProducts().then(resp => setProduct(resp.products))
     }, [])
-   console.log(category);
    
 
     return (
@@ -223,23 +223,23 @@ function Header({mainCategory}) {
                                     <div className=' scroll overflow-y-scroll  min-w-[380px]'>
                                         <ul className='p-4'>
                                             {
-                                                category.map((elem, i) => <li key={i} className='cursor-pointer flex justify-between text-[1em] p-1 capitalize'>{elem.name} <IoChevronForward /></li>)
-                                            }
+                                                category.map((elem, i) => <li onMouseEnter={() => setCatId(elem.id)
+                                                } key={i} className='cursor-pointer hover:text-[#2CCBE0] flex justify-between text-[1.35em] p-2.5 capitalize'>{elem.name} <IoChevronForward /></li>
+                                            )
+                                            }   
                                         </ul>
                                     </div>
-                                    <div className='scroll overflow-y-scroll min-w-[250px] xl:min-w-[350px]'>
+                                    <div className='scroll overflow-y-scroll min-w-[250px] xl:min-w-[400px]'>
                                         <ul className=' p-3'>
-                                            <Link to={''} ><li className='p-1 font-[500] capitalize'>Ay maama</li></Link>
-                                            <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                                            <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                                            <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                                            <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
-                                            <Link to={''} ><li className='p-1 font-[500] capitalize'>lasdkfjgh</li></Link>
+                                            {
+                                                category && category?.find(elem => elem.id == catId)?.subcategory?.map((item, i) =><Link to={''} key={i} ><li className='p-2.5 hover:text-[#2CCBE0] text-wrap text-[1.3em] font-[500] capitalize'>{item.name}</li></Link> )
+                                            }
+                                            
                                         </ul>
                                     </div>
                                     <div className='p-3 overflow-y-hidden flex items-start flex-wrap'>
                                         {
-                                            category && category.map(item => item.img).splice(0,4).map(src => <img className='rounded-xl max-w-[150px] inline-block m-1' src={src} alt="" />)
+                                            category && category.map(item => item.img).splice(0,4).map((src,i) => <img key={i} className='rounded-xl max-w-[150px] inline-block m-1' src={src} alt={src} />)
                                         } 
                                       
                                     </div>

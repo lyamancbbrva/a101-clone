@@ -25,7 +25,6 @@ function Nav({sidebar, setSidebar}) {
   ];
 
   function logOut() {
-	console.log('salam');
 	
 	cook.remove('token')
 	cook.remove('refresh')

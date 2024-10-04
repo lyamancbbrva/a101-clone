@@ -15,29 +15,70 @@ import { getCategories } from "../../api/api";
 
 
 
-function Categories({mainCategory}) {
+function Categories() {
+
+    const mainCategory = [
+        {
+          name: "Elektronik",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/j-4GhgugfQ_1024x1024.png",
+        },
+        {
+          name: "Ev & Yaşam",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/oZ4CLG763L_1024x1024.png",
+        },
+        {
+          name: "Giyim & Aksesuar",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/K7Dojvagto_1024x1024.png",
+        },
+        {
+          name: "Oto & Bahçe & Yapı",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/NY0jC-lxUV_1024x1024.png",
+        },
+        {
+          name: "Anne & Bebek & Oyuncak",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/HypCfDo2sq_1024x1024.png",
+        },
+        {
+          name: "Kozmetik & Kişisel Bakım",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/lgXbpkYp1d_1024x1024.png",
+        },
+        {
+          name: "Kitap & Kırtasiye",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/aLjegjIe3Q_1024x1024.png",
+        },
+        {
+          name: "Market",
+          img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/BRNpLVW214_1024x1024.png",
+        },
+      ];
+    
 
     const [onerilen, setOnerilen] = useState(false)
-    const [hidden, setHidden] = useState(false)
+    const [hidden, setHidden] = useState(true)
     const [category, setCategory] = useState([])
+    const [catId, setCatid] = useState(0)
+    const [productHidden, setProductHidden] = useState(false)
 
     useEffect(() => {
         getCategories().then(resp => setCategory(resp))
     }, [])
-    console.log(mainCategory);
     
 
+    function getProductsBySubcat() {
+        setProductHidden(true)
+        
+    }
     
     return (
 
         <div className="bg-[#F3F6FA]">
             <div className={` lg:hidden  mobileCat fixed bg-[white] w-full flex gap-4`}>
-                <div className="scroll max-w-[100px]  md:max-w-[150px] max-h-[100vh] overflow-y-scroll">
-                    {category && category.map((item, index) => (
+                <div className={`scroll ${hidden ? '' : 'hidden'} max-w-[100px]  md:max-w-[150px] max-h-[100vh] overflow-y-scroll`} >
+                    {mainCategory && mainCategory.map((item, index) => (
                         <div className="p-2 cursor-pointer " key={index}>
                             <img
                                 className="rounded-xl w-[95%]"
-                                src={item.img[0]}
+                                src={item.img}
                                 alt={item.name}
                             />
                             <h5 className="text-center text-sm mt-2">{item.name}</h5>
@@ -45,8 +86,8 @@ function Categories({mainCategory}) {
                     ))}
                 </div>
 
-                <div className="w-full scroll overflow-y-scroll max-h-[100vh]">
-                    <div>
+                <div className={`w-full  scroll overflow-y-scroll max-h-[100vh]`}>
+                    <div className={`${hidden ? 'block' : 'hidden'}`}>
                         <Swiper
                             pagination={{ clickable: true }}
                             modules={[Pagination]}
@@ -65,13 +106,26 @@ function Categories({mainCategory}) {
                             ))}
                         </Swiper>
                     </div>
-                    <ul className="inline-block w-full">
+                    
+                    <ul className={ ` ${hidden ? 'block' : 'hidden'} w-full`}>
                             <li onClick={() => setHidden(false)} className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
                                     Tümünü gör
                                     <FaChevronRight className="text-[.8em] text-[#333] " />
                             </li>
                         { category && category.map((item, index) => (
-                            <li key={index} className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
+                            <li onClick={() =>{setHidden(false); setCatid(item.id)}} key={index} className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
+                                    {item.name}
+                                    <FaChevronRight className="text-[.8em] text-[#333] " />
+                            </li>
+                        ))}
+                    </ul>
+                    <ul className="inline-block w-full min-h-[80vh]">
+                            <li onClick={() => setHidden(false)} className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
+                                    Tümünü gör
+                                    <FaChevronRight className="text-[.8em] text-[#333] " />
+                            </li>
+                        { category && category.find(elem => elem.id == catId)?.subcategory?.map((item, index) => (
+                            <li onClick={getProductsBySubcat}  key={index} className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
                                     {item.name}
                                     <FaChevronRight className="text-[.8em] text-[#333] " />
                             </li>
@@ -90,12 +144,12 @@ function Categories({mainCategory}) {
                         Filtrele
                     </button>
                 </div>
-                <div className="wrapper px-3 hidden">
+                <div className={`wrapper px-3 $`}>
                     <h2 className="py-4">"Elektronik" için <span className="font-semibold">891 ürün</span> bulundu.</h2>
                     <div className="flex justify-between pb-6 pt-2">
                         <div className="flex items-center gap-2 cursor-pointer">
                             <div className="w-5 h-5 bg-white border border-gray-200 rounded-[5px] peer-checked:bg-[#00BAD3] peer-checked:border-[#00BAD3] transition-colors"><FaCheck className="text-white text-[.9em] m-[2px]" /></div>
-                            <input type="checkbox" name="" id="" className="hidden peer" /> Stoksuz ürünleri gösterme
+                            <input type="checkbox"  className="hidden peer" /> Stoksuz ürünleri gösterme
                         </div>
                         <p className="flex items-center gap-2 cursor-pointer">
                             <GoShareAndroid className=" text-[1.4em]" />
