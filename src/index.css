@@ -257,49 +257,49 @@ body {
 }
 
 .aldin1{
-    background: url('../src/assets/img/aldin1mobilwebp.webp') center/contain no-repeat;
+    background: url('../src/assets/img/aldin1mobilwebp.webp') center/cover no-repeat;
 }
 .aldin2{
-    background: url('../src/assets/img/aldin2mobil.webp') center/contain no-repeat;
+    background: url('../src/assets/img/aldin2mobil.webp') center/cover no-repeat;
 }
 .aldin3{
-    background: url('../src/assets/img/aldin3mobil.webp') center/contain no-repeat;
+    background: url('../src/assets/img/aldin3mobil.webp') center/cover no-repeat;
 }
 .aldin4{
-    background: url('../src/assets/img/alldin4mobil.webp') center/contain no-repeat;
+    background: url('../src/assets/img/alldin4mobil.webp') center/cover no-repeat;
 }
 .aldin5{
-    background: url('../src/assets/img/aldin5.webp') center/contain no-repeat;
+    background: url('../src/assets/img/aldin5.webp') center/cover no-repeat;
 }
 .iphone{
-    background: url('../src/assets/img/iphonemobil.webp') center/contain no-repeat;
+    background: url('../src/assets/img/iphonemobil.webp') center/cover no-repeat;
 }
 .samsung{
-    background: url('../src/assets/img/samsungmobil.webp') center/contain no-repeat;
+    background: url('../src/assets/img/samsungmobil.webp') center/cover no-repeat;
 }
 .xiaomi{
-    background: url('../src/assets/img/mimobil.webp') center/contain no-repeat;
+    background: url('../src/assets/img/mimobil.webp') center/cover no-repeat;
 }
 .tefal{
-    background: url('../src/assets/img/tefalmobil.webp') center/contain no-repeat;
+    background: url('../src/assets/img/tefalmobil.webp') center/cover no-repeat;
 }
 .stanley{
-    background: url('../src/assets/img/stanleymobil.webp') center/contain no-repeat;
+    background: url('../src/assets/img/stanleymobil.webp') center/cover no-repeat;
 }
 .skechers{
-    background: url('../src/assets/img/skechersmobil.webp') center/contain no-repeat;
+    background: url('../src/assets/img/skechersmobil.webp') center/cover no-repeat;
 }
 .crocs{
-    background: url('../src/assets/img/crocsmpbil.webp') center/contain no-repeat;
+    background: url('../src/assets/img/crocsmpbil.webp') center/cover no-repeat;
 }
 .kamp{
-    background: url('../src/assets/img/kampmobil.webp') center/contain no-repeat;
+    background: url('../src/assets/img/kampmobil.webp') center/cover no-repeat;
 }
 .mobilya{
-    background: url('../src/assets/img/mobilyamobil.webp') center/contain no-repeat;
+    background: url('../src/assets/img/mobilyamobil.webp') center/cover no-repeat;
 }
 .ceyiz{
-    background: url('../src/assets/img/ceyizmobilwebp.webp') center/contain no-repeat;
+    background: url('../src/assets/img/ceyizmobilwebp.webp') center/cover no-repeat;
 }
 
 @media only screen and (min-width: 768px) {
@@ -309,53 +309,53 @@ body {
     }
 
     .ucuz-fiyatlar {
-        background: url('./assets/img/mobil-web.jpg') center/contain no-repeat;
+        background: url('./assets/img/mobil-web.jpg') center/cover no-repeat;
         height: 100vh;
     }
     .aldin1{
-        background: url('../src/assets/img/aldin1desktop.png') center/contain no-repeat;
+        background: url('../src/assets/img/aldin1desktop.png') center/cover no-repeat;
     }
     .aldin2{
-        background: url('../src/assets/img/aldin2desktop.webp') center/contain no-repeat;
+        background: url('../src/assets/img/aldin2desktop.webp') center/cover no-repeat;
     }
     .aldin3{
-        background: url('../src/assets/img/aldin3desktop.webp') center/contain no-repeat;
+        background: url('../src/assets/img/aldin3desktop.webp') center/cover no-repeat;
     }
     .aldin4{
-        background: url('../src/assets/img/aldin4desktop.webp') center/contain no-repeat;
+        background: url('../src/assets/img/aldin4desktop.webp') center/cover no-repeat;
     }
     .aldin5{
-        background: url('../src/assets/img/aldin5desktop.webp') center/contain no-repeat;
+        background: url('../src/assets/img/aldin5desktop.webp') center/cover no-repeat;
     }
     .iphone{
-        background: url('../src/assets/img/iphonedesktop.webp') center/contain no-repeat;
+        background: url('../src/assets/img/iphonedesktop.webp') center/cover no-repeat;
     }
     .samsung{
-        background: url('../src/assets/img/samsungdesktop.webp') center/contain no-repeat;
+        background: url('../src/assets/img/samsungdesktop.webp') center/cover no-repeat;
     }
     .xiaomi{
-        background: url('../src/assets/img/mobilyadesktopwebp.webp') center/contain no-repeat;
+        background: url('../src/assets/img/mobilyadesktopwebp.webp') center/cover no-repeat;
     }
     .tefal{
-        background: url('../src/assets/img/tefaldesktop.webp') center/contain no-repeat;
+        background: url('../src/assets/img/tefaldesktop.webp') center/cover no-repeat;
     }
     .stanley{
-        background: url('../src/assets/img/stanleydesktop.webp') center/contain no-repeat;
+        background: url('../src/assets/img/stanleydesktop.webp') center/cover no-repeat;
     }
     .skechers{
-        background: url('../src/assets/img/skechersdesktop.webp') center/contain no-repeat;
+        background: url('../src/assets/img/skechersdesktop.webp') center/cover no-repeat;
     }
     .crocs{
-        background: url('../src/assets/img/crocsdesktopwebp.webp') center/contain no-repeat;
+        background: url('../src/assets/img/crocsdesktopwebp.webp') center/cover no-repeat;
     }
     .kamp{
-        background: url('../src/assets/img/kampdesktop.webp') center/contain no-repeat;
+        background: url('../src/assets/img/kampdesktop.webp') center/cover no-repeat;
     }
     .mobilya{
-        background: url('../src/assets/img/mobilyadesktopwebp.webp') center/contain no-repeat;
+        background: url('../src/assets/img/mobilyadesktopwebp.webp') center/cover no-repeat;
     }
     .ceyiz{
-        background: url('../src/assets/img/ceyizdesktopwebp.webp') center/contain no-repeat;
+        background: url('../src/assets/img/ceyizdesktopwebp.webp') center/cover no-repeat;
     }
 }
 

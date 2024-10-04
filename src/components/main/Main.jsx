@@ -28,6 +28,7 @@ import { Navigation, Mousewheel, Autoplay } from 'swiper/modules';
 import Cart from "./Cart"
 import { useEffect, useState } from "react"
 import { getDiscountedproducts } from "../../api/api"
+import { Link } from "react-router-dom"
 
 function Main({mainCategory, basket, setBasket}) {
 
@@ -220,21 +221,21 @@ function Main({mainCategory, basket, setBasket}) {
                 </div>
                 </div>
                 <Highlights basket={basket} setBasket={setBasket} />
-                <div className="aldin1  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="aldin2  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="aldin3  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="aldin4  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="aldin5  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="iphone  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="samsung  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="xiaomi  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="tefal  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="stanley  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="skechers  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="crocs  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="kamp  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="mobilya  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="ceyiz  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <Link to={''} className="block aldin1  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block aldin2  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block aldin3  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block aldin4  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block aldin5  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block iphone  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block samsung  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block xiaomi  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block tefal  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block stanley  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block skechers  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block crocs  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block kamp  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block mobilya  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={''} className="block ceyiz  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[30vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
             </div>
         </div>
     )
