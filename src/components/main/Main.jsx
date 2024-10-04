@@ -26,8 +26,16 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Mousewheel, Autoplay } from 'swiper/modules';
 import Cart from "./Cart"
+import { useEffect, useState } from "react"
+import { getDiscountedproducts } from "../../api/api"
 
 function Main({mainCategory, basket, setBasket}) {
+
+    const [discountedProducts, setDiscountedProducts] = useState([])
+
+    useEffect(() => {
+        getDiscountedproducts().then(resp => setDiscountedProducts(resp.products))
+    },[])
 
 
     const kolleksion = [
@@ -206,27 +214,27 @@ function Main({mainCategory, basket, setBasket}) {
             >
 
                 {
-                    new Array(10).fill(null).map((_,item) => <SwiperSlide key={item} ><Cart basket={basket} setBasket={setBasket}/></SwiperSlide>)
+                discountedProducts &&  discountedProducts?.map((item,i) => <SwiperSlide key={i} ><Cart item={item} basket={basket} setBasket={setBasket}/></SwiperSlide>) 
                 }         
                 </Swiper>
                 </div>
                 </div>
                 <Highlights basket={basket} setBasket={setBasket} />
-                <div className="aldin1  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="aldin2  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="aldin3  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="aldin4  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="aldin5  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="iphone  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="samsung  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="xiaomi  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="tefal  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="stanley  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="skechers  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="crocs  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="kamp  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="mobilya  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
-                <div className="ceyiz  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="aldin1  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="aldin2  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="aldin3  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="aldin4  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="aldin5  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="iphone  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="samsung  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="xiaomi  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="tefal  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="stanley  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="skechers  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="crocs  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="kamp  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="mobilya  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="ceyiz  w-full h-[45vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
             </div>
         </div>
     )

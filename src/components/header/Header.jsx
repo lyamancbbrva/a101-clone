@@ -7,7 +7,7 @@ import { getCategories, getProducts } from '../../api/api';
 function Header({mainCategory, basket}) {
 
     const [activeTab, setActiveTab] = useState(1)
-    const [category, setCategory] = useState(['salam', 'necesen'])
+    const [category, setCategory] = useState([])
     const [product, setProduct] = useState([])
     const [inpValue, setInpValue] = useState('')
     const [status, setStatus] = useState(false)
@@ -225,7 +225,7 @@ function Header({mainCategory, basket}) {
                                     <div className=' scroll overflow-y-scroll  min-w-[380px]'>
                                         <ul className='p-4'>
                                             {
-                                              category &&  category.map((elem, i) => <li onMouseEnter={() => setCatId(elem.id)
+                                              category &&  category?.map((elem, i) => <li onMouseEnter={() => setCatId(elem.id)
                                                 } key={i} className='cursor-pointer hover:text-[#2CCBE0] flex justify-between text-[1.2em] p-2.5 capitalize'>{elem.name} <IoChevronForward /></li>
                                             )
                                             }   

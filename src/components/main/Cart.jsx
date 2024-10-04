@@ -23,6 +23,7 @@ export default function Cart({item, basket,setBasket }) {
 
     return (
         <>
+       { item ?
             <Link to={`/product/`} className="px-3 w-[100%] block rounded-2xl border-gray-200 border relative bg-white">
                 <GoHeart
                     onClick={(e) => {
@@ -41,7 +42,16 @@ export default function Cart({item, basket,setBasket }) {
                     className="bg-[#00BAD3] text-white rounded-3xl py-1.5  text-sm w-full">Sepete Ekle</button>
                 </div>
             </Link>
-
+            :
+            <div className="flex flex-col m-8 rounded shadow-md w-60 sm:w-80 animate-pulse h-96">
+	<div className="h-48 rounded-t dark:bg-gray-300"></div>
+	<div className="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-50">
+		<div className="w-full h-6 rounded dark:bg-gray-300"></div>
+		<div className="w-full h-6 rounded dark:bg-gray-300"></div>
+		<div className="w-3/4 h-6 rounded dark:bg-gray-300"></div>
+	</div>
+</div>
+}
             {/* like modal */}
             <Transition.Root show={modal} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={setModal}>
