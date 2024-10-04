@@ -13,7 +13,7 @@ function Header({mainCategory}) {
     const [status, setStatus] = useState(false)
 
     useEffect(() => {
-        // getCategories().then(resp => setCategory(resp))
+        getCategories().then(resp => setCategory(resp))
         getProducts().then(resp => setProduct(resp.products))
     }, [])
    console.log(category);
@@ -217,17 +217,17 @@ function Header({mainCategory}) {
                 <div className='height-full border-b border-t'>
                     <ul className='hidden relative wrapper lg:flex gap-7 justify-center'>
                         {
-                            mainCategory && mainCategory.map((item, i) => <li key={i} className='border-r px-2 text-nowrap  xl:font-medium font-semibold text-[.675rem] cursor-pointer py-2 xl:text-[.8rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
-                                <Link to={'/kateqoriler'}>{item}</Link>
+                            mainCategory && mainCategory.map((item, i) => <li key={i} className='border-r px-2 text-nowrap  xl:font-medium  text-[.67rem] cursor-pointer py-2 xl:text-[.8rem] border-t border-t-transparent border-l border-l-transparent hover:border-l-inherit hover:border-t-inherit hover-menu'>
+                                <Link to={'/kateqoriler'}>{item.name}</Link>
                                 <div className='mega-menu bg-white hidden absolute gap-1 top-[100%]  w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
                                     <div className=' scroll overflow-y-scroll  min-w-[380px]'>
                                         <ul className='p-4'>
                                             {
-                                                category.map(item => item)?.subcategory?.map((elem, i) => <Link key={i} to={'/kateqoriler'}><li className=' flex justify-between p-1 font-[600] capitalize'>{elem.name} <IoChevronForward /></li></Link>)
+                                                category.map((elem, i) => <li key={i} className='cursor-pointer flex justify-between text-[1em] p-1 capitalize'>{elem.name} <IoChevronForward /></li>)
                                             }
                                         </ul>
                                     </div>
-                                    <div className='scroll overflow-y-scroll min-w-[350px]'>
+                                    <div className='scroll overflow-y-scroll min-w-[250px] xl:min-w-[350px]'>
                                         <ul className=' p-3'>
                                             <Link to={''} ><li className='p-1 font-[500] capitalize'>Ay maama</li></Link>
                                             <Link to={''} ><li className='p-1 font-[500] capitalize'>zirt</li></Link>
@@ -237,15 +237,11 @@ function Header({mainCategory}) {
                                             <Link to={''} ><li className='p-1 font-[500] capitalize'>lasdkfjgh</li></Link>
                                         </ul>
                                     </div>
-                                    <div className='p-3 overflow-y-hidden'>
-                                        <div>
-                                            <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
-                                            <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
-                                        </div>
-                                        <div>
-                                            <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
-                                            <img className='rounded-xl max-w-[210px] inline-block m-1' src="./src/assets/img/cehiz.jpg" alt="" />
-                                        </div>
+                                    <div className='p-3 overflow-y-hidden flex items-start flex-wrap'>
+                                        {
+                                            category && category.map(item => item.img).splice(0,4).map(src => <img className='rounded-xl max-w-[150px] inline-block m-1' src={src} alt="" />)
+                                        } 
+                                      
                                     </div>
                                 </div>
                             </li>)

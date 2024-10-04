@@ -27,7 +27,7 @@ import 'swiper/css/navigation';
 import { Navigation, Mousewheel, Autoplay } from 'swiper/modules';
 import Cart from "./Cart"
 
-function Main() {
+function Main({mainCategory}) {
 
     const kolleksion = [
         {img : kampanya1 , name: 'Axess Kampanyası'},
@@ -46,7 +46,7 @@ function Main() {
     return (
         <div className="bg-[#F3F6FA] min-h-[30vh]">
             <div className="wrapper w-[95%] mx-auto">
-                <CategorySlider />
+                <CategorySlider mainCategory={mainCategory}/>
                 <MainSlider />
                 <div className="flex gap-2 justify-center pb-6">
                     <img src={cargo} alt="cargo" className="w-5" />

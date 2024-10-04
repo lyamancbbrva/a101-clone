@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,27 +11,36 @@ import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 import { PiArrowsDownUpLight } from "react-icons/pi";
 import Cart from "./Cart";
 import { FaChevronDown } from "react-icons/fa6";
+import { getCategories } from "../../api/api";
 
 
 
-function Categories() {
+function Categories({mainCategory}) {
 
     const [onerilen, setOnerilen] = useState(false)
+    const [hidden, setHidden] = useState(false)
+    const [category, setCategory] = useState([])
 
+    useEffect(() => {
+        getCategories().then(resp => setCategory(resp))
+    }, [])
+    console.log(mainCategory);
     
 
+    
     return (
+
         <div className="bg-[#F3F6FA]">
             <div className={` lg:hidden  mobileCat fixed bg-[white] w-full flex gap-4`}>
-                <div className="scroll min-w-[100px]  md:min-w-[150px] max-h-[100vh] overflow-y-scroll">
-                    {new Array(10).fill(null).map((_, index) => (
-                        <div className="p-2" key={index}>
+                <div className="scroll max-w-[100px]  md:max-w-[150px] max-h-[100vh] overflow-y-scroll">
+                    {category && category.map((item, index) => (
+                        <div className="p-2 cursor-pointer " key={index}>
                             <img
                                 className="rounded-xl w-[95%]"
-                                src="./src/assets/img/Elektronik.jpeg"
-                                alt=""
+                                src={item.img[0]}
+                                alt={item.name}
                             />
-                            <h5 className="text-center text-sm mt-2">Elektronik</h5>
+                            <h5 className="text-center text-sm mt-2">{item.name}</h5>
                         </div>
                     ))}
                 </div>
@@ -57,13 +66,13 @@ function Categories() {
                         </Swiper>
                     </div>
                     <ul className="inline-block w-full">
-                            <li  className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
+                            <li onClick={() => setHidden(false)} className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
                                     Tümünü gör
                                     <FaChevronRight className="text-[.8em] text-[#333] " />
                             </li>
-                        {new Array(15).fill(null).map((_, index) => (
+                        { category && category.map((item, index) => (
                             <li key={index} className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
-                                    xezer emi bize data
+                                    {item.name}
                                     <FaChevronRight className="text-[.8em] text-[#333] " />
                             </li>
                         ))}
