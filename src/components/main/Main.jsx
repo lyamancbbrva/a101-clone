@@ -8,6 +8,17 @@ import tl10_mobil from '../../assets/img/10TL-ve-uzeri-mobil.png'
 import tl10 from '../../assets/img/10tl.png'
 import haftanin_yildizlari_mob from '../../assets/img/haftanin-yildizlari-mobil.png'
 import haftanin_yildizlari from '../../assets/img/haftanin-yildizlari.png'
+import kampanya1 from '../../assets/img/koleksiyon (1).jpg'
+import kampanya2 from '../../assets/img/koleksiyon (2).jpg'
+import kampanya3 from '../../assets/img/kamp.jpg'
+import kampanya4 from '../../assets/img/akbank.jpg'
+import kampanya5 from '../../assets/img/cehiz.jpg'
+import kampanya6 from '../../assets/img/a101kampanya.jpg'
+import kampanya7 from '../../assets/img/ucuzunucuzu.jpg'
+import kampanya8 from '../../assets/img/ayinsatanlari.jpg'
+import kampanya9 from '../../assets/img/haftaninsatanlari.jpg'
+import kampanya10 from '../../assets/img/yeniurunler.jpg'
+import kampanya11 from '../../assets/img/endirim50.jpg'
 import CategorySlider from "./CategorySlider"
 import Highlights from "./Highlights"
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -17,6 +28,20 @@ import { Navigation, Mousewheel, Autoplay } from 'swiper/modules';
 import Cart from "./Cart"
 
 function Main() {
+
+    const kolleksion = [
+        {img : kampanya1 , name: 'Axess Kampanyası'},
+        {img : kampanya4 , name: 'Akbank Kampanyası'},
+        {img : kampanya3 , name: 'Kamp Alış verişi'},
+        {img : kampanya2 , name: 'Mobilya Alış verişi'},
+        {img : kampanya5 , name: 'Çeyiz alış verişi'},
+        {img : kampanya6 , name: 'Sadece a101 ekstrada!'},
+        {img : kampanya7 , name: 'Ucuzun da ucuzu fiyatlar!'},
+        {img : kampanya8 , name: 'Ayın çok satanları'},
+        {img : kampanya9 , name: 'Haftanın çok satanları'},
+        {img : kampanya10 , name: 'Yeni gelen ürünler'},
+        {img : kampanya11 , name: 'Seçili kırtasiye ürünlerinde %50"e varan indirim'}
+    ]
     
     return (
         <div className="bg-[#F3F6FA] min-h-[30vh]">
@@ -69,7 +94,7 @@ function Main() {
                 }}
                 loop={true}
                 autoplay={{
-                    delay: 4500,
+                    delay: 3000,
                     disableOnInteraction: false
                 }}
                 spaceBetween={30}
@@ -87,10 +112,10 @@ function Main() {
             >
 
                 {
-                    new Array(10).fill(null).map((_,item) => <SwiperSlide key={item}  >
+                  kolleksion &&  kolleksion.map((item,i) => <SwiperSlide key={i}  >
                         <div className="rounded-2xl overflow-hidden">
-                            <img className="w-full" src="./src/assets/img/koleksiyon.jpg" alt="" />
-                            <div className=" bg-[#00BAD3] xs:px-1 xs:py-0 369:p-3 p-3 text-white ">Ayın çok satanları</div>
+                            <img className="w-full" src={item.img} alt={item.name} />
+                            <div className=" bg-[#00BAD3] xs:px-1 xs:py-0 369:p-3 p-3 md:h-[60px] text-white ">{item.name}</div>
                         </div>
                     </SwiperSlide>)
                 }
@@ -115,7 +140,7 @@ function Main() {
                     }}
                     loop={true}
                 autoplay={{
-                    delay: 4500,
+                    delay: 3500,
                     disableOnInteraction: false
                 }}
                 spaceBetween={30}
