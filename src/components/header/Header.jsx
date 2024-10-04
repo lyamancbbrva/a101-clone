@@ -224,7 +224,7 @@ function Header({mainCategory, basket}) {
                                 <div className='mega-menu bg-white hidden absolute gap-1 top-[100%]  w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
                                     <div className=' scroll overflow-y-scroll  min-w-[380px]'>
                                         <ul className='p-4'>
-                                            {
+                                        {
                                               category &&  category?.map((elem, i) => <li onMouseEnter={() => setCatId(elem.id)
                                                 } key={i} className='cursor-pointer hover:text-[#2CCBE0] flex justify-between text-[1.2em] p-2.5 capitalize'>{elem.name} <IoChevronForward /></li>
                                             )
@@ -234,7 +234,7 @@ function Header({mainCategory, basket}) {
                                     <div className='scroll overflow-y-scroll min-w-[250px] xl:min-w-[400px]'>
                                         <ul className=' p-3'>
                                             {
-                                                category && category?.find(elem => elem.id == catId)?.subcategory?.map((item, i) =><Link to={''} key={i} ><li className='p-2.5 hover:text-[#2CCBE0] text-wrap text-[1.2em] font-[500] capitalize'>{item.name}</li></Link> )
+                                                category && category?.find(elem => elem.id == catId)?.subcategory?.map((item, i) =><Link to={`/${item.slug}`} key={i} ><li className='p-2.5 hover:text-[#2CCBE0] text-wrap text-[1.2em] font-[500] capitalize'>{item.name}</li></Link> )
                                             }
                                             
                                         </ul>

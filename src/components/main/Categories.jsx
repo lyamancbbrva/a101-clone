@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -11,11 +11,44 @@ import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 import { PiArrowsDownUpLight } from "react-icons/pi";
 import Cart from "./Cart";
 import { FaChevronDown } from "react-icons/fa6";
-import { getCategories } from "../../api/api";
+import { getCategories, getProductBySubcatName } from "../../api/api";
 
 
 
 function Categories() {
+    
+    const [onerilen, setOnerilen] = useState(false)
+    const [hidden, setHidden] = useState(true)
+    const [cat, setCat] = useState([])
+    const [catId, setCatid] = useState(0)
+    const [productHidden, setProductHidden] = useState(false)
+    const {category, subCategory} = useParams()
+    const [product, setProduct] = useState([])
+
+        
+    const catName = category
+    ?.split(/[-&]/) 
+    .join("") 
+    ?.replace(/[\s,&]/g, ""); 
+
+const subcatName = subCategory
+    ?.split(/[-&]/) 
+    .join("") 
+    ?.replace(/[\s,&]/g, ""); 
+    const id = cat.find(item => item.name.replace(/[\s,&]/g, "").toLowerCase() == catName.toLocaleLowerCase())?.subcategory.find(elem=> elem.name.replace(/[\s,&]/g, "").toLowerCase() == subcatName).id
+
+    console.log(id);
+
+    useEffect(() => {
+        getCategories().then(resp => setCat(resp));
+    }, []);
+    useEffect(() => {
+        if (id) {
+            getProductBySubcatName(17).then(resp => setProduct(resp))
+        }
+    }, [id]);
+    console.log(cat);
+    
 
     const mainCategory = [
         {
@@ -51,17 +84,24 @@ function Categories() {
           img: "https://api.a101kapida.com/dbmk89vnr/CALL/Image/get/BRNpLVW214_1024x1024.png",
         },
       ];
+
+
+
+
+
+
+
+
+    
     
 
-    const [onerilen, setOnerilen] = useState(false)
-    const [hidden, setHidden] = useState(true)
-    const [category, setCategory] = useState([])
-    const [catId, setCatid] = useState(0)
-    const [productHidden, setProductHidden] = useState(false)
+  
 
-    useEffect(() => {
-        getCategories().then(resp => setCategory(resp))
-    }, [])
+   
+    
+
+
+
     
 
     function getProductsBySubcat() {
@@ -112,7 +152,7 @@ function Categories() {
                                     Tümünü gör
                                     <FaChevronRight className="text-[.8em] text-[#333] " />
                             </li>
-                        { category && category.map((item, index) => (
+                        { cat && cat?.map((item, index) => (
                             <li onClick={() =>{setHidden(false); setCatid(item.id)}} key={index} className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
                                     {item.name}
                                     <FaChevronRight className="text-[.8em] text-[#333] " />
@@ -124,7 +164,7 @@ function Categories() {
                                     Tümünü gör
                                     <FaChevronRight className="text-[.8em] text-[#333] " />
                             </li>
-                        { category && category.find(elem => elem.id == catId)?.subcategory?.map((item, index) => (
+                        { cat && cat?.find(elem => elem.id == catId)?.subcategory?.map((item, index) => (
                             <li onClick={getProductsBySubcat}  key={index} className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
                                     {item.name}
                                     <FaChevronRight className="text-[.8em] text-[#333] " />
@@ -167,7 +207,7 @@ function Categories() {
                 <div className="flex gap-1 py-3 text-[#333] cursor-pointer font-thin lg:text-sm text-xs items-center">
                     <Link to="/">Ana Sayfa</Link>
                     <GoChevronRight className="text-[#788089]" />
-                    <Link>Acam</Link>
+                    <Link to={category}>{category}</Link>
                 </div>
         <div className="flex py-6 text-[#333] w-full justify-between gap-[20px] items-start">
           <div className="min-w-[15vw]">

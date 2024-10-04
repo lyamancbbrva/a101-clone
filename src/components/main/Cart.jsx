@@ -7,8 +7,7 @@ import { HiXMark } from "react-icons/hi2";
 export default function Cart({item, basket,setBasket }) {
 
     const [modal, setModal] = useState(false)
-
-    
+   
 
     function addToBasket(e) {
 
@@ -43,14 +42,14 @@ export default function Cart({item, basket,setBasket }) {
                 </div>
             </Link>
             :
-            <div className="flex flex-col m-8 rounded shadow-md w-60 sm:w-80 animate-pulse h-96">
-	<div className="h-48 rounded-t dark:bg-gray-300"></div>
-	<div className="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-50">
-		<div className="w-full h-6 rounded dark:bg-gray-300"></div>
-		<div className="w-full h-6 rounded dark:bg-gray-300"></div>
-		<div className="w-3/4 h-6 rounded dark:bg-gray-300"></div>
-	</div>
-</div>
+            <div className="flex flex-col m-6 rounded shadow-md w-60 sm:w-70 animate-pulse h-96">
+                <div className="h-48 rounded-t m-6 dark:bg-gray-300"></div>
+                    <div className="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-50">
+                    <div className="w-full h-6 rounded dark:bg-gray-300"></div>
+                    <div className="w-full h-6 rounded dark:bg-gray-300"></div>
+                    <div className="w-3/4 h-6 rounded dark:bg-gray-300"></div>
+                </div>
+            </div>
 }
             {/* like modal */}
             <Transition.Root show={modal} as={Fragment}>
