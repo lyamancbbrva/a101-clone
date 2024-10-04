@@ -4,20 +4,26 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { HiXMark } from "react-icons/hi2";
 
-export default function Cart({item}) {
-    const [modal, setModal] = useState(false)
-    const [sepet, setSepet] = useState([])
+export default function Cart({item, basket,setBasket }) {
 
-    function addToCart(e, item) {
+    const [modal, setModal] = useState(false)
+
+    
+
+    function addToBasket(e) {
+
+        
         e.preventDefault();
-        setSepet([...sepet, item])
-        console.log(sepet);
+       const nese =  basket.find(elem=> elem.id == item.id)
+       !nese ? setBasket([...basket, { ...item, count: 1 }]) :  setBasket(basket.map(elem =>  elem.id === item.id ? { ...elem, count: elem.count + 1 } : elem ));
+        
     }
+    
     
 
     return (
         <>
-            <Link to={`/product/${item?.id}`} className="px-3 w-[100%] block rounded-2xl border-gray-200 border relative bg-white">
+            <Link to={`/product/`} className="px-3 w-[100%] block rounded-2xl border-gray-200 border relative bg-white">
                 <GoHeart
                     onClick={(e) => {
                         e.preventDefault()
@@ -31,7 +37,7 @@ export default function Cart({item}) {
                 <p className="text-red-600 text-lg font-semibold mb-2">₺{item?.price}</p>
                 <div className="pb-2">
                     <button 
-                    onClick={(e)=> addToCart(e, item)}
+                    onClick={addToBasket}
                     className="bg-[#00BAD3] text-white rounded-3xl py-1.5  text-sm w-full">Sepete Ekle</button>
                 </div>
             </Link>

@@ -117,7 +117,7 @@ function Slider() {
                       <img
                         className="w-[50px] h-[50px] rounded-full object-cover "
                         src={item.img}
-                        alt=""
+                        alt={item.img}
                       />
                     </td>
                     <td scope="row" className="px-6 py-4 font-medium">
@@ -320,7 +320,7 @@ function Slider() {
                         //     setImgSrc(item);
                         //     setDelModal(true);
                         //   }}
-                          className="w-[100px] object-cover"
+                          className="w-[150px] h-[70px] object-contain"
                           src={slider.img}
                         />
                       }

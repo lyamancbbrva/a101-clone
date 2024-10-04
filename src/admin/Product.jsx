@@ -20,7 +20,7 @@ function Product() {
 		price: 0,
 		discount: 0,
 		imageUrl: [],
-		sizes: [],
+		sizes: ['sm', 'md', 'lg'],
 		categoryId: 0,
 		subcategoryId: 0,
 		description: "",
@@ -159,8 +159,8 @@ function Product() {
 													<div className="h-10 w-10 flex-shrink-0">
 														<img
 															className="h-10 w-10 rounded-full object-cover"
-															src={item.imageUrl[0]
-																// item?.imageUrl?.length > 0 ? item?.imageUrl[0] : item?.imageUrl
+															src={
+																item?.imageUrl?.length > 0 ? item?.imageUrl[0] : item?.imageUrl
 															}
 															alt={name}
 														/>

@@ -22,8 +22,11 @@ import { Cookies } from "react-cookie";
 const cook = new Cookies();
 
 function App() {
+
 	const [auth, setAuth] = useState(false);
 	const { pathname } = useLocation();
+	const [basket, setBasket] = useState([])
+
 
 	useEffect(() => {
 		window.scroll(0, 0);
@@ -54,12 +57,12 @@ function App() {
 						<Route path="slayt" element={<Slider />} />
 					</Route>
 				)}
-				<Route path="/" element={<Layout />}>
-					<Route path="/" element={<Main />} />
-					<Route path="/sepet" element={<Basket />} />
+				<Route path="/" element={<Layout basket={basket}/>}>
+					<Route path="/" element={<Main basket={basket} setBasket={setBasket} />} />
+					<Route path="/sepet"  element={<Basket basket={basket} setBasket={setBasket}/>}  />
 					<Route path="/kampanyalar" element={<Campaigns />} />
-					<Route path="/product/:id" element={<CardInfo />} />
-					<Route path="/kateqoriler" element={<Categories />} />
+					<Route path="/product/:id" element={<CardInfo basket={basket} setBasket={setBasket} />} />
+					<Route path="/kateqoriler" element={<Categories  basket={basket} setBasket={setBasket} />} />
 				</Route>
 				<Route>
 					<Route path="/giris" element={<Login />} />

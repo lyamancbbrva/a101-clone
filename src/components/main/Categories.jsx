@@ -119,7 +119,7 @@ function Categories() {
                             </li>
                         ))}
                     </ul>
-                    <ul className="inline-block w-full min-h-[80vh]">
+                    <ul className={`${productHidden ? 'hidden' : 'inline-block'} w-full min-h-[80vh]`}>
                             <li onClick={() => setHidden(false)} className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center">
                                     Tümünü gör
                                     <FaChevronRight className="text-[.8em] text-[#333] " />
@@ -144,7 +144,7 @@ function Categories() {
                         Filtrele
                     </button>
                 </div>
-                <div className={`wrapper px-3 $`}>
+                <div className={`wrapper px-3 bg-[#F3F6FA] ${productHidden ? 'block' : 'hidden'}`}>
                     <h2 className="py-4">"Elektronik" için <span className="font-semibold">891 ürün</span> bulundu.</h2>
                     <div className="flex justify-between pb-6 pt-2">
                         <div className="flex items-center gap-2 cursor-pointer">

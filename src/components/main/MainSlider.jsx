@@ -3,9 +3,18 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import { useEffect, useState } from 'react';
+import { getSlider } from '../../api/api';
 
 export default function MainSlider() {
 
+    const [slider, setSlider] = useState([])
+
+    useEffect(() => {
+        getSlider().then(resp => setSlider(resp))
+        
+    }, [])
+    
     return (
         
         <section className='py-8 px-2'>  
@@ -17,7 +26,12 @@ export default function MainSlider() {
             </div>
             <Swiper
                 slidesPerView={1}
-                spaceBetween={30} 
+                loop={true}
+                // spaceBetween={30} 
+                autoplay={{ 
+                    delay: 3000, 
+                    // disableOnInteraction: false 
+                }}
                 mousewheel={
                     {
                         forceToAxis: true,
@@ -25,24 +39,16 @@ export default function MainSlider() {
                     }
                 }
                 direction="horizontal"
-                loop={true}
                 pagination={{clickable: true,}}
-                autoplay={{ 
-                    delay: 5000, 
-                    disableOnInteraction: false 
-                }}
                 navigation={true}
                 modules={[Pagination, Navigation, Autoplay]}
                 className="mySwiper mainSlider"
             >
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider1.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src="src/assets/img/slider2.jpg" alt="" /></SwiperSlide>
+                {
+                    slider.map((item, i) => <SwiperSlide key={i}><img className='rounded-e-2xl rounded-es-2xl object-cover h-[40vh] sm:h-[50vh] md:h-[35vh] lg:h-[40vh] xl:h-[52vh]  ' src={item.img} alt={item.img} /></SwiperSlide>)
+                }
+                
+             
             </Swiper>
         </section>
     );

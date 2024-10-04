@@ -256,6 +256,52 @@ body {
     display: none;
 }
 
+.aldin1{
+    background: url('../src/assets/img/aldinmobiljpg.jpg') center/cover no-repeat;
+}
+.aldin2{
+    background: url('../src/assets/img/aldin2mobiljpg.jpg') center/cover no-repeat;
+}
+.aldin3{
+    background: url('../src/assets/img/aldin3mobiljpg.jpg') center/cover no-repeat;
+}
+.aldin4{
+    background: url('../src/assets/img/aldin4mobiljpg.jpg') center/cover no-repeat;
+}
+.aldin5{
+    background: url('../src/assets/img/aldin5mobiljpg.jpg') center/cover no-repeat;
+}
+.iphone{
+    background: url('../src/assets/img/iphoneMobil.jpg') center/cover no-repeat;
+}
+.samsung{
+    background: url('../src/assets/img/samsungmobil.jpg') center/cover no-repeat;
+}
+.xiaomi{
+    background: url('../src/assets/img/xiaomimobil.jpg') center/cover no-repeat;
+}
+.tefal{
+    background: url('../src/assets/img/tefalmobil.jpg') center/cover no-repeat;
+}
+.stanley{
+    background: url('../src/assets/img/stanleymobil.jpg') center/cover no-repeat;
+}
+.skechers{
+    background: url('../src/assets/img/skechersmobil.jpg') center/cover no-repeat;
+}
+.crocs{
+    background: url('../src/assets/img/crocsmobil.jpg') center/cover no-repeat;
+}
+.kamp{
+    background: url('../src/assets/img/kampMobil.jpg') center/cover no-repeat;
+}
+.mobilya{
+    background: url('../src/assets/img/mobilyamobil.jpg') center/cover no-repeat;
+}
+.ceyiz{
+    background: url('../src/assets/img/ceyizmobiljpg.jpg') center/cover no-repeat;
+}
+
 @media only screen and (min-width: 768px) {
     .wrapper {
         max-width: 750px;
@@ -265,6 +311,51 @@ body {
     .ucuz-fiyatlar {
         background: url('./assets/img/mobil-web.jpg') center/cover no-repeat;
         height: 100vh;
+    }
+    .aldin1{
+        background: url('../src/assets/img/aldindesktop.jpg') center/cover no-repeat;
+    }
+    .aldin2{
+        background: url('../src/assets/img/aldin2desktop.jpg') center/cover no-repeat;
+    }
+    .aldin3{
+        background: url('../src/assets/img/aldin3desktopjpg.jpg') center/cover no-repeat;
+    }
+    .aldin4{
+        background: url('../src/assets/img/aldin4desktop.jpg') center/cover no-repeat;
+    }
+    .aldin5{
+        background: url('../src/assets/img/aldin5desktop.jpg') center/cover no-repeat;
+    }
+    .iphone{
+        background: url('../src/assets/img/iphonedesktop.jpg') center/cover no-repeat;
+    }
+    .samsung{
+        background: url('../src/assets/img/samsungdesktop.jpg') center/cover no-repeat;
+    }
+    .xiaomi{
+        background: url('../src/assets/img/xiaomidesktop.jpg') center/cover no-repeat;
+    }
+    .tefal{
+        background: url('../src/assets/img/tefaldesktop.jpg') center/cover no-repeat;
+    }
+    .stanley{
+        background: url('../src/assets/img/stanleydesktop.jpg') center/cover no-repeat;
+    }
+    .skechers{
+        background: url('../src/assets/img/skechersdesktop.jpg') center/cover no-repeat;
+    }
+    .crocs{
+        background: url('../src/assets/img/crocsdesktopjpg.jpg') center/cover no-repeat;
+    }
+    .kamp{
+        background: url('../src/assets/img/kampdesktop.jpg') center/cover no-repeat;
+    }
+    .mobilya{
+        background: url('../src/assets/img/mobilyadesktopjpg.jpg') center/cover no-repeat;
+    }
+    .ceyiz{
+        background: url('../src/assets/img/ceyizdesktopjpg.jpg') center/cover no-repeat;
     }
 }
 

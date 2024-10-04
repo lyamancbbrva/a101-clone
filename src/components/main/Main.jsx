@@ -27,7 +27,8 @@ import 'swiper/css/navigation';
 import { Navigation, Mousewheel, Autoplay } from 'swiper/modules';
 import Cart from "./Cart"
 
-function Main({mainCategory}) {
+function Main({mainCategory, basket, setBasket}) {
+
 
     const kolleksion = [
         {img : kampanya1 , name: 'Axess Kampanyası'},
@@ -62,7 +63,7 @@ function Main({mainCategory}) {
                     <a href="" className="hidden md:block "><img className="md:h-[50%]" src={haftanin_yildizlari} alt="haftanin yildizlari" /></a>
                     <a href="" className="hidden md:block "><img className="md:h-[50%]" src={tl10} alt="10tl ve uzeri"  /></a>
                 </div>
-                <Highlights/>
+                <Highlights basket={basket} setBasket={setBasket}/>
                 <div className="py-5">
                 <h5 className='pb-3 font-medium text-base'>Kolleksiyonlar</h5>
                 <Swiper
@@ -205,12 +206,27 @@ function Main({mainCategory}) {
             >
 
                 {
-                    new Array(10).fill(null).map((_,item) => <SwiperSlide key={item} ><Cart/></SwiperSlide>)
+                    new Array(10).fill(null).map((_,item) => <SwiperSlide key={item} ><Cart basket={basket} setBasket={setBasket}/></SwiperSlide>)
                 }         
                 </Swiper>
                 </div>
                 </div>
-                <Highlights />
+                <Highlights basket={basket} setBasket={setBasket} />
+                <div className="aldin1  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="aldin2  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="aldin3  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="aldin4  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="aldin5  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="iphone  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="samsung  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="xiaomi  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="tefal  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="stanley  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="skechers  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="crocs  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="kamp  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="mobilya  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
+                <div className="ceyiz  w-full h-[40vh] rounded-2xl md:h-[30vh] my-5 lg:h-[35vh] lg:my-10"></div>
             </div>
         </div>
     )

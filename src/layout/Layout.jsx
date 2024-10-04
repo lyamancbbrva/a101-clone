@@ -2,7 +2,9 @@ import { Outlet } from "react-router-dom";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 
-function Layout() {
+function Layout({basket}) {
+
+
   const mainCategory = [
     {
       name: "Elektronik",
@@ -40,7 +42,7 @@ function Layout() {
 
   return (
     <>
-      <Header mainCategory={mainCategory} />
+      <Header mainCategory={mainCategory} basket={basket} />
       <main className="min-h-[45vh]">
         <Outlet mainCategory={mainCategory} />
       </main>

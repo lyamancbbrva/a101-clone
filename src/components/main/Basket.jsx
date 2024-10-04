@@ -5,27 +5,26 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProducts } from "../../api/api";
 
-function Basket() {
-    const [data, setData] = useState([])
-
-    useEffect(() => {
-        getProducts().then(resp => setData(resp))
-    }, [])
+function Basket({basket, setBasket}) {
 
     const handleIncrement = (id) => {
-        setData(data.map(item => item.id == id ? { ...item, count: item.count + 1 } : item));
-    }
+
+        setBasket(basket.map(item => 
+            item.id === id ? { ...item, count: (item.count || 1) + 1 } : item
+        ));
+
+    };
 
     const handleDecrement = (id) => {
-        setData(data.map(item =>
+        setBasket(basket.map(item =>
             item.id === id && item.count > 1 ? { ...item, count: item.count - 1 } : item));
     }
 
     const handleRemove = (id) => {
-        setData(data.filter(item => item.id !== id));
+        setBasket(basket.filter(item => item.id !== id));
     }
 
-    const total = data.reduce((total, item) => total + item.price * item.count, 0).toFixed(2)
+    const total = basket?.reduce((total, item) => total + item?.price * item?.count, 0).toFixed(2)
 
     return (
         <section className="bg-slate-50">
@@ -33,14 +32,18 @@ function Basket() {
                 <div className="lg:w-[660px] w-full">
                     <div className="flex items-center py-4 border-b">
                         <h2 className="text-lg font-semibold mr-2">Sepetim</h2>
-                        <span className="text-[.8em] text-gray-400">{data.length} ürün eklendi</span>
+                        <span className="text-[.8em] text-gray-400">{basket.length} ürün eklendi</span>
                     </div>
-                    <div className="flex cursor-pointer items-center pt-2.5 pb-2 justify-end gap-1"><BsTrash className="text-lg" />Sil</div>
+                    <div onClick={() => setBasket([])} className="flex cursor-pointer items-center pt-2.5 pb-2 justify-end gap-1"><BsTrash className="text-lg" />Sil</div>
+
+                    {
+                       <div className="text-cneter text-[2em]">{ basket.length == 0 ? "Kasıbsan heçnə alammırsan!" : ''}</div>
+                    }
                     <div className="cards pb-5">
-                        {data.map((item) => {
+                        {basket.map((item, i) => {
                             const { name, id, imageUrl, price, count } = item;
                             return (
-                                <Link key={id} className='bg-white shadow-sm my-2 rounded-2xl p-2 flex flex-row items-center gap-5'>
+                                <Link key={i} className='bg-white shadow-sm my-2 rounded-2xl p-2 flex flex-row items-center gap-5'>
                                     <div className='inline-flex p-1 m-1'>
                                         <img src={imageUrl} className='w-24 border rounded-xl object-cover' alt={name} />
                                     </div>

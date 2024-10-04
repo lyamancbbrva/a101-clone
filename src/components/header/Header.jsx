@@ -4,7 +4,7 @@ import { IoChevronForward } from "react-icons/io5";
 import { useEffect, useState } from 'react';
 import { getCategories, getProducts } from '../../api/api';
 
-function Header({mainCategory}) {
+function Header({mainCategory, basket}) {
 
     const [activeTab, setActiveTab] = useState(1)
     const [category, setCategory] = useState(['salam', 'necesen'])
@@ -12,6 +12,8 @@ function Header({mainCategory}) {
     const [inpValue, setInpValue] = useState('')
     const [status, setStatus] = useState(false)
     const [catId, setCatId] = useState(2)
+
+    
 
     useEffect(() => {
         getCategories().then(resp => setCategory(resp))
@@ -176,7 +178,7 @@ function Header({mainCategory}) {
                         }
                     </div>
                 </fieldset>
-                {product.length > 1 ?
+                {basket.length > 1 ?
                     <Link to={'/sepet'} className='bg-[#00BAD3] lg:flex hidden p-1 rounded-full w-[165px] gap-4 h-11 items-center'>
                         <div className='bg-white p-1.5 rounded-full relative'>
                             <svg
@@ -206,10 +208,10 @@ function Header({mainCategory}) {
                                 ></path>
                             </svg>
                             <span className='top-1 right-[5px] absolute w-[15px] h-[16px] rounded-full text-[.72em] text-center text-white bg-[#00BAD3]'>
-                                {product.length}
+                                {basket.length}
                             </span>
                         </div>
-                        <p className='text-white font-medium'>₺2.899,00</p>
+                        <p className='text-white font-medium'>₺{basket?.reduce((total, item) => total + item?.price * item?.count, 0).toFixed(2)}</p>
                     </Link>
                     : null}
             </div>
@@ -223,8 +225,8 @@ function Header({mainCategory}) {
                                     <div className=' scroll overflow-y-scroll  min-w-[380px]'>
                                         <ul className='p-4'>
                                             {
-                                                category.map((elem, i) => <li onMouseEnter={() => setCatId(elem.id)
-                                                } key={i} className='cursor-pointer hover:text-[#2CCBE0] flex justify-between text-[1.35em] p-2.5 capitalize'>{elem.name} <IoChevronForward /></li>
+                                              category &&  category.map((elem, i) => <li onMouseEnter={() => setCatId(elem.id)
+                                                } key={i} className='cursor-pointer hover:text-[#2CCBE0] flex justify-between text-[1.2em] p-2.5 capitalize'>{elem.name} <IoChevronForward /></li>
                                             )
                                             }   
                                         </ul>
@@ -232,7 +234,7 @@ function Header({mainCategory}) {
                                     <div className='scroll overflow-y-scroll min-w-[250px] xl:min-w-[400px]'>
                                         <ul className=' p-3'>
                                             {
-                                                category && category?.find(elem => elem.id == catId)?.subcategory?.map((item, i) =><Link to={''} key={i} ><li className='p-2.5 hover:text-[#2CCBE0] text-wrap text-[1.3em] font-[500] capitalize'>{item.name}</li></Link> )
+                                                category && category?.find(elem => elem.id == catId)?.subcategory?.map((item, i) =><Link to={''} key={i} ><li className='p-2.5 hover:text-[#2CCBE0] text-wrap text-[1.2em] font-[500] capitalize'>{item.name}</li></Link> )
                                             }
                                             
                                         </ul>
@@ -517,9 +519,9 @@ function Header({mainCategory}) {
                                 strokeWidth='0.4'
                             ></path>
                         </svg>
-                        <div className={`bg-[#00BAD3] ${product.length > 0 ? 'block' : 'hidden'} rounded-full w-[12px] h-[12px] text-white text-[.5em] px-1  absolute right-0 `}>{product.length}</div>
-                        <h5 className={`${activeTab == 3 ? 'text-[#00BAD3]' : product.length == 0 ? 'text-[#8D939C]' : ''}   ${product.length > 0 ? 'w-[40px] px-2 rounded-2xl text-white bg-[#00BAD3] text-center text-[.6em] h-[15px] my-1' : 'py-1 text-[.5em]'} `}>
-                            {product.length > 0 ? 't' + product.map(item => +item.price).reduce((sum, item) => sum + item, 0) : 'Sepetim'}
+                        <div className={`bg-[#00BAD3] ${basket.length > 0 ? 'block' : 'hidden'} rounded-full w-[12px] h-[12px] text-white text-[.5em] px-1  absolute right-0 `}>{basket.length}</div>
+                        <h5 className={`${activeTab == 3 ? 'text-[#00BAD3]' : basket.length == 0 ? 'text-[#8D939C]' : ''}   ${basket.length > 0 ? 'w-[45px] px-2 rounded-2xl text-white bg-[#00BAD3] text-center text-[.6em] h-[15px] my-1' : 'py-1 text-[.5em]'} `}>
+                            {basket.length > 0 ? 't' + basket?.reduce((total, item) => total + item?.price * item?.count, 0).toFixed(0) : 'Sepetim'}
                         </h5>
                     </Link>
                     <Link to={'/kampanyalar'} onClick={() => setActiveTab(4)} className='icon flex flex-col items-center'>
