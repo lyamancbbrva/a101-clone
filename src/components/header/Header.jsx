@@ -2,30 +2,61 @@ import { Link } from "react-router-dom";
 import extralogo from '../../assets/img/extra-logo.webp'
 import { IoChevronForward } from "react-icons/io5";
 import { useEffect, useState } from 'react';
-import { getCategories, getProducts } from '../../api/api';
+import { getCategories, searchProduct } from '../../api/api';
 import axios from "axios";
+import { TbMapX } from "react-icons/tb";
 
-function Header({mainCategory, basket}) {
+function Header({ mainCategory, basket }) {
 
     const [activeTab, setActiveTab] = useState(1)
     const [category, setCategory] = useState([])
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState(null)
     const [inpValue, setInpValue] = useState('')
     const [status, setStatus] = useState(false)
     const [catId, setCatId] = useState(2)
 
 
 
-    
+
 
     useEffect(() => {
         getCategories().then(resp => setCategory(resp))
-        axios.get(`https://a101backend.vercel.app/products?limit=770&page=1`).then(resp => setProduct(resp.data.products))
     }, [])
-   
 
+    useEffect(() => {
+        if (inpValue.trim().length >= 2) {
+            searchProduct(inpValue.toLowerCase()).then(resp => setProduct(resp.products))
+        }
+    }, [inpValue])
+
+    const hoveredMenu = [
+        {
+            min: 0 ,
+            max: 9
+        },
+        {
+            min: 10 ,
+            max:17
+        },
+        {
+            min: 18 ,
+            max: 29
+        },
+        {
+            min: 0 ,
+            max: 9
+        },
+        {
+            min: 0 ,
+            max: 9
+        },
+        {
+            min: 0 ,
+            max: 9
+        },
+    ]
     return (
-        <header onClick={()=> setStatus(false)} className='sticky top-0 z-[9] bg-white shadow-gray-100 shadow-sm'>
+        <header onClick={() => setStatus(false)} className='sticky top-0 z-[9] bg-white shadow-gray-100 shadow-sm'>
             <div className='bg-[#40D3E7] p-2'>
                 <div className='wrapper lg:w-[95%] flex items-center justify-between'>
                     <div className='logos flex items-center justify-start gap-[5px] '>
@@ -41,7 +72,6 @@ function Header({mainCategory, basket}) {
                                         className='w-[0%] xs:w-[110%] lg:hidden'
                                         xmlns='http://www.w3.org/2000/svg'
                                         height='14'
-                                        // width='100%'
                                         fill='none'
                                     >
                                         <path
@@ -151,11 +181,9 @@ function Header({mainCategory, basket}) {
                     </div>
                     <div className={`${status ? 'block' : 'hidden'} max-h-[350px] sm:max-h-[450px] overflow-y-auto absolute top-[70px] right-[0%] z-[1000] rounded-b-md scroll shadow-md w-[100%]`}>
                         {
-                            product &&
-                            product?.filter(item => item?.name.toLowerCase().startsWith(inpValue.toLowerCase()))
-                                .length > 0 ? (
-                                product?.filter(item => item?.name.toLowerCase().startsWith(inpValue.toLowerCase()))
-                                    .map((item, i) => (
+                            product ?
+                                (
+                                    product?.map((item, i) => (
                                         <Link
                                             to={`/product/${item.id}`}
                                             key={i}
@@ -175,9 +203,9 @@ function Header({mainCategory, basket}) {
                                             </div>
                                         </Link>
                                     ))
-                            ) : (
-                                <div className="p-4 bg-white">Ürün bulunamadı...</div>
-                            )
+                                ) : (
+                                    <div className="p-4 bg-white">Ürün bulunamadı...</div>
+                                )
                         }
                     </div>
                 </fieldset>
@@ -227,26 +255,26 @@ function Header({mainCategory, basket}) {
                                 <div className='mega-menu bg-white hidden absolute gap-1 top-[100%]  w-[100%] border right-0 max-h-[55vh] z-[99999999999]'>
                                     <div className=' scroll overflow-y-scroll  min-w-[380px]'>
                                         <ul className='p-4'>
-                                        {
-                                              category &&  category?.map((elem, i) => <li onMouseEnter={() => setCatId(elem.id)
+                                            {
+                                                category && category?.map((elem, i) => <li onMouseEnter={() => setCatId(elem.id)
                                                 } key={i} className='cursor-pointer hover:text-[#2CCBE0] flex justify-between text-[1.2em] p-2.5 capitalize'>{elem.name} <IoChevronForward /></li>
-                                            )
-                                            }   
+                                                )
+                                            }
                                         </ul>
                                     </div>
                                     <div className='scroll overflow-y-scroll min-w-[250px] xl:min-w-[400px]'>
                                         <ul className=' p-3'>
                                             {
-                                                category && category?.find(elem => elem.id == catId)?.subcategory?.map((item, i) =><Link to={`/${item.slug}`} key={i} ><li className='p-2.5 hover:text-[#2CCBE0] text-wrap text-[1.2em] font-[500] capitalize'>{item.name}</li></Link> )
+                                                category && category?.find(elem => elem.id == catId)?.subcategory?.map((item, i) => <Link to={`/${item.slug}`} key={i} ><li className='p-2.5 hover:text-[#2CCBE0] text-wrap text-[1.2em] font-[500] capitalize'>{item.name}</li></Link>)
                                             }
-                                            
+
                                         </ul>
                                     </div>
                                     <div className='p-3 overflow-y-hidden flex items-start flex-wrap'>
                                         {
-                                            category && category.map(item => item.img).splice(0,4).map((src,i) => <img key={i} className='rounded-xl max-w-[150px] inline-block m-1' src={src} alt={src} />)
-                                        } 
-                                      
+                                            category && category.map(item => item.img).splice(0, 4).map((src, i) => <img key={i} className='rounded-xl max-w-[150px] inline-block m-1' src={src} alt={src} />)
+                                        }
+
                                     </div>
                                 </div>
                             </li>)

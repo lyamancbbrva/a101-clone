@@ -34,9 +34,9 @@ async function getProductById(id) {
     return error;
   }
 }
-async function searchProduct() {
+async function searchProduct(query) {
   try {
-    const res = await axiosInstance.get("/products/search");
+    const res = await axiosInstance.get(`products/search?name=${query}`);
     return res.data;
   } catch (error) {
     return error;
@@ -146,18 +146,18 @@ async function deleteSubcategory(id) {
     return error;
   }
 }
-    async function createImage(formData) {
-    try {
-        const res = await axiosInstance.post(`/img`, formData, {
-        headers: {
-            "Content-Type": "multipart/form-data",
-        },
-        });
-        return res.data;
-    } catch (error) {
-        return error;
-    }
-    }
+async function createImage(formData) {
+  try {
+    const res = await axiosInstance.post(`/img`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    return error;
+  }
+}
 async function deleteImage(filename) {
   try {
     const res = await axiosInstance.delete(`/img/${filename}`);
@@ -246,6 +246,7 @@ async function getAuth() {
     return error;
   }
 }
+
 
 export {
   createProduct,
