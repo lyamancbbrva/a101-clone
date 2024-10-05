@@ -20,7 +20,7 @@ export default function Cart({item, basket,setBasket }) {
     return (
         <>
        { item ?
-            <Link to={`/product/${item?.id}`} className="px-3 w-[100%] block rounded-2xl border-gray-200 border relative bg-white">
+            <Link to={`/product/${item?.id}`} className="px-3 w-[100%]  block rounded-2xl border-gray-200 border relative bg-white">
                 <GoHeart
                     onClick={(e) => {
                         e.preventDefault()
@@ -29,7 +29,7 @@ export default function Cart({item, basket,setBasket }) {
                     className="text-2xl absolute right-3 top-5" />
                 <img src={
                     item?.imageUrl?.length > 0 ? item.imageUrl
-                     : item?.imageUrl[0]} alt={item?.name} className="object-cover h-[40vh] lg:h-[25vh] xl:h-[20vh] mt-4 object-center w-full rounded-md dark:bg-gray-500" />
+                     : item?.imageUrl[0]} alt={item?.name} className="object-contain h-[40vh] lg:h-[25vh] xl:h-[20vh] mt-4 object-center w-full rounded-md" />
                 <div className="mt-2.5 mb-2">
                     <h2 className="text-[.8em] h-10 capitalize text-ellipsis overflow-hidden tracking-wide">{item?.name}</h2>
                 </div>

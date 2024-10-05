@@ -10,7 +10,18 @@
     font-weight: normal;
     font-style: normal;
 }
-
+input[type="range" i] {
+    appearance: none;
+    height: 2px;
+}
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: #40D3E7; /* dairenin rengi */
+    border-radius: 50%;
+    cursor: pointer;
+}
 .loader {
     width: 60px;
     aspect-ratio: 4;

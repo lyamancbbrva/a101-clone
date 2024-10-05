@@ -12,6 +12,7 @@ import { PiArrowsDownUpLight } from "react-icons/pi";
 import Cart from "./Cart";
 import { FaChevronDown } from "react-icons/fa6";
 import { getCategories, getProductBySubcatName } from "../../api/api";
+import axios from "axios";
 
 function Categories() {
   const [onerilen, setOnerilen] = useState(false);
@@ -19,7 +20,7 @@ function Categories() {
   const [cat, setCat] = useState([]);
   const [catId, setCatid] = useState(0);
   const [productHidden, setProductHidden] = useState(false);
-  const { category, subCategory } = useParams();
+  const {category, subCategory } = useParams();
   const [product, setProduct] = useState([]);
   const [inp, setInp] = useState([]);
 
@@ -50,6 +51,7 @@ function Categories() {
   useEffect(() => {
     if (id) {
       getProductBySubcatName(id).then((resp) => setProduct(resp));
+      // axios.get(`https://a101backend.vercel.app/products?limit=50&page=${page}`)
     }
   }, [id]);
 
@@ -137,13 +139,13 @@ function Categories() {
           </div>
 
           <ul className={` ${hidden ? "block" : "hidden"} w-full`}>
-            <li
+           <Link to={`/kateqoriler`}> <li
               onClick={() => setHidden(false)}
               className="flex cursor-pointer justify-between text-[#333] border-b py-4 w-full text-sm px-3 items-center"
             >
               Tümünü gör
               <FaChevronRight className="text-[.8em] text-[#333] " />
-            </li>
+            </li></Link>
             {cat &&
               cat?.map((item, index) => (
                 <li
@@ -205,11 +207,8 @@ function Categories() {
           }`}
         >
           <h2 className="py-4">
-            "{subCategory}" için{" "}
-            <span className="font-semibold">
-              {product?.products?.length} ürün
-            </span>{" "}
-            bulundu.
+            "{subCategory}" için
+            <span className="font-semibold"> { product?.products?.length} ürün</span> {product?.products?.length > 0 ? 'bulundu.' : 'bulunmadı.'} 
           </h2>
           <div className="flex justify-between pb-6 pt-2">
             {/* <div className="flex items-center gap-2 cursor-pointer">
@@ -222,7 +221,7 @@ function Categories() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-6 pb-5">
-            {product &&
+            {product?.products &&
               product?.products
                 ?.filter((elem) => elem.price == inp)
                 .map((item, index) => (
@@ -232,7 +231,8 @@ function Categories() {
                   >
                     <Cart item={item} />
                   </div>
-                ))}
+                ))
+              }
           </div>
         </div>
       </div>
@@ -241,21 +241,24 @@ function Categories() {
           <Link to="/">Ana Sayfa</Link>
           <GoChevronRight className="text-[#788089]" />
           <Link to={category}>{category}</Link>
+          <GoChevronRight className="text-[#788089]" />
+          <Link to={category}>{subCategory}</Link>
         </div>
         <div className="flex py-6 text-[#333] w-full justify-between gap-[20px] items-start">
           <div className="min-w-[15vw]">
-            <div className="kategoriler border-b">
+            {
+              product?.products?.length > 0 ? <div className="kategoriler border-b">
               <h3 className="text-lg font-medium pb-4">Filtrele</h3>
               <div className=" mb-6">
 
                 <div className="p-6">
                 <input
-                  onChange={(e) => setInp(e.target.value)}
+                  onChange={(e) =>{ setInp(e.target.value)}}
                   id="labels-range-input"
                   step="10"
                   type="range"
                   min="500"
-                  max="5000"
+                  max="500000"
                   className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer "
                 />
                 <div className="flex justify-between ">
@@ -401,7 +404,8 @@ function Categories() {
                   </div>
                 </div>
               </div> */}
-            </div>
+            </div> : ''
+            }
             {/* <div className="filtrler">
               <h3 className="text-lg font-medium py-4">Filtreler</h3>
               <div className="hs-accordion-group px-4 py-1">
@@ -474,97 +478,99 @@ function Categories() {
           <div>
             <h2 className="font-normal my-5 text-base break-all text-md">
               "{subCategory}" için
-              <span className="font-semibold"> { product?.products?.length} ürün</span> bulundu.
+              <span className="font-semibold"> { product?.products?.length} ürün</span> {product?.products?.length > 0 ? 'bulundu.' : 'bulunmadı.'} 
             </h2>
             <div>
-              <div className="flex justify-between py-5 items center">
-                <div>
-                  <div
-                    onClick={() => setOnerilen(!onerilen)}
-                    className={`false outline-2 ${
-                      onerilen ? "border-[#00BAD3]" : ""
-                    }  flex justify-between cursor-pointer accent-brand-blue-primary min-w-[20vw] bg-white items-center p-4 rounded-full border-brand-gray-border border px-4 py-2`}
+             {
+              product?.products?.length> 0 ?  <div className="flex justify-between py-5 items center">
+              <div>
+                <div
+                  onClick={() => setOnerilen(!onerilen)}
+                  className={`false outline-2 ${
+                    onerilen ? "border-[#00BAD3]" : ""
+                  }  flex justify-between cursor-pointer accent-brand-blue-primary min-w-[20vw] bg-white items-center p-4 rounded-full border-brand-gray-border border px-4 py-2`}
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M11.0026 6.71838C10.7727 6.93277 10.4023 6.93277 10.1724 6.71838C9.94255 6.504 9.94255 6.15859 10.1724 5.9442L13.9183 2.38345C14.1482 2.16906 14.5185 2.16906 14.7484 2.38345L18.4943 5.9442C18.7242 6.15859 18.7242 6.504 18.4943 6.71838C18.3793 6.82558 18.2261 6.87322 18.0856 6.87322C17.9451 6.87322 17.7918 6.82558 17.6769 6.71838L14.9145 4.08665V17.2303C14.9145 17.5281 14.659 17.7782 14.327 17.7782C13.9949 17.7782 13.7395 17.54 13.7395 17.2303V4.08665L11.0026 6.71838Z"
-                        fill="#333333"
-                      ></path>
-                      <path
-                        d="M1.49488 13.2863C1.72515 13.0718 2.09614 13.0718 2.32641 13.2863L5.07902 15.919V2.77088C5.07902 2.47293 5.33487 2.22266 5.66748 2.22266C6.0001 2.22266 6.25595 2.46101 6.25595 2.77088V15.919L8.99577 13.2863C9.22604 13.0718 9.59703 13.0718 9.8273 13.2863C10.0576 13.5008 10.0576 13.8464 9.8273 14.0609L6.07685 17.6233C5.96172 17.7305 5.8082 17.7782 5.66748 17.7782C5.52676 17.7782 5.37325 17.7305 5.25811 17.6233L1.50767 14.0609C1.2774 13.8464 1.2774 13.5008 1.49488 13.2863Z"
-                        fill="#333333"
-                      ></path>
-                    </svg>
-                    <span className="text-[#333] inline-block mr-[50px] text-[15px]">
-                      Önerilenler
-                    </span>
-                    <FaChevronDown className="text-[#333]" />
-                  </div>
-                </div>
-                <div className="flex">
-                  {/* <label className="inline-flex text-nowrap border-r  px-5 items-center">
-                    <input type="checkbox" className="hidden peer" />
-                        <div className="w-5 h-5 bg-white border border-gray-200 rounded-[5px] peer-checked:bg-[#00BAD3] peer-checked:border-[#00BAD3] transition-colors">
-                            <FaCheck className="text-white text-[.9em] m-[2px]" />
-                        </div>
-                        <span className="ml-2 text-sm text-[#333]">
-                            Stoksuz Ürünleri Gösterme
-                        </span>
-                </label> */}
-                  <div className="flex px-2 items-center gap-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        d="M6.45457 14.6363C7.9608 14.6363 9.18184 13.4153 9.18184 11.909C9.18184 10.4028 7.9608 9.18176 6.45457 9.18176C4.94834 9.18176 3.72729 10.4028 3.72729 11.909C3.72729 13.4153 4.94834 14.6363 6.45457 14.6363Z"
-                        stroke="#333333"
-                        strokeWidth="1.36364"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>
-                      <path
-                        d="M16 20.7728C17.5062 20.7728 18.7273 19.5517 18.7273 18.0455C18.7273 16.5393 17.5062 15.3182 16 15.3182C14.4937 15.3182 13.2727 16.5393 13.2727 18.0455C13.2727 19.5517 14.4937 20.7728 16 20.7728Z"
-                        stroke="#333333"
-                        strokeWidth="1.36364"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>
-                      <path
-                        d="M16 8.49996C17.5062 8.49996 18.7273 7.27891 18.7273 5.77268C18.7273 4.26645 17.5062 3.04541 16 3.04541C14.4937 3.04541 13.2727 4.26645 13.2727 5.77268C13.2727 7.27891 14.4937 8.49996 16 8.49996Z"
-                        stroke="#333333"
-                        strokeWidth="1.36364"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>
-                      <path
-                        d="M13.7063 7.24817L8.74854 10.4353"
-                        stroke="#333333"
-                        strokeWidth="1.36364"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>
-                      <path
-                        d="M8.74854 13.3846L13.7063 16.5718"
-                        stroke="#333333"
-                        strokeWidth="1.36364"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>
-                    </svg>
-                    <span>Paylaş</span>
-                  </div>
+                    <path
+                      d="M11.0026 6.71838C10.7727 6.93277 10.4023 6.93277 10.1724 6.71838C9.94255 6.504 9.94255 6.15859 10.1724 5.9442L13.9183 2.38345C14.1482 2.16906 14.5185 2.16906 14.7484 2.38345L18.4943 5.9442C18.7242 6.15859 18.7242 6.504 18.4943 6.71838C18.3793 6.82558 18.2261 6.87322 18.0856 6.87322C17.9451 6.87322 17.7918 6.82558 17.6769 6.71838L14.9145 4.08665V17.2303C14.9145 17.5281 14.659 17.7782 14.327 17.7782C13.9949 17.7782 13.7395 17.54 13.7395 17.2303V4.08665L11.0026 6.71838Z"
+                      fill="#333333"
+                    ></path>
+                    <path
+                      d="M1.49488 13.2863C1.72515 13.0718 2.09614 13.0718 2.32641 13.2863L5.07902 15.919V2.77088C5.07902 2.47293 5.33487 2.22266 5.66748 2.22266C6.0001 2.22266 6.25595 2.46101 6.25595 2.77088V15.919L8.99577 13.2863C9.22604 13.0718 9.59703 13.0718 9.8273 13.2863C10.0576 13.5008 10.0576 13.8464 9.8273 14.0609L6.07685 17.6233C5.96172 17.7305 5.8082 17.7782 5.66748 17.7782C5.52676 17.7782 5.37325 17.7305 5.25811 17.6233L1.50767 14.0609C1.2774 13.8464 1.2774 13.5008 1.49488 13.2863Z"
+                      fill="#333333"
+                    ></path>
+                  </svg>
+                  <span className="text-[#333] inline-block mr-[50px] text-[15px]">
+                    Önerilenler
+                  </span>
+                  <FaChevronDown className="text-[#333]" />
                 </div>
               </div>
+              <div className="flex">
+                {/* <label className="inline-flex text-nowrap border-r  px-5 items-center">
+                  <input type="checkbox" className="hidden peer" />
+                      <div className="w-5 h-5 bg-white border border-gray-200 rounded-[5px] peer-checked:bg-[#00BAD3] peer-checked:border-[#00BAD3] transition-colors">
+                          <FaCheck className="text-white text-[.9em] m-[2px]" />
+                      </div>
+                      <span className="ml-2 text-sm text-[#333]">
+                          Stoksuz Ürünleri Gösterme
+                      </span>
+              </label> */}
+                <div className="flex px-2 items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M6.45457 14.6363C7.9608 14.6363 9.18184 13.4153 9.18184 11.909C9.18184 10.4028 7.9608 9.18176 6.45457 9.18176C4.94834 9.18176 3.72729 10.4028 3.72729 11.909C3.72729 13.4153 4.94834 14.6363 6.45457 14.6363Z"
+                      stroke="#333333"
+                      strokeWidth="1.36364"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                    <path
+                      d="M16 20.7728C17.5062 20.7728 18.7273 19.5517 18.7273 18.0455C18.7273 16.5393 17.5062 15.3182 16 15.3182C14.4937 15.3182 13.2727 16.5393 13.2727 18.0455C13.2727 19.5517 14.4937 20.7728 16 20.7728Z"
+                      stroke="#333333"
+                      strokeWidth="1.36364"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                    <path
+                      d="M16 8.49996C17.5062 8.49996 18.7273 7.27891 18.7273 5.77268C18.7273 4.26645 17.5062 3.04541 16 3.04541C14.4937 3.04541 13.2727 4.26645 13.2727 5.77268C13.2727 7.27891 14.4937 8.49996 16 8.49996Z"
+                      stroke="#333333"
+                      strokeWidth="1.36364"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                    <path
+                      d="M13.7063 7.24817L8.74854 10.4353"
+                      stroke="#333333"
+                      strokeWidth="1.36364"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                    <path
+                      d="M8.74854 13.3846L13.7063 16.5718"
+                      stroke="#333333"
+                      strokeWidth="1.36364"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                  </svg>
+                  <span>Paylaş</span>
+                </div>
+              </div>
+            </div> : ''
+             }
               <div
                 className={`${
                   onerilen ? "block" : "hidden"
@@ -612,8 +618,16 @@ function Categories() {
                     <Cart item={item} />
                   </div>
                 ))}
+                
             </div>
           </div>
+          
+        </div>
+          <div className="flex justify-center space-x-1 dark:text-gray-800">
+
+          <button type="button" title="Page 1" className="inline-flex items-center justify-center w-8 h-8 text-sm font-semibold border rounded shadow-md dark:bg-gray-50 dark:text-[#40D3E7] dark:border-[#40D3E7]">1</button>
+       
+
         </div>
       </div>
     </div>
