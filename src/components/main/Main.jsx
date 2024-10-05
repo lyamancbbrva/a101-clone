@@ -221,9 +221,9 @@ function Main({mainCategory, basket, setBasket}) {
                 </div>
                 </div>
                 <Highlights basket={basket} setBasket={setBasket} />
-                <Link to={'/kateqoriler'} className="block aldin1 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block aldin2 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block aldin3 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/ev-tekstili/çarşaf-alez'} className="block aldin1 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/erkek-giyim/erkek-eşofman'} className="block aldin2 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/bilgisayar-tablet/laptop-notebook'} className="block aldin3 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
                 <Link to={'/kateqoriler'} className="block aldin4 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
                 <Link to={'/kateqoriler'} className="block aldin5 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
                 <Link to={'/kateqoriler'} className="block iphone overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
