@@ -3,6 +3,7 @@ import extralogo from '../../assets/img/extra-logo.webp'
 import { IoChevronForward } from "react-icons/io5";
 import { useEffect, useState } from 'react';
 import { getCategories, getProducts } from '../../api/api';
+import axios from "axios";
 
 function Header({mainCategory, basket}) {
 
@@ -13,11 +14,13 @@ function Header({mainCategory, basket}) {
     const [status, setStatus] = useState(false)
     const [catId, setCatId] = useState(2)
 
+
+
     
 
     useEffect(() => {
         getCategories().then(resp => setCategory(resp))
-        getProducts().then(resp => setProduct(resp.products))
+        axios.get(`https://a101backend.vercel.app/products?limit=770&page=1`).then(resp => setProduct(resp.data.products))
     }, [])
    
 

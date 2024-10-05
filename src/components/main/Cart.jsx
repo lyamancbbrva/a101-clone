@@ -7,32 +7,31 @@ import { HiXMark } from "react-icons/hi2";
 export default function Cart({item, basket,setBasket }) {
 
     const [modal, setModal] = useState(false)
-   
 
     function addToBasket(e) {
-
-        
-        e.preventDefault();
+    
+       e.preventDefault();
        const nese =  basket.find(elem=> elem.id == item.id)
        !nese ? setBasket([...basket, { ...item, count: 1 }]) :  setBasket(basket.map(elem =>  elem.id === item.id ? { ...elem, count: elem.count + 1 } : elem ));
         
     }
     
-    
 
     return (
         <>
        { item ?
-            <Link to={`/product/`} className="px-3 w-[100%] block rounded-2xl border-gray-200 border relative bg-white">
+            <Link to={`/product/${item?.id}`} className="px-3 w-[100%] block rounded-2xl border-gray-200 border relative bg-white">
                 <GoHeart
                     onClick={(e) => {
                         e.preventDefault()
                         setModal(true)
                     }}
                     className="text-2xl absolute right-3 top-5" />
-                <img src={item?.imageUrl[0]} alt={item?.name} className="object-cover h-[40vh] lg:h-[25vh] xl:h-[20vh] mt-4 object-center w-full rounded-md dark:bg-gray-500" />
+                <img src={
+                    item?.imageUrl?.length > 0 ? item.imageUrl
+                     : item?.imageUrl[0]} alt={item?.name} className="object-cover h-[40vh] lg:h-[25vh] xl:h-[20vh] mt-4 object-center w-full rounded-md dark:bg-gray-500" />
                 <div className="mt-2.5 mb-2">
-                    <h2 className="text-[.8em] h-10 capitalize tracking-wide">{item?.name}</h2>
+                    <h2 className="text-[.8em] h-10 capitalize text-ellipsis overflow-hidden tracking-wide">{item?.name}</h2>
                 </div>
                 <p className="text-red-600 text-lg font-semibold mb-2">₺{item?.price}</p>
                 <div className="pb-2">

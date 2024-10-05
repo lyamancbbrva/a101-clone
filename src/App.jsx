@@ -63,6 +63,7 @@ function App() {
 					<Route path="/kampanyalar" element={<Campaigns />} />
 					<Route path="/product/:id" element={<CardInfo basket={basket} setBasket={setBasket} />} />
 					<Route path="/:category/:subCategory" element={<Categories  basket={basket} setBasket={setBasket} />} />
+					<Route path="/kateqoriler" element={<Categories  basket={basket} setBasket={setBasket} />} />
 				</Route>
 				<Route>
 					<Route path="/giris" element={<Login />} />

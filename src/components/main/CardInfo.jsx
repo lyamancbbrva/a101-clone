@@ -5,7 +5,7 @@ import { GiShoppingBag } from "react-icons/gi";;
 import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { HiXMark } from "react-icons/hi2";
-import { getProducts } from "../../api/api";
+import { getProductById, getProducts } from "../../api/api";
 import aldin_extra from '../../assets/img/aldin-aldin-extra.png'
 
 function CardInfo() {
@@ -14,10 +14,11 @@ function CardInfo() {
     const { id } = useParams();
 
     useEffect(() => {
-        getProducts().then(res => setData(res))
+        getProductById(id).then(resp => setData(resp))
     }, [])
 
-    const item = data && data.find(item => item.id == id);
+    console.log(data);
+    
 
     return (
         <>
@@ -25,21 +26,20 @@ function CardInfo() {
                 <div className="wrapper">
                     <div className="py-5 px-3 flex gap-2">
                         <Link className="text-sm inline-flex items-center gap-1" to={'/'}>Ana Sayfa <IoIosArrowForward className="text-gray-400 " /></Link>
-                        <p className="text-sm capitalize"> {item?.name}</p>
+                        <p className="text-sm capitalize"> {data?.name}</p>
                     </div>
                     <div className="flex gap-8 lg:gap-[1vw] lg:flex-row flex-col px-3 pb-5">
-                        <img src={item?.imageUrl} className="w-[100vw] lg:w-[38vw] rounded-3xl" alt="" />
+                        <img src={data?.imageUrl?.length > 0 ? data?.imageUrl[0] : data?.imageUrl} className="w-[100vw] lg:w-[38vw] rounded-3xl" alt="" />
                         <div className="bg-white h-fit rounded-3xl p-5  sm:min-w-[500px]">
                             <img className="md:h-[50%] pb-3" src={aldin_extra} alt="aldin-aldin" />
                             <div className="flex gap-2 items-center justify-between">
-                                <h1 className="text-2xl capitalize py-2">{item?.name}</h1>
+                                <h1 className="text-2xl capitalize py-2">{data?.name}</h1>
                                 <div>
                                     <GoHeart onClick={() => setLikeModal(true)} className="border lg:inline hidden w-12 h-12 rounded-full p-3 cursor-pointer" />
-                                    <GoShareAndroid className="border lg:inline hidden w-12 h-12 ml-3 rounded-full p-3 cursor-pointer" />
+                                    <GoShareAndroid className="border lg:inline hidden w-12 h-12 my-3 rounded-full p-3 cursor-pointer" />
                                 </div>
                             </div>
-                            <p className="text-sm">Ürün Kodu: <span className="font-semibold">24004920</span></p>
-                            <p className="text-red-600 text-2xl py-5">₺{item?.price}</p>
+                            <p className="text-red-600 text-2xl py-5">₺{data?.price}</p>
                             <p className="text-sm">Marka: <span className="text-[#00BAD3] cursor-pointer">Columbia</span></p>
                             <p className="text-gray-400 text-[.75em] py-3 flex gap-5 items-center"><GiShoppingBag className="" /> A101 Ekstra'ya Özel</p>
                             <button className="bg-[#00BAD3] my-2 rounded-full w-full text-white py-3">Sepete Ekle</button>
