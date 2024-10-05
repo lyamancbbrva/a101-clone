@@ -8,6 +8,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import configObj from "../config/config";
 import { createImage, createProduct, deleteImage, deleteProduct, editProduct, getCategories, getProducts, } from "../api/api";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 function Product() {
 	const formdata = new FormData();
@@ -37,11 +38,14 @@ function Product() {
 	const [productId, setProductId] = useState(0);
 	const [img, setImg] = useState([]);
 	const [imgSrc, setImgSrc] = useState("");
+	const [page, setPage] = useState(1);
+
+	const url = `https://a101backend.vercel.app/products?limit=50&page=${page}`
 
 	useEffect(() => {
+		axios.get(url).then(resp => setProduct(resp.data))
 		getCategories().then((resp) => setCategory(resp));
-		getProducts().then((resp) => setProduct(resp.products));
-	}, []);
+	}, [page]);
 
 	const handleEditorChange = (newContent) => {
 		const elem = document.createElement("div");
@@ -63,11 +67,11 @@ function Product() {
 	}
 
 	function deleteImg() {
-		
+
 		const url = imgSrc.split("/").at(-1);
 		deleteImage(url).then((res) => console.log(res));
 		console.log(url);
-		
+
 	}
 
 	function editProducts() {
@@ -147,11 +151,9 @@ function Product() {
 							</tr>
 						</thead>
 						<tbody className="text-black text-[1.2em]">
-							{product.length > 0 ? (
-								product.map((item, i) => {
-
+							{product.products?.length > 0 ? (
+								product.products?.map((item, i) => {
 									const { name, discount, price } = item;
-
 									return (
 										<tr key={i} className="hover:bg-gray-200">
 											<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
@@ -212,6 +214,12 @@ function Product() {
 							)}
 						</tbody>
 					</table>
+				</div>
+				<div className="flex justify-center py-5 space-x-1 dark:text-gray-800">
+					{
+						new Array(product.totalPages).fill(null).map((_, index) => <button key={index} onClick={(e) => { window.scroll(0, 0); setPage(e.target.innerText) }
+						} type="button" title="Page 1" className="inline-flex items-center justify-center w-8 h-8 text-sm font-semibold border rounded shadow-md dark:bg-gray-50 dark:text-[#278D9B] dark:border-[#278D9B]">{index + 1}</button>)
+					}
 				</div>
 			</div>
 
@@ -383,7 +391,7 @@ function Product() {
 										</label>
 										<input
 											value={editOpen ? (mehsul.discount || product.find(item => item.id == productId).discount) : mehsul.discount}
-											onInput={(e) =>setMehsul({ ...mehsul, discount: e.target.value })}
+											onInput={(e) => setMehsul({ ...mehsul, discount: e.target.value })}
 											type="number"
 											placeholder="0"
 											className="block w-full rounded-md border-gray-300 bg-gray-50 p-2 border outline-indigo-600 shadow-sm"
