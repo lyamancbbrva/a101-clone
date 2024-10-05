@@ -309,38 +309,38 @@ body {
     }
 
     .ucuz-fiyatlar {
-        background: url('./assets/img/mobil-web.jpg') center/cover no-repeat;
+        background: url('https://dq19r96s0yq25.cloudfront.net/files/65cf1e3b544f88000849c07b/singleSoftBanner.jpg?width=1200') center/cover no-repeat;
         height: 100vh;
     }
     .aldin1{
-        background: url('../src/assets/img/aldin1desktop.png') center/cover no-repeat;
+        background: url('https://dq19r96s0yq25.cloudfront.net/files/65cf1e3b544f88000849c07c/singleSoftBanner-1.jpg?width=1200') center/cover no-repeat;
     }
     .aldin2{
-        background: url('../src/assets/img/aldin2desktop.webp') center/cover no-repeat;
+        background: url('https://dq19r96s0yq25.cloudfront.net/files/65cf1e3b544f88000849c07d/singleSoftBanner-2.jpg?width=1200') center/cover no-repeat;
     }
     .aldin3{
-        background: url('../src/assets/img/aldin3desktop.webp') center/cover no-repeat;
+        background: url('https://dq19r96s0yq25.cloudfront.net/files/65cf1e3b544f88000849c07e/singleSoftBanner-3.jpg?width=1200') center/cover no-repeat;
     }
     .aldin4{
-        background: url('../src/assets/img/aldin4desktop.webp') center/cover no-repeat;
+        background: url('https://dq19r96s0yq25.cloudfront.net/files/66fda425e601780008079412/singleSoftBanner-1.jpg?width=1200') center/cover no-repeat;
     }
     .aldin5{
-        background: url('../src/assets/img/aldin5desktop.webp') center/cover no-repeat;
+        background: url('https://dq19r96s0yq25.cloudfront.net/files/66fda425e601780008079411/singleSoftBanner.jpg?width=1200') center/cover no-repeat;
     }
     .iphone{
-        background: url('../src/assets/img/iphonedesktop.webp') center/cover no-repeat;
+        background: url('https://dq19r96s0yq25.cloudfront.net/files/66fda425e601780008079414/singleSoftBanner-3.jpg?width=1200') center/cover no-repeat;
     }
     .samsung{
-        background: url('../src/assets/img/samsungdesktop.webp') center/cover no-repeat;
+        background: url('https://dq19r96s0yq25.cloudfront.net/files/66fda425e601780008079415/singleSoftBanner-4.jpg?width=1200') center/cover no-repeat;
     }
     .xiaomi{
-        background: url('../src/assets/img/mobilyadesktopwebp.webp') center/cover no-repeat;
+        background: url('https://dq19r96s0yq25.cloudfront.net/files/66bf277f94bc180008b3f0f5/web3.jpg?width=1200') center/cover no-repeat;
     }
     .tefal{
-        background: url('../src/assets/img/tefaldesktop.webp') center/cover no-repeat;
+        background: url('https://dq19r96s0yq25.cloudfront.net/files/6662c45c99eb4a00081c7244/singleSoftBanner-5.jpg?width=1200') center/cover no-repeat;
     }
     .stanley{
-        background: url('../src/assets/img/stanleydesktop.webp') center/cover no-repeat;
+        background: url('https://dq19r96s0yq25.cloudfront.net/files/6662c45c99eb4a00081c7246/singleSoftBanner-7.jpg?width=1200') center/cover no-repeat;
     }
     .skechers{
         background: url('../src/assets/img/skechersdesktop.webp') center/cover no-repeat;

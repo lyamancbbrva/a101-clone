@@ -221,21 +221,21 @@ function Main({mainCategory, basket, setBasket}) {
                 </div>
                 </div>
                 <Highlights basket={basket} setBasket={setBasket} />
-                <Link to={'/kateqoriler'} className="block aldin1  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block aldin2  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block aldin3  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block aldin4  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block aldin5  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block iphone  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block samsung  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block xiaomi  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block tefal  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block stanley  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block skechers  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[327h] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block crocs  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block kamp  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block mobilya  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
-                <Link to={'/kateqoriler'} className="block ceyiz  overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block aldin1 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block aldin2 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block aldin3 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block aldin4 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block aldin5 overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block iphone overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block samsung overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block xiaomi overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block tefal overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block stanley overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block skechers overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[327h] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block crocs overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block kamp overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block mobilya overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
+                <Link to={'/kateqoriler'} className="block ceyiz overflow-hidden 550:h-[40vh] sm:h-[50vh] lg:h-[27vh] w-full h-[30vh] rounded-2xl md:h-[25vh] my-5 xl:h-[40vh] "></Link>
             </div>
         </div>
     )
