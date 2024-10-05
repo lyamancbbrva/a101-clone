@@ -625,7 +625,7 @@ function Categories() {
         </div>
           <div className="flex justify-center space-x-1 dark:text-gray-800">
 
-          <button type="button" title="Page 1" className="inline-flex items-center justify-center w-8 h-8 text-sm font-semibold border rounded shadow-md dark:bg-gray-50 dark:text-[#40D3E7] dark:border-[#40D3E7]">1</button>
+          <button onClick={() => window.scroll(0,0)} type="button" title="Page 1" className="inline-flex items-center justify-center w-8 h-8 text-sm font-semibold border rounded shadow-md dark:bg-gray-50 dark:text-[#40D3E7] dark:border-[#40D3E7]">1</button>
        
 
         </div>
